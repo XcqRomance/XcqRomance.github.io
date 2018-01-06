@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="oschina," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="好的程序猿之所以编程，不是为了赚大钱或装逼，而是纯粹享受其中。  众所周知，开源中国社区 http://git.oschina.net 是一个为中国的IT技术人员提供一个全面的、快捷更新的用来检索开源软件以及交流使用开源经验的平台，是目前中国最大的开源技术社区。相比于GitHub，由于他的服务器在国内，访问速度更快，更主要是可以免费建立私有项目； 下面就分享下自己今天用Mac电脑在oschin">
+<meta name="keywords" content="oschina">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用oschina托管自己项目">
+<meta property="og:url" content="http://yoursite.com/2016/03/29/2016-03-29/index.html">
+<meta property="og:site_name" content="Romance的修行之路">
+<meta property="og:description" content="好的程序猿之所以编程，不是为了赚大钱或装逼，而是纯粹享受其中。  众所周知，开源中国社区 http://git.oschina.net 是一个为中国的IT技术人员提供一个全面的、快捷更新的用来检索开源软件以及交流使用开源经验的平台，是目前中国最大的开源技术社区。相比于GitHub，由于他的服务器在国内，访问速度更快，更主要是可以免费建立私有项目； 下面就分享下自己今天用Mac电脑在oschin">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-fcbce645237dc75c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-d134d9444eb7cae1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-738a8c8269d7cd54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-33ddbb9cd9f10289.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-64d3956e8dde7aea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-fad61a80f2edddfd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-c28f8bb63cc41389.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-93dbe143b2c50df4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-486169eef320e256.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-3368e11bba08b024.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-097d1fa56fd7f6c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-5aac72b58e8541e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-01-06T07:47:11.732Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用oschina托管自己项目">
+<meta name="twitter:description" content="好的程序猿之所以编程，不是为了赚大钱或装逼，而是纯粹享受其中。  众所周知，开源中国社区 http://git.oschina.net 是一个为中国的IT技术人员提供一个全面的、快捷更新的用来检索开源软件以及交流使用开源经验的平台，是目前中国最大的开源技术社区。相比于GitHub，由于他的服务器在国内，访问速度更快，更主要是可以免费建立私有项目； 下面就分享下自己今天用Mac电脑在oschin">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1603505-fcbce645237dc75c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/03/29/2016-03-29/"/>
+
+
+
+
+
+  <title>使用oschina托管自己项目 | Romance的修行之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Romance的修行之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">分享自己学习的点滴，和大家一起学习成长</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/29/2016-03-29/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Romance">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/romance.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romance的修行之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用oschina托管自己项目</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-29T15:28:39+08:00">
+                2016-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p> 好的程序猿之所以编程，不是为了赚大钱或装逼，而是纯粹享受其中。</p>
+</blockquote>
+<p>众所周知，开源中国社区 <a href="http://git.oschina.net" target="_blank" rel="noopener">http://git.oschina.net</a> 是一个为中国的IT技术人员提供一个全面的、快捷更新的用来检索开源软件以及交流使用开源经验的平台，是目前中国最大的开源技术社区。相比于GitHub，由于他的服务器在国内，访问速度更快，更主要是可以免费建立私有项目；</p>
+<p><strong>下面就分享下自己今天用Mac电脑在oschina上托管自己私有项目的步骤，</strong>本文主要包含以下两大内容：</p>
+<ul>
+<li><strong>托管新建项目</strong></li>
+<li><strong>托管已有项目</strong></li>
+</ul>
+<h1 id="托管新建项目"><a href="#托管新建项目" class="headerlink" title="托管新建项目"></a>托管新建项目</h1><h2 id="一、配置SSH-key"><a href="#一、配置SSH-key" class="headerlink" title="一、配置SSH key"></a>一、配置SSH key</h2><ol>
+<li>第一步：注册账号，点击这里：<a href="http://git.oschina.net" target="_blank" rel="noopener">http://git.oschina.net</a> 进行注册（这步骤就不啰嗦了，地球人都知道）</li>
+<li>第二步：添加SSH公钥（SSH key可以让你在你的电脑和 Git @ OSC 之间建立安全的加密连接，开源中国帮助文档地址：<a href="https://git.oschina.net/oschina/git-osc/wikis/帮助#ssh-keys）" target="_blank" rel="noopener">https://git.oschina.net/oschina/git-osc/wikis/帮助#ssh-keys）</a><br><1> 打开终端，按照如下命令来生成ssh-keys ，xxxxx@xxxxx.com 就用你的注册邮箱就可以了，<blockquote>
+<p>ssh-keygen -t rsa -C “xxxxx@xxxxx.com”   </p>
+</blockquote>
+</1></li>
+</ol>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-fcbce645237dc75c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step1.png"><br>出现Enter file in which to save the key (/Users/xcq/.ssh/id_rsa): 时，直接回车就行（为了方便全程回车，可以不用输入rss文件名和密码）；如果之前已经添加过ssh-keys将出现以下提示：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-d134d9444eb7cae1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="message.png"><br>直接出入n,然后回车，避免重复添加！</p>
+<p><2>输入以下命令，查看你的public key（下图红色括号的内容），并把他添加到 Git @ OSC <a href="http://git.oschina.net/keys" target="_blank" rel="noopener">http://git.oschina.net/keys</a></2></p>
+<blockquote>
+<p>cat ~/.ssh/id_rsa.pub</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-738a8c8269d7cd54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step2.png"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-33ddbb9cd9f10289.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step3.png"></p>
+<p><3>添加后，在终端（Terminal）中输入</3></p>
+<blockquote>
+<p>ssh -T git@git.oschina.net</p>
+</blockquote>
+<p>若返回</p>
+<blockquote>
+<p>Welcome to Git@OSC, yourname! </p>
+</blockquote>
+<p>则证明添加成功。</p>
+<h2 id="二、在oschina上面新建项目"><a href="#二、在oschina上面新建项目" class="headerlink" title="二、在oschina上面新建项目"></a>二、在oschina上面新建项目</h2><ol>
+<li><a href="http://git.oschina.net" target="_blank" rel="noopener">http://git.oschina.net</a> 登录自己账号之后，进行如下操作：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-64d3956e8dde7aea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step4.png"></li>
+<li>注意：开源许可协议选择 MIT License ， GitIgnore可以选择也可以不选择，不选择则需有第三大步（三、添加gitignore）的配置，<br><img src="http://upload-images.jianshu.io/upload_images/1603505-fad61a80f2edddfd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step5.png"></li>
+<li>点击创建之后，跳转到如下页面：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-c28f8bb63cc41389.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step6.png"> </li>
+<li>拷贝ssh地址，先用终端命令cd（我这是cd /Users/xcq/Desktop/YiXueCompany ） 改变当前目录为你需要托管的项目目录文件下，然后在终端输入如下指令（其中git@git.oschina.net:xxx/ProjectName.git为你拷贝的ssh地址）<br><img src="http://upload-images.jianshu.io/upload_images/1603505-93dbe143b2c50df4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step7.png"> <blockquote>
+<p>$ git clone git@git.oschina.net:xxx/ProjectName.git</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="三、添加gitignore-（如果在上一步-，即二、在oschina上面新建项目时添加了-gitignore文件，则此步略过）"><a href="#三、添加gitignore-（如果在上一步-，即二、在oschina上面新建项目时添加了-gitignore文件，则此步略过）" class="headerlink" title="三、添加gitignore （如果在上一步,，即二、在oschina上面新建项目时添加了.gitignore文件，则此步略过）"></a>三、添加gitignore （如果在上一步,，即二、在oschina上面新建项目时添加了.gitignore文件，则此步略过）</h2><p>注：添加 .gitignore 文件之后每次提交时不会将个人的项目设置信息（例如：末次打开的文件，调试断点等）提交到服务器，在团队开发中非常重要</p>
+<ol>
+<li>打开<a href="https://github.com/github/gitignore" target="_blank" rel="noopener">https://github.com/github/gitignore</a> 下载gitignore项目文件，里面包含了各种语言的gitignore配置；</li>
+<li>打开终端， 改变当前目录为你需要托管的项目目录文件下，输入以下命令（其中/Users/xcq/Downloads/gitignore-master/Swift.gitignore为刚刚下载的gitignore路径，我这里是新建的swift项目，所以选择Swift.gitignore）<blockquote>
+<p>cp /Users/xcq/Downloads/gitignore-master/Swift.gitignore .gitignore<br>git add .  # 将修改添加至暂存区<br>git commit -m”添加gitignore”  # 提交修改并且添加备注信息<br>git push # 将修改推送到远程服务器</p>
+</blockquote>
+</li>
+</ol>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-486169eef320e256.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step8.png"></p>
+<h2 id="四、新建项目"><a href="#四、新建项目" class="headerlink" title="四、新建项目"></a>四、新建项目</h2><ol>
+<li>用xcode新建swift项目，保存到托管的项目目录，还有点要注意就是<strong>不要勾选</strong><br><img src="http://upload-images.jianshu.io/upload_images/1603505-3368e11bba08b024.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step9.png"></li>
+<li>提交的时候勾选，就会提交到oschina上面建立的远程仓库。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-097d1fa56fd7f6c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step10.png"></li>
+</ol>
+<p><strong>已上四步是教你如何将一个全新的项目添加到oschina；还有一种需求<br>那就是将已有的本地项目上传到oschina</strong></p>
+<h1 id="托管已有项目，即将已有的本地项目上传到oschina"><a href="#托管已有项目，即将已有的本地项目上传到oschina" class="headerlink" title="托管已有项目，即将已有的本地项目上传到oschina"></a>托管已有项目，即将已有的本地项目上传到oschina</h1><ol>
+<li>前三步的操作与上面一样；</li>
+<li>接下来，做以下操作：打开终端，切换到你的项目目录下，依次输入以下命令<blockquote>
+<p>git init .<br>git pull git@git.oschina.net:xxxx/Demo.git<br>git add -A .<br>git commit -am “纳入版本控制”s<br>git push git@git.oschina.net:xxxxxxx/Demo.git     master</p>
+</blockquote>
+</li>
+</ol>
+<p>其中<code>git@git.oschina.net:xxxx/Demo.git</code>就是你新建远程仓库的地址，即step7.png图片的地址。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-5aac72b58e8541e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step11.png"></p>
+<p><strong>完毕，✌️✌️✌️，分享是一种美德，坚持就是胜利，坚持分享自己的学习点滴！</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/oschina/" rel="tag"># oschina</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/22/2016-03-22/" rel="next" title="Mac电脑双系统的安装">
+                <i class="fa fa-chevron-left"></i> Mac电脑双系统的安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/11/2016-06-11/" rel="prev" title="一个iOS程序员的面试心得">
+                一个iOS程序员的面试心得 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/romance.jpg"
+                alt="Romance" />
+            
+              <p class="site-author-name" itemprop="name">Romance</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/XcqRomance" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/d1414d91084a" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#托管新建项目"><span class="nav-number">1.</span> <span class="nav-text">托管新建项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、配置SSH-key"><span class="nav-number">1.1.</span> <span class="nav-text">一、配置SSH key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、在oschina上面新建项目"><span class="nav-number">1.2.</span> <span class="nav-text">二、在oschina上面新建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、添加gitignore-（如果在上一步-，即二、在oschina上面新建项目时添加了-gitignore文件，则此步略过）"><span class="nav-number">1.3.</span> <span class="nav-text">三、添加gitignore （如果在上一步,，即二、在oschina上面新建项目时添加了.gitignore文件，则此步略过）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、新建项目"><span class="nav-number">1.4.</span> <span class="nav-text">四、新建项目</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#托管已有项目，即将已有的本地项目上传到oschina"><span class="nav-number">2.</span> <span class="nav-text">托管已有项目，即将已有的本地项目上传到oschina</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Romance</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

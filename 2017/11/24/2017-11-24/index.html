@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="先说说自己学习安卓的一个初衷，在移动app开发的过程中，经常和android开发人员讨论一些技术的实现，有时候交流起来就特费劲，不是他听不懂我说的术语，就是他听不懂我讲的什么，反正就是有点语言不通，比如：iOS中的集合视图UITableView、UICollectionView中每个子项一般叫做cell，讨论的时候也叫做cell中干啥干啥，而安卓中的集合视图ListView,GridView,Re">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个iOS开发者的android修行之路一：UIViewController与Activity的生命周期对比探究">
+<meta property="og:url" content="http://yoursite.com/2017/11/24/2017-11-24/index.html">
+<meta property="og:site_name" content="Romance的修行之路">
+<meta property="og:description" content="先说说自己学习安卓的一个初衷，在移动app开发的过程中，经常和android开发人员讨论一些技术的实现，有时候交流起来就特费劲，不是他听不懂我说的术语，就是他听不懂我讲的什么，反正就是有点语言不通，比如：iOS中的集合视图UITableView、UICollectionView中每个子项一般叫做cell，讨论的时候也叫做cell中干啥干啥，而安卓中的集合视图ListView,GridView,Re">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-54975d9746a96bd7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-01-08T02:44:50.837Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一个iOS开发者的android修行之路一：UIViewController与Activity的生命周期对比探究">
+<meta name="twitter:description" content="先说说自己学习安卓的一个初衷，在移动app开发的过程中，经常和android开发人员讨论一些技术的实现，有时候交流起来就特费劲，不是他听不懂我说的术语，就是他听不懂我讲的什么，反正就是有点语言不通，比如：iOS中的集合视图UITableView、UICollectionView中每个子项一般叫做cell，讨论的时候也叫做cell中干啥干啥，而安卓中的集合视图ListView,GridView,Re">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1603505-54975d9746a96bd7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/24/2017-11-24/"/>
+
+
+
+
+
+  <title>一个iOS开发者的android修行之路一：UIViewController与Activity的生命周期对比探究 | Romance的修行之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Romance的修行之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">分享自己学习的点滴，和大家一起学习成长</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/24/2017-11-24/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Romance">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/romance.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romance的修行之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">一个iOS开发者的android修行之路一：UIViewController与Activity的生命周期对比探究</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-24T10:41:22+08:00">
+                2017-11-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>先说说自己学习安卓的一个初衷，在移动app开发的过程中，经常和android开发人员讨论一些技术的实现，有时候交流起来就特费劲，不是他听不懂我说的术语，就是他听不懂我讲的什么，反正就是有点语言不通，比如：iOS中的集合视图UITableView、UICollectionView中每个子项一般叫做cell，讨论的时候也叫做cell中干啥干啥，而安卓中的集合视图ListView,GridView,RecyclerView的每一个子项叫做item，这个还是小的差异；还有就是讨论某个UI界面数据刷新是什么时机进行刷新的，我说我们这边是在viewWillAppear的时候进行刷新，然后android那边就懵逼了，直到我换了一种说法，就是在这个页面即将显示的时候刷新数据，对方才听懂；而有时候我们听到对方的一些名词的时候，会想这Activity是什么东东？Fragment又是什么？于是我们会联想这对应到我们iOS这边相应的是什么。总之，诸如此类的听到对方说的一些名词自己云里雾里的。<strong>其实，一个更为重要的原因是想要成为移动开发的leader，你不懂一些android的开发，以及了解android和iOS的一些差异，你是没法胜任这个工作的。有时候，android遇到一些坑时，你必须知道如何高效的解决。如何和小组开发人员探讨某个问题的最佳实践。</strong></p>
+<h2 id="Activity的生命周期"><a href="#Activity的生命周期" class="headerlink" title="Activity的生命周期"></a>Activity的生命周期</h2><p><strong>一个优秀app必须兼顾两个必要条件：1、优秀的界面，2、良好的用户交互体验。</strong><br>在iOS中是由UIViewController主要负责加载界面呈现给用户，以及处理用户的交互逻辑；而安卓负责界面展示和交互功能就是Android系统四大组件之一的活动<strong>Activity</strong>。<br><strong>1. 我们先看下iOS的<code>UIViewController</code>的生命周期函数：</strong><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 前两个init方法是UIViewController的初始化方法</span></span><br><span class="line">  <span class="comment">// 非storyboard加载会调用此方法</span></span><br><span class="line">  <span class="keyword">override</span> <span class="keyword">init</span>(nibName nibNameOrNil: <span class="type">String</span>?, bundle nibBundleOrNil: <span class="type">Bundle</span>?) &#123;</span><br><span class="line">    <span class="keyword">super</span>.<span class="keyword">init</span>(nibName: nibNameOrNil, bundle: nibBundleOrNil)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(<span class="keyword">self</span>)</span><span class="subst">\(#function)</span>"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 使用storyboard加载的UIViewController会调用此初始化方法</span></span><br><span class="line">  <span class="keyword">required</span> <span class="keyword">init</span>?(coder aDecoder: <span class="type">NSCoder</span>) &#123;</span><br><span class="line">    <span class="keyword">super</span>.<span class="keyword">init</span>(coder: aDecoder)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(<span class="keyword">self</span>)</span><span class="subst">\(#function)</span>"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 视图的@IBOutlet和@IBAction链接完成再次方法中</span></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">awakeFromNib</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.awakeFromNib()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(<span class="keyword">self</span>)</span><span class="subst">\(#function)</span>"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// Creates the view that the controller manages.</span></span><br><span class="line">  <span class="comment">// 此方法一般调用的少</span></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">loadView</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.loadView()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(<span class="keyword">self</span>)</span><span class="subst">\(#function)</span>"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// Called after the controller's view is loaded into memory.</span></span><br><span class="line">  <span class="comment">// 控制器视图加载完成（加载到了内存）的时候调用,只被调用一次，我们一般在这个方法中进行数据的网路请求，约束的设置，以及视图的一些操作等等。</span></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(<span class="keyword">self</span>)</span><span class="subst">\(#function)</span>"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// MARK: -分割线----上面的方法只会调用一次，下面的方法除了deinit方法可能会调用多次</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment">// Notifies the view controller that its view is about to be added to a view hierarchy.</span></span><br><span class="line">  <span class="comment">// 视图即将显示的时候调用</span></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewWillAppear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.viewWillAppear(animated)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(<span class="keyword">self</span>)</span><span class="subst">\(#function)</span>"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// Called to notify the view controller that its view is about to layout its subviews.</span></span><br><span class="line">  <span class="comment">// 控制器视图即将布局他的子视图时调用</span></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewWillLayoutSubviews</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.viewWillLayoutSubviews()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(<span class="keyword">self</span>)</span><span class="subst">\(#function)</span>"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// Called to notify the view controller that its view has just laid out its subviews.</span></span><br><span class="line">  <span class="comment">// 控制器视图已经布局完其子视图后调用，在iphone X的适配就是在此方法中获取view.safeAreaInsets进行处理的，</span></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLayoutSubviews</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.viewDidLayoutSubviews()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(<span class="keyword">self</span>)</span><span class="subst">\(#function)</span>"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// Notifies the view controller that its view was added to a view hierarchy.</span></span><br><span class="line">  <span class="comment">// 试图已经完全显示的时候调用</span></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidAppear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.viewDidAppear(animated)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(<span class="keyword">self</span>)</span><span class="subst">\(#function)</span>"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// Notifies the view controller that its view is about to be removed from a view hierarchy.</span></span><br><span class="line">  <span class="comment">// 视图即将被移除的时候调用</span></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewWillDisappear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.viewWillDisappear(animated)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(<span class="keyword">self</span>)</span><span class="subst">\(#function)</span>"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// Notifies the view controller that its view was removed from a view hierarchy.</span></span><br><span class="line">  <span class="comment">// 视图已经被完全移除的时候调用</span></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidDisappear</span><span class="params">(<span class="number">_</span> animated: Bool)</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.viewDidAppear(animated)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(<span class="keyword">self</span>)</span><span class="subst">\(#function)</span>"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// Sent to the view controller when the app receives a memory warning.</span></span><br><span class="line">  <span class="comment">// 手机收到内存警告的时候调用</span></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.didReceiveMemoryWarning()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(<span class="keyword">self</span>)</span><span class="subst">\(#function)</span>"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 视图被销毁的时候调用，在这里可以执行的操作有：KVO移除，通知的移除，定时器的销毁</span></span><br><span class="line">  <span class="keyword">deinit</span> &#123;</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(<span class="keyword">self</span>)</span><span class="subst">\(#function)</span>"</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>下面是从ViewController跳转到SecondViewControler在跳转到ThirdController控制台的log：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;LifecycleDemo.ViewController: 0x7fd122d0b5d0&gt;init(coder:)</span><br><span class="line">&lt;LifecycleDemo.ViewController: 0x7fd122d0b5d0&gt;awakeFromNib()</span><br><span class="line">&lt;LifecycleDemo.ViewController: 0x7fd122d0b5d0&gt;loadView()</span><br><span class="line">&lt;LifecycleDemo.ViewController: 0x7fd122d0b5d0&gt;viewDidLoad()</span><br><span class="line">&lt;LifecycleDemo.ViewController: 0x7fd122d0b5d0&gt;viewWillAppear</span><br><span class="line">&lt;LifecycleDemo.ViewController: 0x7fd122d0b5d0&gt;viewWillLayoutSubviews()</span><br><span class="line">&lt;LifecycleDemo.ViewController: 0x7fd122d0b5d0&gt;viewDidLayoutSubviews()</span><br><span class="line">&lt;LifecycleDemo.ViewController: 0x7fd122d0b5d0&gt;viewWillLayoutSubviews()</span><br><span class="line">&lt;LifecycleDemo.ViewController: 0x7fd122d0b5d0&gt;viewDidLayoutSubviews()</span><br><span class="line">&lt;LifecycleDemo.ViewController: 0x7fd122d0b5d0&gt;viewDidAppear</span><br><span class="line">&lt;LifecycleDemo.SecondViewController: 0x7fd122c16480&gt;init(coder:)</span><br><span class="line">&lt;LifecycleDemo.SecondViewController: 0x7fd122c16480&gt;awakeFromNib()</span><br><span class="line">&lt;LifecycleDemo.SecondViewController: 0x7fd122c16480&gt;loadView()</span><br><span class="line">&lt;LifecycleDemo.SecondViewController: 0x7fd122c16480&gt;viewDidLoad()</span><br><span class="line">&lt;LifecycleDemo.ViewController: 0x7fd122d0b5d0&gt;viewWillDisappear</span><br><span class="line">&lt;LifecycleDemo.SecondViewController: 0x7fd122c16480&gt;viewWillAppear</span><br><span class="line">&lt;LifecycleDemo.SecondViewController: 0x7fd122c16480&gt;viewWillLayoutSubviews()</span><br><span class="line">&lt;LifecycleDemo.SecondViewController: 0x7fd122c16480&gt;viewDidLayoutSubviews()</span><br><span class="line">&lt;LifecycleDemo.SecondViewController: 0x7fd122c16480&gt;viewWillLayoutSubviews()</span><br><span class="line">&lt;LifecycleDemo.SecondViewController: 0x7fd122c16480&gt;viewDidLayoutSubviews()</span><br><span class="line">&lt;LifecycleDemo.ViewController: 0x7fd122d0b5d0&gt;viewDidDisappear</span><br><span class="line">&lt;LifecycleDemo.SecondViewController: 0x7fd122c16480&gt;viewDidAppear</span><br><span class="line">&lt;LifecycleDemo.ThirdViewController: 0x7fd122c2ff00&gt;init(nibName:bundle:)</span><br><span class="line">&lt;LifecycleDemo.ThirdViewController: 0x7fd122c2ff00&gt;loadView()</span><br><span class="line">&lt;LifecycleDemo.ThirdViewController: 0x7fd122c2ff00&gt;viewDidLoad()</span><br><span class="line">&lt;LifecycleDemo.SecondViewController: 0x7fd122c16480&gt;viewWillDisappear</span><br><span class="line">&lt;LifecycleDemo.ThirdViewController: 0x7fd122c2ff00&gt;viewWillAppear</span><br><span class="line">&lt;LifecycleDemo.ThirdViewController: 0x7fd122c2ff00&gt;viewWillLayoutSubviews()</span><br><span class="line">&lt;LifecycleDemo.ThirdViewController: 0x7fd122c2ff00&gt;viewDidLayoutSubviews()</span><br><span class="line">&lt;LifecycleDemo.ThirdViewController: 0x7fd122c2ff00&gt;viewWillLayoutSubviews()</span><br><span class="line">&lt;LifecycleDemo.ThirdViewController: 0x7fd122c2ff00&gt;viewDidLayoutSubviews()</span><br><span class="line">&lt;LifecycleDemo.SecondViewController: 0x7fd122c16480&gt;viewDidDisappear</span><br><span class="line">&lt;LifecycleDemo.ThirdViewController: 0x7fd122c2ff00&gt;viewDidAppear</span><br><span class="line">&lt;LifecycleDemo.ThirdViewController: 0x7fd122c2ff00&gt;viewWillDisappear</span><br><span class="line">&lt;LifecycleDemo.SecondViewController: 0x7fd122c16480&gt;viewWillAppear</span><br><span class="line">&lt;LifecycleDemo.ThirdViewController: 0x7fd122c2ff00&gt;viewDidDisappear</span><br><span class="line">&lt;LifecycleDemo.SecondViewController: 0x7fd122c16480&gt;viewDidAppear</span><br><span class="line">&lt;LifecycleDemo.ThirdViewController: 0x7fd122c2ff00&gt;deinit</span><br><span class="line">&lt;LifecycleDemo.SecondViewController: 0x7fd122c16480&gt;viewWillDisappear</span><br><span class="line">&lt;LifecycleDemo.ViewController: 0x7fd122d0b5d0&gt;viewWillAppear</span><br><span class="line">&lt;LifecycleDemo.SecondViewController: 0x7fd122c16480&gt;viewDidDisappear</span><br><span class="line">&lt;LifecycleDemo.ViewController: 0x7fd122d0b5d0&gt;viewDidAppear</span><br><span class="line">&lt;LifecycleDemo.SecondViewController: 0x7fd122c16480&gt;deinit</span><br></pre></td></tr></table></figure></p>
+<p><strong>2. 我们再来看下android的Activity的生命周期函数：</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    String str = <span class="keyword">this</span>.getClass().getName();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*活动第一次被创建的时候调用，布局的加载，事件的绑定可以在这里完成,此时活动还是不可见的*/</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span>  </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        Log.i(str,<span class="string">"onCreate"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*活动由不可见变为可见的时候调用*/</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onStart();</span><br><span class="line">        Log.i(str,<span class="string">"onStart"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*活动已经完全可见，并且可以与用户交互，活动处于返回栈的栈顶*/</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onResume();</span><br><span class="line">        Log.i(str,<span class="string">"onResume"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*在系统准备启动或者恢复一个activity时调用*/</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onPause();</span><br><span class="line">        Log.i(str,<span class="string">"onPause"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*当activity 完全不可见的时候调用*/</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onStop();</span><br><span class="line">        Log.i(str,<span class="string">"onStop"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*活动被重新启动的时候调用*/</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onRestart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onRestart();</span><br><span class="line">        Log.i(str,<span class="string">"onRestart"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*acitivity被销毁前调用，调用之后，activity变为销毁状态*/</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        Log.i(str,<span class="string">"onDestroy"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>下面是一个MainActivity跳转到SecondActivity，然后在回来的生命函数调用在控制台输出的log：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">I/com.example.xcqromance.lifecycledemo.MainActivity: onCreate</span><br><span class="line">I/com.example.xcqromance.lifecycledemo.MainActivity: onStart</span><br><span class="line">I/com.example.xcqromance.lifecycledemo.MainActivity: onResume</span><br><span class="line">I/com.example.xcqromance.lifecycledemo.MainActivity: onPause</span><br><span class="line">I/com.example.xcqromance.lifecycledemo.SecondActivity: onCreate</span><br><span class="line">I/com.example.xcqromance.lifecycledemo.SecondActivity: onStart</span><br><span class="line">I/com.example.xcqromance.lifecycledemo.SecondActivity: onResume</span><br><span class="line">I/com.example.xcqromance.lifecycledemo.MainActivity: onStop</span><br><span class="line">I/com.example.xcqromance.lifecycledemo.SecondActivity: onPause</span><br><span class="line">I/com.example.xcqromance.lifecycledemo.MainActivity: onRestart</span><br><span class="line">I/com.example.xcqromance.lifecycledemo.MainActivity: onStart</span><br><span class="line">I/com.example.xcqromance.lifecycledemo.MainActivity: onResume</span><br><span class="line">I/com.example.xcqromance.lifecycledemo.SecondActivity: onStop</span><br><span class="line">I/com.example.xcqromance.lifecycledemo.SecondActivity: onDestroy</span><br></pre></td></tr></table></figure></p>
+<p>通过上面的对比，我整理出iOS和android的生命周期函数有及其相似的地方和不同之处：<img src="http://upload-images.jianshu.io/upload_images/1603505-54975d9746a96bd7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS和android生命周期函数对比图"></p>
+<p><a href="https://github.com/XcqRomance/iOS_Android_Comparision/tree/lifecycle" target="_blank" rel="noopener">GithubDemo地址</a>，里面有上述操作的代码，文章写的有点粗糙，同时欢迎大家一切探讨。一起添加iOS和android的生命周期的异同。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/19/2017-10-19/" rel="next" title="iOS11,iPhoneX适配,Xcode9遇到的问题以及解决方案探讨">
+                <i class="fa fa-chevron-left"></i> iOS11,iPhoneX适配,Xcode9遇到的问题以及解决方案探讨
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/28/2017-11-28/" rel="prev" title="一个iOS开发者的android修行之路二：UITableView和ListView的对比探究">
+                一个iOS开发者的android修行之路二：UITableView和ListView的对比探究 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/romance.jpg"
+                alt="Romance" />
+            
+              <p class="site-author-name" itemprop="name">Romance</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/XcqRomance" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/d1414d91084a" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Activity的生命周期"><span class="nav-number">1.</span> <span class="nav-text">Activity的生命周期</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Romance</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

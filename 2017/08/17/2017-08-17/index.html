@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言TestFlight是苹果官方提供给开发者对预发布版本进行测试的工具或者说是一种服务。通过本文你将知道如何使用TestFlight添加测试人员以及邀请外部测试人员进行测试。本文参考苹果官方提供的方法教程 我们知道苹果开发者可以申请的账号有三类个人、公司、企业这三大类(其实还有一类就是教育机构，比如大学，但是我们一般用得少，所以不说)苹果官方定义几大分类传送门，个人、公司开发者账号的会员费99$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用TestFlight对iOS app beta版本测试实战">
+<meta property="og:url" content="http://yoursite.com/2017/08/17/2017-08-17/index.html">
+<meta property="og:site_name" content="Romance的修行之路">
+<meta property="og:description" content="前言TestFlight是苹果官方提供给开发者对预发布版本进行测试的工具或者说是一种服务。通过本文你将知道如何使用TestFlight添加测试人员以及邀请外部测试人员进行测试。本文参考苹果官方提供的方法教程 我们知道苹果开发者可以申请的账号有三类个人、公司、企业这三大类(其实还有一类就是教育机构，比如大学，但是我们一般用得少，所以不说)苹果官方定义几大分类传送门，个人、公司开发者账号的会员费99$">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-b17159f62be469ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-0220ec1d8e114cd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-6eeddb261b58046c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-7337655202943e17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-fc6e28fee4b047d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-d151e7d1bd3d1a4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-bce37c3dda60632b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-74aa8eb112b2a2f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-8cb2ec2a4bb9de9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-606995c51420d3f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-5ceca8679632f08a.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-dcbba8e85473f9ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-841ed4daf554eae6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-dbc2c9249824c975.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-1e27a2ec151c62f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-cc8fcbfafd8bf970.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-b4e11144fed4a543.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-354c8040e9ad22c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-e34c8e8cde0e2434.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-8b17004abc55e79e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-b584fabf0c0319ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-96331586f642288f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-8638c5486b0e7606.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-bef8cac173c9557e.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-f73fdccf18fd082c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-01-07T02:17:20.413Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用TestFlight对iOS app beta版本测试实战">
+<meta name="twitter:description" content="前言TestFlight是苹果官方提供给开发者对预发布版本进行测试的工具或者说是一种服务。通过本文你将知道如何使用TestFlight添加测试人员以及邀请外部测试人员进行测试。本文参考苹果官方提供的方法教程 我们知道苹果开发者可以申请的账号有三类个人、公司、企业这三大类(其实还有一类就是教育机构，比如大学，但是我们一般用得少，所以不说)苹果官方定义几大分类传送门，个人、公司开发者账号的会员费99$">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1603505-b17159f62be469ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/17/2017-08-17/"/>
+
+
+
+
+
+  <title>使用TestFlight对iOS app beta版本测试实战 | Romance的修行之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Romance的修行之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">分享自己学习的点滴，和大家一起学习成长</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/17/2017-08-17/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Romance">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/romance.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romance的修行之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用TestFlight对iOS app beta版本测试实战</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-17T12:14:07+08:00">
+                2017-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>TestFlight是苹果官方提供给开发者对<strong>预发布版本</strong>进行测试的工具或者说是一种服务。通过本文你将知道如何使用TestFlight添加测试人员以及邀请外部测试人员进行测试。本文参考<a href="https://help.apple.com/itunes-connect/developer/#/devdc42b26b8" target="_blank" rel="noopener">苹果官方提供的方法教程</a></p>
+<p>我们知道苹果开发者可以申请的账号有三类<strong>个人、公司、企业</strong>这三大类(其实还有一类就是教育机构，比如大学，但是我们一般用得少，所以不说)<a href="https://developer.apple.com/support/compare-memberships/" target="_blank" rel="noopener">苹果官方定义几大分类传送门</a>，个人、公司开发者账号的会员费99$一年，企业级账号是299$一年。</p>
+<p>关于在iOS app测试我们知道由于苹果的安全签名机制，我们开发的app想要对外测试(比如给公司客户、领导等等)并不是一件容易的事情。对于企业级账号我们可以之间让用户下载，信任之后直接使用，但是这类app并不能发布到App Store，所以也就无法进行本文所说的TestFlight Beta Testing功能，一般是企业内部使用的app才会选择。对于大部分互联网公司，肯定是选择<strong>公司级别的账号</strong>，最终需要发布到App Store的，而这类账户的测试就很麻烦，有100台设备限制，而且还得事先获取设备UDID，然后导出ipa，链接itunes安装，总之整个流程下来特别繁琐。当然还有一种是简便方式就是通过第三方的分发平台，比如蒲公英，TestBird；但这不在我们的讨论范围之内。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p><strong>注意：本文的操作都所使用的开发者账号是前言部分说的第二种：99$的Appstore公司开发者账号</strong></p>
+<h3 id="提前准备的工作：有手动打包或者自动打包构建好的好的ipa文件。如下图"><a href="#提前准备的工作：有手动打包或者自动打包构建好的好的ipa文件。如下图" class="headerlink" title="提前准备的工作：有手动打包或者自动打包构建好的好的ipa文件。如下图"></a>提前准备的工作：有手动打包或者自动打包构建好的好的ipa文件。如下图</h3><p><img src="http://upload-images.jianshu.io/upload_images/1603505-b17159f62be469ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="导出的ipa"></p>
+<h3 id="使用Application-Loader上传构建版本到iTunes"><a href="#使用Application-Loader上传构建版本到iTunes" class="headerlink" title="使用Application Loader上传构建版本到iTunes"></a>使用Application Loader上传构建版本到iTunes</h3><p>具体操作如下：<br>Xocode-&gt;Open Developer Tool-&gt;Application Loader<br><img src="http://upload-images.jianshu.io/upload_images/1603505-0220ec1d8e114cd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="open"><br>登录apple ID账号<br><img src="http://upload-images.jianshu.io/upload_images/1603505-6eeddb261b58046c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="login"><br>双击上图箭头指向的框框，选取提交的构建版本<br><img src="http://upload-images.jianshu.io/upload_images/1603505-7337655202943e17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="submit"><br>根据操作一直下一步，直到成功<br><img src="http://upload-images.jianshu.io/upload_images/1603505-fc6e28fee4b047d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="submit2"><br>登录<a href="https://itunesconnect.apple.com/login" target="_blank" rel="noopener">iTunes Connect</a>可以查看提交的构建版本<br><img src="http://upload-images.jianshu.io/upload_images/1603505-d151e7d1bd3d1a4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="success"></p>
+<ul>
+<li>如果开发团队人员多，建议使用<a href="https://jenkins.io" target="_blank" rel="noopener">Jenkins</a>+<a href="https://fastlane.tools" target="_blank" rel="noopener">Fastlane</a>进行持续集成，只需要在一台mac电脑进行配置证书之类的，整个团队都可以打包并且自动上传到Appstore，供测试人员下载测试，大大提高整个团队的开发效率；具体配置很简单，网络上有很多教程！（Android的持续集成也支持哟）</li>
+</ul>
+<h3 id="创建和添加测试人员"><a href="#创建和添加测试人员" class="headerlink" title="创建和添加测试人员"></a>创建和添加测试人员</h3><p>你可以在Test Flight中添加两种类型的测试；<br><strong>内部测试</strong>：<strong>管理员，技术，app管理员，开发人员和营销</strong>角色的iTunes Connect用户，这些角色可以访问我们的应用程序。 这通常是您正在开发应用程序的团队成员或客户端。 最多可以添加25个内部测试人员。<a href="https://help.apple.com/itunes-connect/developer/#/dev839fb66e9" target="_blank" rel="noopener">苹果官方定义内部测试</a></p>
+<p><strong>外部测试</strong>：外部测试员可以是任何拥有一个电子邮件地址的用户，应邀为我们的 App 进行 Beta 版测试。外部测试员中可以包括 iTunes Connect 用户，但 iTunes Connect 用户不能同时为内部和外部测试员。而且至多 能添加10,000 个外部测试员。<a href="https://help.apple.com/itunes-connect/developer/#/deved4d898a5" target="_blank" rel="noopener">苹果官方定义外部测试</a></p>
+<h3 id="添加内部测试人员"><a href="#添加内部测试人员" class="headerlink" title="添加内部测试人员"></a>添加内部测试人员</h3><p>登录iTunes Connect按照如下步骤进行设置<br><img src="http://upload-images.jianshu.io/upload_images/1603505-bce37c3dda60632b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="内部测试人员"><br>各个角色对应的权限如下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-74aa8eb112b2a2f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="角色权限"><br>这里我选择的角色是<strong>App 管理</strong>，还可以选择测试的app，我们公司账号有多个app，所以我选择<strong>所有app</strong><br>点击下图的存储，<br><img src="http://upload-images.jianshu.io/upload_images/1603505-8cb2ec2a4bb9de9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="save"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-606995c51420d3f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="success"><br>查看自己的邮件验证，activate your account，至此添加测试人员完毕。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-5ceca8679632f08a.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="email"></p>
+<h3 id="TestFlight添加测试员"><a href="#TestFlight添加测试员" class="headerlink" title="TestFlight添加测试员"></a>TestFlight添加测试员</h3><p>进入iTunes Connect 主页点击<strong>我的 App</strong>，选择<strong>TestFlight</strong>模块，选择要进行测试的构建版本；然后在左边<strong>iTunes Connect 用户</strong>一栏将上一步的测试员(    romance.xie@100tal.com)添加进来，如下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-dcbba8e85473f9ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加用户"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-841ed4daf554eae6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="成功添加"></p>
+<h3 id="添加外部测试人员"><a href="#添加外部测试人员" class="headerlink" title="添加外部测试人员"></a>添加外部测试人员</h3><ol>
+<li>新建一个群组命名为<strong>外部测试人员</strong>；<br><img src="http://upload-images.jianshu.io/upload_images/1603505-dbc2c9249824c975.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="新建群组"></li>
+<li>添加测试员，有三种方式：<strong>添加新测试员、添加现有测试人员、从CSV导入</strong>；<br><img src="http://upload-images.jianshu.io/upload_images/1603505-1e27a2ec151c62f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加测试员"><br>我这里选择第一种添加新测试员，输入信息后点击添加<br><img src="http://upload-images.jianshu.io/upload_images/1603505-cc8fcbfafd8bf970.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="下一步"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-b4e11144fed4a543.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加信息"></li>
+<li><strong>添加构建版本</strong>(这也是内部和外部测试人员的不同之处，用来区分内部和外部测试人员测试不同的版本)<br><img src="http://upload-images.jianshu.io/upload_images/1603505-354c8040e9ad22c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="外部测试添加构建版本"><br>需要注意的是添加的构建版本需要通过Beta版App审核(第一次提交需要2天左右，之后提交会变得很快)；<br><img src="http://upload-images.jianshu.io/upload_images/1603505-e34c8e8cde0e2434.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="选择构建版本"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-8b17004abc55e79e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="填写测试信息1"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-b584fabf0c0319ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="填写测试信息2"></li>
+</ol>
+<p>然后你的外部测试人员的邮件将会收到邀请码</p>
+<h3 id="测试Beta-app"><a href="#测试Beta-app" class="headerlink" title="测试Beta app"></a>测试Beta app</h3><ol>
+<li>安装TestFlight App<br>在App Store中搜索TestFlight，安装</li>
+<li>当新的测试版本上传到iTunes Connect时，<strong>内部测试人员</strong>将自动收到电子邮件。 如果测试版本app通过Beta App 审核后，<strong>外部测试人员</strong>将收到类似的电子邮件，并且该版本已被iTunes Connect中的管理员或应用程序管理员推送到外部测试人员：</li>
+<li>在需要测试的设备中打开邮件内容，下面两图是内部测试人员的收到的邮件内容（在添加测试员中的状态下面有个蓝色发送邀请按钮，内部测试人员就会收到邮件了）<br><img src="http://upload-images.jianshu.io/upload_images/1603505-96331586f642288f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="内部测试发送邀请"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-8638c5486b0e7606.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="内部测试邮件内容1"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-bef8cac173c9557e.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="内部测试邮件内容2"><br>外部测试的操作也类似，这里不在赘述。</li>
+<li>点击上图的蓝色字体打开<strong>TestFlight</strong>app，就可以安装测试app了，当有新的构建版本是，你将会受到通知，只需更新到最新版本就可以测试。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-f73fdccf18fd082c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="TestFlight"></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/13/2017-07-13/" rel="next" title="app上线后iOS8系统踩过的坑">
+                <i class="fa fa-chevron-left"></i> app上线后iOS8系统踩过的坑
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/25/2017-08-25/" rel="prev" title="将项目中公共组件使用Cocoapods管理实战">
+                将项目中公共组件使用Cocoapods管理实战 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzA1Mi85NjE0"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/romance.jpg"
+                alt="Romance" />
+            
+              <p class="site-author-name" itemprop="name">Romance</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/XcqRomance" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/d1414d91084a" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#提前准备的工作：有手动打包或者自动打包构建好的好的ipa文件。如下图"><span class="nav-number">2.1.</span> <span class="nav-text">提前准备的工作：有手动打包或者自动打包构建好的好的ipa文件。如下图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Application-Loader上传构建版本到iTunes"><span class="nav-number">2.2.</span> <span class="nav-text">使用Application Loader上传构建版本到iTunes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建和添加测试人员"><span class="nav-number">2.3.</span> <span class="nav-text">创建和添加测试人员</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加内部测试人员"><span class="nav-number">2.4.</span> <span class="nav-text">添加内部测试人员</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TestFlight添加测试员"><span class="nav-number">2.5.</span> <span class="nav-text">TestFlight添加测试员</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加外部测试人员"><span class="nav-number">2.6.</span> <span class="nav-text">添加外部测试人员</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试Beta-app"><span class="nav-number">2.7.</span> <span class="nav-text">测试Beta app</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Romance</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

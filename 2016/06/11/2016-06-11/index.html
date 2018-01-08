@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="iOS面试," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言前段时间经过一段长时间的纠结，终于决定离开公司另谋出路。我的上家公司是一家创业公司做教育o2o的，没有融资（也一直没有拉到融资），是一家传统的少儿教育艺术培训学校投资成立的一家互联网教育公司。大家都知道去年o2o非常火，但有一个弊端就是烧钱烧的厉害，而传统行业也想借着移动互联网这东风乘势发展壮大，他也有个弊端就是没有那些新兴的互联网公司那么有魄力，有思维，毕竟做传统行业做久了有其思维局限；后面">
+<meta name="keywords" content="iOS面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个iOS程序员的面试心得">
+<meta property="og:url" content="http://yoursite.com/2016/06/11/2016-06-11/index.html">
+<meta property="og:site_name" content="Romance的修行之路">
+<meta property="og:description" content="前言前段时间经过一段长时间的纠结，终于决定离开公司另谋出路。我的上家公司是一家创业公司做教育o2o的，没有融资（也一直没有拉到融资），是一家传统的少儿教育艺术培训学校投资成立的一家互联网教育公司。大家都知道去年o2o非常火，但有一个弊端就是烧钱烧的厉害，而传统行业也想借着移动互联网这东风乘势发展壮大，他也有个弊端就是没有那些新兴的互联网公司那么有魄力，有思维，毕竟做传统行业做久了有其思维局限；后面">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-efe85587994d4e97.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-1105ba625d0e3995.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-d08779ee20ecd83c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-01-06T07:47:47.504Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一个iOS程序员的面试心得">
+<meta name="twitter:description" content="前言前段时间经过一段长时间的纠结，终于决定离开公司另谋出路。我的上家公司是一家创业公司做教育o2o的，没有融资（也一直没有拉到融资），是一家传统的少儿教育艺术培训学校投资成立的一家互联网教育公司。大家都知道去年o2o非常火，但有一个弊端就是烧钱烧的厉害，而传统行业也想借着移动互联网这东风乘势发展壮大，他也有个弊端就是没有那些新兴的互联网公司那么有魄力，有思维，毕竟做传统行业做久了有其思维局限；后面">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1603505-efe85587994d4e97.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/06/11/2016-06-11/"/>
+
+
+
+
+
+  <title>一个iOS程序员的面试心得 | Romance的修行之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Romance的修行之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">分享自己学习的点滴，和大家一起学习成长</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/11/2016-06-11/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Romance">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/romance.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romance的修行之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">一个iOS程序员的面试心得</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-11T22:42:22+08:00">
+                2016-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/06/11/2016-06-11/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/06/11/2016-06-11/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>前言<br>前段时间经过一段长时间的纠结，终于决定离开公司另谋出路。我的上家公司是一家创业公司做教育o2o的，没有融资（也一直没有拉到融资），是一家传统的少儿教育艺术培训学校投资成立的一家互联网教育公司。大家都知道去年o2o非常火，但有一个弊端就是烧钱烧的厉害，而传统行业也想借着移动互联网这东风乘势发展壮大，他也有个弊端就是没有那些新兴的互联网公司那么有魄力，有思维，毕竟做传统行业做久了有其思维局限；后面因为资金的原因，产品出来了却一直推广不开来，尽管这个项目从最开始成立的时候我就来了，也算是元老级别的人物了，但是我一直看不到未来的发展！于是我就决定离开！另谋发展！</p>
+<h1 id="言归正传，我的求职者之路"><a href="#言归正传，我的求职者之路" class="headerlink" title="言归正传，我的求职者之路"></a>言归正传，我的求职者之路</h1><ul>
+<li>骑驴找马</li>
+<li>招聘平台很重要（干货）</li>
+<li>面试环节（干货）</li>
+</ul>
+<h2 id="骑驴找马"><a href="#骑驴找马" class="headerlink" title="骑驴找马"></a>骑驴找马</h2><p>说真的，我的求职我算是比较顺利的，因为我就面试了的第一家公司就直接给了offer，他是做少儿英语教育的。而我是利用上班时间去面试的，前言部分我也说过，公司产品<a href="https://itunes.apple.com/cn/app/yi-xue-yi-shu-jiao-yu-fu-wu/id1043472268?mt=8" target="_blank" rel="noopener">艺学</a>去年过年以前就基本完成了，过年回来也就改改小bug，新增小需求，学习swift、php、h5，事情比较少，自己比较闲，而且之前加班有调休没有用完，所以一旦有面试机会就可以请个半天假去面试，也就是大家熟称的<strong>骑驴找马</strong>。</p>
+<p>在这里我不得不警告想换公司的程序员们不要辞职之后再找工作（当然你觉得你有这个能力，那也可以这么做），风险太大，我一个朋友的朋友从过年到现在4个月了都没有找到工作（在各大平台上投递简历300多份，共有面试机会20个左右，当然很大一部分原因是他整天玩游戏，根本就没有集中精力找工作，简历写的不咋样）；大家都知道去年是iOS开发的的顶峰时期，iOS移动开发人员需求量算是达到了顶峰，于是大批的毕业生和其他其行业的人员通过培训掌握iOS开发，导致供求关系的天平向公司这边倾斜，然后去年年末又是互联网寒冬，大批的互联网为公司倒闭，所以工作不好找；</p>
+<h2 id="招聘平台很重要"><a href="#招聘平台很重要" class="headerlink" title="招聘平台很重要"></a>招聘平台很重要</h2><p>我推荐<strong>boss直聘</strong>，等待周期短，直接和对方hr、CTO或者CEO聊听对话，对方看你简历不错直接就有面试机会。</p>
+<p><em>2017.08.30补充：前段时间爆出的李文星之死，面试者自己需要留个心眼，毕竟别为了急着找工作而不假思索的去面试，网上有好多防骗指南，我这里也分享一个<a href="https://pan.baidu.com/s/1o8ds7pS" target="_blank" rel="noopener">求职防骗指南</a> 提取密码: dbbq</em></p>
+<p>找工作之初，我就开始关注各大招聘信息平台，手机里面也下载了相应app比如拉钩网，boss直聘，猎聘，脉脉，智联招聘，看到上面发布的的职位还是挺多的，薪资也还行，但貌似没有去年那么好，公司的职位要求也提高了许多；我花费整整一天的时间填写好自己的详细信息，并且写好了简历；开始了我的投递简历过程，刚开始我还是很谨慎的，只是在拉勾上面投了我中意的公司；以及在猎聘上和猎头联系，以及在脉脉上和一些大公司联系！</p>
+<p>不管是和猎头沟通还是通过脉脉和这些BAT一样的一线的互联网公司的相关人员交流，看了我的简历都指出我的技术能力可以，但是就是教育背景不行；前两家公司都是在创业型的小公司工作，单挑项目，app不出名，比较小众，尽管能锻炼能力，但是说实在的这样的工作经历真心不好找下家，此刻我才明白，必须得去大公司镀镀金，我毕业的吉首大学，咋一听是不是以为和吉林大学有点关系，其实毛关系都没有，后者是985高校，前者只是湖南省一个很普通的2本；而且我想大多数人应该和我一样都不是名牌学校出来，这找工作就看出了差异，猎头看我不是985、211出来的，直接就说不给我推，后面我也就没在猎聘上投了；而且好多猎头是骗你简历。</p>
+<p>而我在拉勾上投递的都是像新浪，小米，百度，京东这样的大公司，但是结果可想而知，等了将一两周的时间，人家好不容易看了我的简历，立马被标记为不合适；<br><img src="http://upload-images.jianshu.io/upload_images/1603505-efe85587994d4e97.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="resume.PNG"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-1105ba625d0e3995.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="sorry.PNG"></p>
+<p>所以我建议大家别用拉勾网投，对方处理你的简历时间长，你耗不起，如果你要投，也得投回复率高的公司；<br>后面我果断换了boss直聘，你看中某个职位能够直接和对方聊听，对方看了你的微简历感觉还ok的话就会和你聊下去，否者基本上不会理你，所以在boss直聘上面的微简历一定要写好，写的详细点，自己的优势，充分展示自己，让hr能够给你面试机会；</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-d08779ee20ecd83c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="boss.png"></p>
+<h2 id="面试环节"><a href="#面试环节" class="headerlink" title="面试环节"></a>面试环节</h2><ol>
+<li>hr面试<br>无非就是问一些诸如，为什么离开现公司，期望工资多少，未来有什么发展之类的！这些你就根据个人如实回答就行</li>
+<li>技术面试（做好充足准备）<br>现在iOS面试的也就那么些题目，所以就算你不会，那么背，你都要背下来；我推荐两个不错的链接，供大家学习；<br>（1）<a href="https://wangmeng.gitbooks.io/ios-note/content/interview_1.html" target="_blank" rel="noopener">iOS面试题</a>，这里面有基础篇，UI篇，原理篇很全面；<br>（2）<a href="https://github.com/ChenYilong/iOSInterviewQuestions/blob/master/01《招聘一个靠谱的iOS》面试题参考答案/《招聘一个靠谱的iOS》面试题参考答案（上）.md" target="_blank" rel="noopener">招聘一个靠谱的 iOS</a>，这里面有许多涉及底层的知识，如runtime，runloop。但是想要真正理解，还是得自己敲代码才行。<br>我敢说，只要你把把这两个里面的问题都弄懂，一般iOS的技术面试你90%都没什么问题！</li>
+<li>加分点<br>我认为这一点非常重要，程序员必须要有建立自己的技术博客，GitHub有自己的开源项目，AppStore有自己的app等等这些都能为你的面试加分。这很能在面试官面前体现你的专业性。</li>
+</ol>
+<p>最后，给大家分享Easy写的<a href="链接: https://pan.baidu.com/s/1jHHgfiA 密码: p4sg">程序员跳槽全攻略</a>，对我们程序员未来的发展分析的很透彻，通过这个你能知道自己未来是要走技术大牛路线、管理路线或是自己创业！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS面试/" rel="tag"># iOS面试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/19/2016-05-19/" rel="next" title="教你快速学会Git分布式版本控制">
+                <i class="fa fa-chevron-left"></i> 教你快速学会Git分布式版本控制
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/21/2016-06-21/" rel="prev" title="《联盟》奇点系列读后感">
+                《联盟》奇点系列读后感 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/romance.jpg"
+                alt="Romance" />
+            
+              <p class="site-author-name" itemprop="name">Romance</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/XcqRomance" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/d1414d91084a" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#言归正传，我的求职者之路"><span class="nav-number">1.</span> <span class="nav-text">言归正传，我的求职者之路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#骑驴找马"><span class="nav-number">1.1.</span> <span class="nav-text">骑驴找马</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#招聘平台很重要"><span class="nav-number">1.2.</span> <span class="nav-text">招聘平台很重要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面试环节"><span class="nav-number">1.3.</span> <span class="nav-text">面试环节</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Romance</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://XcqRomance.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2016/06/11/2016-06-11/';
+          this.page.identifier = '2016/06/11/2016-06-11/';
+          this.page.title = '一个iOS程序员的面试心得';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://XcqRomance.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

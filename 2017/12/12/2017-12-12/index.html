@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="说到布局和适配，就不得不谈论下iOS和Android二者布局的单位：pt(point，点)和dp(Device independent pixel,Density independent pixel, DIP, DP，又叫与设备无关像素或与密度无关像素或密度独立像素)。注意：这里说的point和和印刷行业的单位point(1pt = 1/72 inch)是有区别的，看到好多文章都将iOS的pt和印">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个iOS开发者的android修行之路三：布局开发单位对比(pt VS dp)">
+<meta property="og:url" content="http://yoursite.com/2017/12/12/2017-12-12/index.html">
+<meta property="og:site_name" content="Romance的修行之路">
+<meta property="og:description" content="说到布局和适配，就不得不谈论下iOS和Android二者布局的单位：pt(point，点)和dp(Device independent pixel,Density independent pixel, DIP, DP，又叫与设备无关像素或与密度无关像素或密度独立像素)。注意：这里说的point和和印刷行业的单位point(1pt = 1/72 inch)是有区别的，看到好多文章都将iOS的pt和印">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-da29eb5aae9a2b71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-267baad8005f9b21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-90f8a9bbb33fa7db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-01-08T03:01:01.710Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一个iOS开发者的android修行之路三：布局开发单位对比(pt VS dp)">
+<meta name="twitter:description" content="说到布局和适配，就不得不谈论下iOS和Android二者布局的单位：pt(point，点)和dp(Device independent pixel,Density independent pixel, DIP, DP，又叫与设备无关像素或与密度无关像素或密度独立像素)。注意：这里说的point和和印刷行业的单位point(1pt = 1/72 inch)是有区别的，看到好多文章都将iOS的pt和印">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1603505-da29eb5aae9a2b71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/12/2017-12-12/"/>
+
+
+
+
+
+  <title>一个iOS开发者的android修行之路三：布局开发单位对比(pt VS dp) | Romance的修行之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Romance的修行之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">分享自己学习的点滴，和大家一起学习成长</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/12/2017-12-12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Romance">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/romance.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romance的修行之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">一个iOS开发者的android修行之路三：布局开发单位对比(pt VS dp)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T18:31:54+08:00">
+                2017-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/12/2017-12-12/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/12/12/2017-12-12/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>说到布局和适配，就不得不谈论下iOS和Android二者布局的单位：<strong>pt(point，点)和dp(Device independent pixel,Density independent pixel, DIP, DP，又叫与设备无关像素或与密度无关像素或密度独立像素)。</strong>注意：这里说的point和和印刷行业的单位point(<code>1pt = 1/72 inch</code>)是有区别的，看到好多文章都将iOS的pt和印刷行业的pt单位给等同起来这非常的误人子弟。</p>
+<h2 id="先说结论："><a href="#先说结论：" class="headerlink" title="先说结论："></a>先说结论：</h2><ol>
+<li><strong>相同点：都是为了适配不同屏幕不同尺寸的移动设备而设计出来的一种单位，用于表示UI布局尺寸与设备屏幕密度无关</strong></li>
+<li><strong>不同点：一：pt是iOS设备的布局尺寸单位，苹果公司给的定义是：<code>1pt = 1/163 inch</code>，dp是android设备的布局尺寸单位，<a href="https://en.wikipedia.org/wiki/Device-independent_pixel" target="_blank" rel="noopener">Wikipedia给的定义</a>对于android设备：<code>1dp = 1/160 inch</code>；二：像素(pixels)和二者的转换关系不同：<code>iOS pt = pixels * ( ppi/163)</code>、<code>Android dp = pixels * (ppi/160)</code></strong> </li>
+</ol>
+<h2 id="在说二者的异同之前，我们得先清楚几个概念-以下概念都是在屏幕、显示器这个语境下的定义讨论的-："><a href="#在说二者的异同之前，我们得先清楚几个概念-以下概念都是在屏幕、显示器这个语境下的定义讨论的-：" class="headerlink" title="在说二者的异同之前，我们得先清楚几个概念(以下概念都是在屏幕、显示器这个语境下的定义讨论的)："></a>在说二者的异同之前，我们得先清楚几个概念(以下概念都是在屏幕、显示器这个语境下的定义讨论的)：</h2><ul>
+<li><strong>inch：<a href="https://zh.wikipedia.org/wiki/%E8%8B%B1%E5%AF%B8" target="_blank" rel="noopener">英寸</a>，长度单位，1英寸 = 2.54 厘米；</strong></li>
+<li><strong>px：pixels，<a href="https://zh.wikipedia.org/wiki/%E5%83%8F%E7%B4%A0" target="_blank" rel="noopener">像素</a>，组成图片、视频的基本显示单位；</strong></li>
+<li><strong>dpi：dots per inch，<a href="https://zh.wikipedia.org/wiki/%E6%AF%8F%E8%8B%B1%E5%AF%B8%E7%82%B9%E6%95%B0" target="_blank" rel="noopener">每英寸的点数</a>又叫点密度；可以和下面的ppi概念等同</strong></li>
+<li><strong>ppi：pixels per inch，<a href="https://zh.wikipedia.org/wiki/%E6%AF%8F%E8%8B%B1%E5%AF%B8%E5%83%8F%E7%B4%A0" target="_blank" rel="noopener">每英寸的像素值</a>又叫像素密度，每英寸像素值越高，屏幕能显示的图像也越精细，5ppi表示每平方英寸有5*5个px</strong></li>
+<li><p><strong>屏幕尺寸(screen size)：最通俗的理解就是：屏幕对角线的长度</strong>，如5.8英寸的iPhoneX；<br><img src="http://upload-images.jianshu.io/upload_images/1603505-da29eb5aae9a2b71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.8英寸的iPhoneX"></p>
+</li>
+<li><p><strong>屏幕分辨率(resolution)：手机的屏幕分辨率代表横向和纵向的像素值，如上图iPhoneX的分辨率是1125px * 2436px</strong></p>
+</li>
+</ul>
+<p>通过上面的定义，我们知道ppi、屏幕尺寸、屏幕分辨率这三者的关系为：</p>
+<h2 id="ppi-屏幕对角线的像素值-屏幕尺寸-√-屏幕横向像素值-2-屏幕纵向像素值-2-对角线长度"><a href="#ppi-屏幕对角线的像素值-屏幕尺寸-√-屏幕横向像素值-2-屏幕纵向像素值-2-对角线长度" class="headerlink" title="ppi = 屏幕对角线的像素值/屏幕尺寸 =  √ (屏幕横向像素值^2 + 屏幕纵向像素值^2)/对角线长度"></a><strong><code>ppi = 屏幕对角线的像素值/屏幕尺寸 =  √ (屏幕横向像素值^2 + 屏幕纵向像素值^2)/对角线长度</code></strong></h2><p>根据上面的公式，我们计算下<a href="https://www.apple.com/cn/iphone-x/specs/" target="_blank" rel="noopener">iPhoneX的像素密度</a>为：√ (1125^2 + 2436^2)/5.8 ≈ 458ppi</p>
+<h2 id="px、pt、dp的相互转换"><a href="#px、pt、dp的相互转换" class="headerlink" title="px、pt、dp的相互转换"></a>px、pt、dp的相互转换</h2><ol>
+<li>px、pt、dp是静态测量 - 它们不会因其他因素而改变；<br>1px总是1px，是可以显示颜色的屏幕中最小的一块。<br>1pt总是1pt，是一个抽象单位，只有与其他点相关时才有意义，dp同理。</li>
+<li>pt、dp与px不同，因为它们根据ppi更改大小：<br>在iPhone上，当屏幕像素密度为163ppi时，也就是<a href="https://zh.wikipedia.org/wiki/Retina%E6%98%BE%E7%A4%BA%E5%B1%8F" title="Retina显示屏" target="_blank" rel="noopener">Retina显示屏</a>时代之前，所有的iPhone（iPhone 2G, 3G, 3GS），1pt等于1px；在326ppi上(iPhone 4,5和6)，1pt等于2px*2px，或总共4px素，意味着你的100x100图像将渲染在Retina设备上将是163ppi设备的四分之一大小；在401ppi上(iPhone 6Plus、7Plus、8Plus)这样的，1pt等于3px*3px，或者9px。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-267baad8005f9b21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="pt和px"><br>iPhone所有机型的分辨率如下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-90f8a9bbb33fa7db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="The Ultimate Guide To iPhone Resolutions"></li>
+</ol>
+<p>参考文章：</p>
+<ol>
+<li><a href="http://blog.fluidui.com/designing-for-mobile-101-pixels-points-and-resolutions/" target="_blank" rel="noopener">Mobile design 101: pixels, points and resolutions</a></li>
+<li><a href="https://www.paintcodeapp.com/news/ultimate-guide-to-iphone-resolutions" target="_blank" rel="noopener">The Ultimate Guide To iPhone Resolutions</a></li>
+<li><a href="https://www.zhihu.com/question/25421514/answer/31623909" target="_blank" rel="noopener">iOS 的 APP 在系统中如何适应 iPhone 5s/6/6 Plus 三种屏幕的尺寸</a></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/2017-11-28/" rel="next" title="一个iOS开发者的android修行之路二：UITableView和ListView的对比探究">
+                <i class="fa fa-chevron-left"></i> 一个iOS开发者的android修行之路二：UITableView和ListView的对比探究
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/18/2017-12-18/" rel="prev" title="优雅快速的搭建iOS工程框架搭建的探讨">
+                优雅快速的搭建iOS工程框架搭建的探讨 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/romance.jpg"
+                alt="Romance" />
+            
+              <p class="site-author-name" itemprop="name">Romance</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/XcqRomance" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/d1414d91084a" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#先说结论："><span class="nav-number">1.</span> <span class="nav-text">先说结论：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在说二者的异同之前，我们得先清楚几个概念-以下概念都是在屏幕、显示器这个语境下的定义讨论的-："><span class="nav-number">2.</span> <span class="nav-text">在说二者的异同之前，我们得先清楚几个概念(以下概念都是在屏幕、显示器这个语境下的定义讨论的)：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ppi-屏幕对角线的像素值-屏幕尺寸-√-屏幕横向像素值-2-屏幕纵向像素值-2-对角线长度"><span class="nav-number">3.</span> <span class="nav-text">ppi = 屏幕对角线的像素值/屏幕尺寸 =  √ (屏幕横向像素值^2 + 屏幕纵向像素值^2)/对角线长度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#px、pt、dp的相互转换"><span class="nav-number">4.</span> <span class="nav-text">px、pt、dp的相互转换</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Romance</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://XcqRomance.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/12/12/2017-12-12/';
+          this.page.identifier = '2017/12/12/2017-12-12/';
+          this.page.title = '一个iOS开发者的android修行之路三：布局开发单位对比(pt VS dp)';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://XcqRomance.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

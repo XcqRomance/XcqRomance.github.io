@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="以下问题是自己在升级Xcode9后，在iOS11设备运行项目后遇到的问题，在此记录，说不定你也到过类似的问题，我们可以一起探讨，解决问题。 自定义导航栏高度无效使用Xcode9和Xcode8运行同样一份代码，Xcode8中运行到iOS11系统的手机上导航栏高度是自定义的高度，而Xcode9运行高度就成了系统的44pt的高度了；目前还没有找到有效的解决方案；之前iOS11beta5版本苹果给修复了这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS11,iPhoneX适配,Xcode9遇到的问题以及解决方案探讨">
+<meta property="og:url" content="http://yoursite.com/2017/10/19/2017-10-19/index.html">
+<meta property="og:site_name" content="Romance的修行之路">
+<meta property="og:description" content="以下问题是自己在升级Xcode9后，在iOS11设备运行项目后遇到的问题，在此记录，说不定你也到过类似的问题，我们可以一起探讨，解决问题。 自定义导航栏高度无效使用Xcode9和Xcode8运行同样一份代码，Xcode8中运行到iOS11系统的手机上导航栏高度是自定义的高度，而Xcode9运行高度就成了系统的44pt的高度了；目前还没有找到有效的解决方案；之前iOS11beta5版本苹果给修复了这">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-ab1ec39839f94589.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-8ed88a5b9da74b28.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-9e4c0e13a94b2a95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-858e1800b567ebb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-d69d682d80572636.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-191bae71ea683598.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-5276a72347f6c05b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-8a4e30e827382204.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-c479dd4d51bdb214.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-01-08T01:28:01.540Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS11,iPhoneX适配,Xcode9遇到的问题以及解决方案探讨">
+<meta name="twitter:description" content="以下问题是自己在升级Xcode9后，在iOS11设备运行项目后遇到的问题，在此记录，说不定你也到过类似的问题，我们可以一起探讨，解决问题。 自定义导航栏高度无效使用Xcode9和Xcode8运行同样一份代码，Xcode8中运行到iOS11系统的手机上导航栏高度是自定义的高度，而Xcode9运行高度就成了系统的44pt的高度了；目前还没有找到有效的解决方案；之前iOS11beta5版本苹果给修复了这">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1603505-ab1ec39839f94589.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/19/2017-10-19/"/>
+
+
+
+
+
+  <title>iOS11,iPhoneX适配,Xcode9遇到的问题以及解决方案探讨 | Romance的修行之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Romance的修行之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">分享自己学习的点滴，和大家一起学习成长</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/19/2017-10-19/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Romance">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/romance.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romance的修行之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS11,iPhoneX适配,Xcode9遇到的问题以及解决方案探讨</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-19T12:01:22+08:00">
+                2017-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/19/2017-10-19/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/10/19/2017-10-19/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>以下问题是自己在升级Xcode9后，在iOS11设备运行项目后遇到的问题，在此记录，说不定你也到过类似的问题，我们可以一起探讨，解决问题。</p>
+<h2 id="自定义导航栏高度无效"><a href="#自定义导航栏高度无效" class="headerlink" title="自定义导航栏高度无效"></a><strong>自定义导航栏高度无效</strong></h2><p>使用Xcode9和Xcode8运行同样一份代码，Xcode8中运行到iOS11系统的手机上导航栏高度是自定义的高度，而Xcode9运行高度就成了系统的44pt的高度了；目前还没有找到有效的解决方案；之前iOS11beta5版本苹果给修复了这个bug，正式系统发布后又出现了这个问题；<br>区别如下：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-ab1ec39839f94589.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>自定义<code>UINavigationBar</code>代码如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">let</span> customNavigationBarHeight: <span class="type">CGFloat</span> = isPad ? <span class="number">75</span> : <span class="number">60</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomNavigationBar</span>: <span class="title">UINavigationBar</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">sizeThatFits</span><span class="params">(<span class="number">_</span> size: CGSize)</span></span> -&gt; <span class="type">CGSize</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">CGSize</span>(width: <span class="type">UIScreen</span>.main.bounds.width, height: customNavigationBarHeight)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">layoutSubviews</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.layoutSubviews()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> subview <span class="keyword">in</span> subviews &#123;</span><br><span class="line">      subview.center.y = frame.height / <span class="number">2</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">titleVerticalPositionAdjustment</span><span class="params">(<span class="keyword">for</span> barMetrics: UIBarMetrics)</span></span> -&gt; <span class="type">CGFloat</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> -(frame.height - <span class="number">44</span>)/<span class="number">2</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在stackeroverflow曾经搜索到一个解决方案的确能够在iOS11设备上修改导航栏高度，但是存在两个问题：第一导航栏标题栏不垂直居中；第二导航控制器的rootviewcontroller如果是tableVeiwController或者有tableView的topInset还是44pt，没有相应的跟着导航栏的高度下移：<br>重写layoutSubviews()的方法如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">layoutSubviews</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">super</span>.layoutSubviews()</span><br><span class="line"></span><br><span class="line">  backgroundColor = .black</span><br><span class="line">  frame = <span class="type">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="type">UIScreen</span>.main.bounds.width, height: customNavigationBarHeight)</span><br><span class="line">  <span class="keyword">for</span> subview <span class="keyword">in</span> <span class="keyword">self</span>.subviews &#123;</span><br><span class="line">    printLog(subview)</span><br><span class="line">    <span class="keyword">let</span> stringFromClass = <span class="type">NSStringFromClass</span>(subview.classForCoder)</span><br><span class="line">    <span class="keyword">if</span> stringFromClass.<span class="built_in">contains</span>(<span class="string">"BarBackground"</span>) &#123;</span><br><span class="line">      subview.frame = <span class="type">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="keyword">self</span>.frame.width, height: customNavigationBarHeight)</span><br><span class="line">      subview.backgroundColor = .blue<span class="comment">//self.backgroundColor</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> stringFromClass.<span class="built_in">contains</span>(<span class="string">"BarContent"</span>) &#123;</span><br><span class="line">      subview.frame = <span class="type">CGRect</span>(x: subview.frame.origin.x, y: <span class="number">0</span>, width: subview.frame.width, height: customNavigationBarHeight)</span><br><span class="line">      subview.backgroundColor = .red<span class="comment">//self.backgroundColor</span></span><br><span class="line">      subview.center.y = customNavigationBarHeight / <span class="number">2</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      subview.center.y = frame.height / <span class="number">2</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>效果和分析图如下：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-8ed88a5b9da74b28.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/1603505-9e4c0e13a94b2a95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>这个问题还有待进一步探讨解决方案，如果哪位有解决方案，我们可以一起探讨下！</p>
+<h2 id="使用Xcode9打包上传构建版本时，收到警告，意思是缺少1024x1024px的Icon图片；"><a href="#使用Xcode9打包上传构建版本时，收到警告，意思是缺少1024x1024px的Icon图片；" class="headerlink" title="使用Xcode9打包上传构建版本时，收到警告，意思是缺少1024x1024px的Icon图片；"></a>使用Xcode9打包上传构建版本时，收到警告，意思是<strong>缺少1024x1024px的Icon图片</strong>；</h2><p><strong>解决方案：在项目Assets.xcassets的AppIcon中添加一张要求尺寸的Icon图片；</strong><br>邮件内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Dear developer,</span><br><span class="line"></span><br><span class="line">We have discovered one or more issues with your recent delivery for &quot;励步云学习&quot;. Your delivery was successful, but you may wish to correct the following issues in your next delivery:</span><br><span class="line"></span><br><span class="line">Missing Marketing Icon - iOS Apps must include a 1024x1024px Marketing Icon in PNG format. Apps that do not include the Marketing Icon cannot be submitted for App Review or Beta App Review.</span><br><span class="line"></span><br><span class="line">After you’ve corrected the issues, you can use Xcode or Application Loader to upload a new binary to iTunes Connect.</span><br><span class="line"></span><br><span class="line">Regards,</span><br><span class="line"></span><br><span class="line">The App Store team</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-858e1800b567ebb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1024x1024尺寸的Icon"><br>同时记得叫UI添加iPhone X的LaunchImage。</p>
+<h2 id="swift版本不匹配的问题"><a href="#swift版本不匹配的问题" class="headerlink" title="swift版本不匹配的问题"></a><strong>swift版本不匹配的问题</strong></h2><p>如果我们项目中使用的一些依赖库是使用swift语言构建的framework，从Xcode8升级到Xcode9后是编译不过的，提示swift Module版本不匹配的错误，此时我们只需要使用Xcode9重新编译对应的framework就能够编译通过。</p>
+<h2 id="添加用户隐私协议提交AppStore审核，审核时间将近一个月被拒"><a href="#添加用户隐私协议提交AppStore审核，审核时间将近一个月被拒" class="headerlink" title="添加用户隐私协议提交AppStore审核，审核时间将近一个月被拒"></a><strong>添加用户隐私协议提交AppStore审核，审核时间将近一个月被拒</strong></h2><p>我们公司国庆放假前一两周提交了一个版本，解决了iOS11的一些闪退和适配问题，同时添加了用户隐私条款，结果国庆放假回来之后还在审核中，审核期间我们发了无数封加急邮件，但是一直都是的回复都是正在审核！后面经过排查很打原因是用户隐私策略的添加导致的，尽管这个用户隐私协议条款的内容是公司集团法务提供的，但是好像苹果公司还得审核你的隐私协议内容。后面果断撤回这个版本（大量用户升级iOS11系统后反馈app里面的一个播放视频模块闪退，后面锁定原因是我们建立的播放视频类类名和系统的类重名了），<strong>去除隐私条款再重新提交一个新的构建版本，再写一封加急邮件，第二天立马通过审核。</strong>几天后，同时集团的其他部门提交的包含隐私策略的版本被拒，血的教训，血的坑啊！</p>
+<h2 id="iOS11系统设备保存图片到系统相册闪退"><a href="#iOS11系统设备保存图片到系统相册闪退" class="headerlink" title="iOS11系统设备保存图片到系统相册闪退"></a><strong>iOS11系统设备保存图片到系统相册闪退</strong></h2><p>解决方案：<strong>在info.plist中添加访问权限，key:<code>NSPhotoLibraryAddUsageDescription</code>,value:<code>是否允许$(PRODUCT_NAME)访问你的相册？</code></strong>。</p>
+<h2 id="tableView在iOS11设备两边留白"><a href="#tableView在iOS11设备两边留白" class="headerlink" title="tableView在iOS11设备两边留白"></a><strong>tableView在iOS11设备两边留白</strong></h2><p>如左下图红色方框留白间隙部分，以及解决后的效果右下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-d69d682d80572636.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>解决方案：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> #available(iOS <span class="number">9.0</span>, *) &#123;</span><br><span class="line">    tableView.cellLayoutMarginsFollowReadableWidth = <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="iphoneX的适配问题"><a href="#iphoneX的适配问题" class="headerlink" title="iphoneX的适配问题"></a><strong>iphoneX的适配问题</strong></h2><p>由于我们公司项目中大部分都是使用storyboard开发用autolayout进行布局，所以整个iPhoneX的布局适配只花了一天就完成。iPhoneX的适配规则我认为很简单：根据苹果建议的规则以及UI给你的效果图进行修改，比如我们这边是使用苹果官方推荐的左右留白相应的距离，在安全区域(Safe Area)内布局，安全区域外的内容就别添加点击事件。具体可以查看下这两篇文章<a href="http://www.ui.cn/detail/283956.html" target="_blank" rel="noopener">三分钟弄懂iPhone X 设计尺寸和适配</a>，<a href="https://mp.weixin.qq.com/s/micJH7ImLOJrnXrpxUCq1A" target="_blank" rel="noopener">关于 iPhone X 产品汪和设计狮应该了解的事之四</a>，看完这两篇文章你对iPhoneX也就基本了解了。<br>先看一组界面错乱的UI<br><img src="http://upload-images.jianshu.io/upload_images/1603505-191bae71ea683598.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="AutoLayout布局的iPhoneX适配；"><a href="#AutoLayout布局的iPhoneX适配；" class="headerlink" title="AutoLayout布局的iPhoneX适配；"></a><strong>AutoLayout布局的iPhoneX适配；</strong></h3><p>很多项目的部署版本可能是低于iOS9的，那么<code>Safe Area Layout Guides</code>布局就不支持，但是这并不影响在iPhoneX的自动适配。刚升级到Xcode9时报的一个storyboard的错误就是<code>Safe Area Layout Guides before iOS 9.0</code>，应为这个选项默认是打开的，我们只需将其关闭就行。<strong>第一、</strong>像tableView，collectionView这种集合视图，autolayout已经给我们自动适配好了，我们不需要做过多的修改。如上图，左右下三边的白色部分就是自动适配好了距离，我只需将这部分颜色改为tableview的深色就适配好了。<strong>第二、</strong>上图顶部黄色区域内的左右两边距离还得添加<code>view.safeAreaInsets</code>左右两边的距离，这部分的适配只需将约束引出一个<code>IBOutlet</code>，然后在<code>viewDidLayoutSubviews</code>方法中重新设置，具体代码如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> backBtnLeadingCons: <span class="type">NSLayoutConstraint</span>!</span><br><span class="line"><span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> stageViewTrailingCons: <span class="type">NSLayoutConstraint</span>!</span><br><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLayoutSubviews</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">super</span>.viewDidLayoutSubviews()</span><br><span class="line">  <span class="keyword">if</span> #available(iOS <span class="number">11.0</span>, *) &#123;</span><br><span class="line">    <span class="keyword">let</span> inset = view.safeAreaInsets</span><br><span class="line">    printLog(inset)</span><br><span class="line">    backBtnLeadingCons.constant = inset.<span class="keyword">left</span> + <span class="number">20</span></span><br><span class="line">    stageViewTrailingCons.constant = inset.<span class="keyword">right</span> + <span class="number">10</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>修改后的效果图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-5276a72347f6c05b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iPhoneX的适配效果图"><br>还有一点要注意的是：使用Auto Layout的距离底部约束的区别，<br><img src="http://upload-images.jianshu.io/upload_images/1603505-8a4e30e827382204.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">勾选第一个是下图左边的布局，勾选下面一个是下图右边与底部挨着对齐的布局。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-c479dd4d51bdb214.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>具体选哪种这个得更具产品要求设置即可，我这里选择第二种，与底部对齐，因为底部并没有与用户交互的事件，这样做更加符合审美。</p>
+<h3 id="代码约束-如Masonry-或者手写控件frame适配iPhoneX"><a href="#代码约束-如Masonry-或者手写控件frame适配iPhoneX" class="headerlink" title="代码约束(如Masonry)或者手写控件frame适配iPhoneX"></a><strong>代码约束(如Masonry)或者手写控件frame适配iPhoneX</strong></h3><p>这种情况的就需要单独针对iPhoneX写一套约束或者控件的frame。此时我们可以在定义一个全局常量(以swift为例):<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 屏幕宽高</span></span><br><span class="line"><span class="keyword">let</span> kScreenWidth = <span class="type">UIScreen</span>.main.bounds.size.width</span><br><span class="line"><span class="keyword">let</span> kScreenHeight = <span class="type">UIScreen</span>.main.bounds.size.height</span><br><span class="line"><span class="keyword">let</span> isiPhoneX = (<span class="built_in">max</span>(kScreenWidth, kScreenHeight) == <span class="number">812</span> &amp;&amp; <span class="built_in">min</span>(kScreenWidth, kScreenHeight) == <span class="number">375</span>)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>暂时遇到的问题就这么多，以后遇到坑在添加，同时欢迎大家添加遇到的坑！</strong></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/25/2017-08-25/" rel="next" title="将项目中公共组件使用Cocoapods管理实战">
+                <i class="fa fa-chevron-left"></i> 将项目中公共组件使用Cocoapods管理实战
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/24/2017-11-24/" rel="prev" title="一个iOS开发者的android修行之路一：UIViewController与Activity的生命周期对比探究">
+                一个iOS开发者的android修行之路一：UIViewController与Activity的生命周期对比探究 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/romance.jpg"
+                alt="Romance" />
+            
+              <p class="site-author-name" itemprop="name">Romance</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/XcqRomance" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/d1414d91084a" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义导航栏高度无效"><span class="nav-number">1.</span> <span class="nav-text">自定义导航栏高度无效</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Xcode9打包上传构建版本时，收到警告，意思是缺少1024x1024px的Icon图片；"><span class="nav-number">2.</span> <span class="nav-text">使用Xcode9打包上传构建版本时，收到警告，意思是缺少1024x1024px的Icon图片；</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swift版本不匹配的问题"><span class="nav-number">3.</span> <span class="nav-text">swift版本不匹配的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加用户隐私协议提交AppStore审核，审核时间将近一个月被拒"><span class="nav-number">4.</span> <span class="nav-text">添加用户隐私协议提交AppStore审核，审核时间将近一个月被拒</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS11系统设备保存图片到系统相册闪退"><span class="nav-number">5.</span> <span class="nav-text">iOS11系统设备保存图片到系统相册闪退</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tableView在iOS11设备两边留白"><span class="nav-number">6.</span> <span class="nav-text">tableView在iOS11设备两边留白</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iphoneX的适配问题"><span class="nav-number">7.</span> <span class="nav-text">iphoneX的适配问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AutoLayout布局的iPhoneX适配；"><span class="nav-number">7.1.</span> <span class="nav-text">AutoLayout布局的iPhoneX适配；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码约束-如Masonry-或者手写控件frame适配iPhoneX"><span class="nav-number">7.2.</span> <span class="nav-text">代码约束(如Masonry)或者手写控件frame适配iPhoneX</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Romance</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://XcqRomance.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/10/19/2017-10-19/';
+          this.page.identifier = '2017/10/19/2017-10-19/';
+          this.page.title = 'iOS11,iPhoneX适配,Xcode9遇到的问题以及解决方案探讨';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://XcqRomance.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

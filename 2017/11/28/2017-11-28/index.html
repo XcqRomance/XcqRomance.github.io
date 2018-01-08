@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="尽管现在主流的移动设备的屏幕尺寸都越来越大，特别是iPhone X的出现，以后的趋势都是全屏手机，但是一屏的显示的内容还是有限的，当我们需要有大量数据需要展示时就可以使用这两个控件。这两个控件的相同点都是允许用户上下滑动，以便展示屏幕区域外的内容。很多主流的应用，比如微信、QQ的消息列表，微信朋友圈，微博等等应用的很多界面都是使用这两个控件实现的。 UITableView的基本使用 iOS添加一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个iOS开发者的android修行之路二：UITableView和ListView的对比探究">
+<meta property="og:url" content="http://yoursite.com/2017/11/28/2017-11-28/index.html">
+<meta property="og:site_name" content="Romance的修行之路">
+<meta property="og:description" content="尽管现在主流的移动设备的屏幕尺寸都越来越大，特别是iPhone X的出现，以后的趋势都是全屏手机，但是一屏的显示的内容还是有限的，当我们需要有大量数据需要展示时就可以使用这两个控件。这两个控件的相同点都是允许用户上下滑动，以便展示屏幕区域外的内容。很多主流的应用，比如微信、QQ的消息列表，微信朋友圈，微博等等应用的很多界面都是使用这两个控件实现的。 UITableView的基本使用 iOS添加一个">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-23fde223e96c7a45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-e0cd8fc6becd757c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-29d30456590ecad4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-01-08T02:52:26.136Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一个iOS开发者的android修行之路二：UITableView和ListView的对比探究">
+<meta name="twitter:description" content="尽管现在主流的移动设备的屏幕尺寸都越来越大，特别是iPhone X的出现，以后的趋势都是全屏手机，但是一屏的显示的内容还是有限的，当我们需要有大量数据需要展示时就可以使用这两个控件。这两个控件的相同点都是允许用户上下滑动，以便展示屏幕区域外的内容。很多主流的应用，比如微信、QQ的消息列表，微信朋友圈，微博等等应用的很多界面都是使用这两个控件实现的。 UITableView的基本使用 iOS添加一个">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1603505-23fde223e96c7a45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/28/2017-11-28/"/>
+
+
+
+
+
+  <title>一个iOS开发者的android修行之路二：UITableView和ListView的对比探究 | Romance的修行之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Romance的修行之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">分享自己学习的点滴，和大家一起学习成长</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/2017-11-28/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Romance">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/romance.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romance的修行之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">一个iOS开发者的android修行之路二：UITableView和ListView的对比探究</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T16:24:49+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/28/2017-11-28/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/28/2017-11-28/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>尽管现在主流的移动设备的屏幕尺寸都越来越大，特别是iPhone X的出现，以后的趋势都是全屏手机，但是一屏的显示的内容还是有限的，当我们需要有大量数据需要展示时就可以使用这两个控件。这两个控件的相同点都是允许用户上下滑动，以便展示屏幕区域外的内容。很多主流的应用，比如微信、QQ的消息列表，微信朋友圈，微博等等应用的很多界面都是使用这两个控件实现的。</p>
+<h2 id="UITableView的基本使用"><a href="#UITableView的基本使用" class="headerlink" title="UITableView的基本使用"></a><code>UITableView</code>的基本使用</h2><ol>
+<li>iOS添加一个<code>UITableView</code>有两种方式。一是：纯代码初始化一个<code>UITableView</code>；二是在<code>storyboard</code>中直接拖入一个<code>UITableView</code>并且设置约束添加，同时设置tableView的dataSource和delegate为ViewController。这两种方式并没有优劣之分，使用第二种方式是苹果推荐的快速开发的方式。我的事例代码选择的第二种方法。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-23fde223e96c7a45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="在storyboard添加UITableView的四步曲"></li>
+<li><strong>自定义<code>UITableViewCell</code></strong>，勾选同时勾选xib,我这里命名为<code>TestTableViewCell</code>，里面添加两个控件ImageView和Label，同时设置应用。同时设置xib中的重用identifier为：<code>TestTableViewCell</code>。</li>
+<li><p><strong>注册重用的cell</strong>，在<code>ViewController</code>的<code>viewDidLoad</code>方法中注册自定义cell。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> nib = <span class="type">UINib</span>(nibName: <span class="string">"TestTableViewCell"</span>, bundle: <span class="literal">nil</span>)</span><br><span class="line">tableView.register(nib, forCellReuseIdentifier: <span class="string">"TestTableViewCell"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>配置tableView显示的数据源</strong>，实际项目中为网络请求的数据，demo中为模拟了100条假数据。</p>
+</li>
+<li><strong>实现<code>tableView</code>的数据源和代理方法。</strong><br>其中这两个数据源方法必须实现：<code>func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int</code>和<code>func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell</code>，否则会app会闪退。其中第一个方法用来指明cell的个数，第二个方法用来设置cell的数据，demo中的设置UIImageView和UILabel。<br>cell点击事件的响应，则需要实现代理方法<code>func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)</code><br>下面是整个<code>ViewController</code>代码：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  ViewController.swift</span></span><br><span class="line"><span class="comment">//  iOSTableViewDemo</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by romance on 2017/11/28.</span></span><br><span class="line"><span class="comment">//  Copyright © 2017年 firstleap. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> tableView: <span class="type">UITableView</span>!</span><br><span class="line">  <span class="keyword">final</span> <span class="keyword">fileprivate</span> <span class="keyword">var</span> dataList = [<span class="type">TestModel</span>]()</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> nib = <span class="type">UINib</span>(nibName: <span class="string">"TestTableViewCell"</span>, bundle: <span class="literal">nil</span>)</span><br><span class="line">    tableView.register(nib, forCellReuseIdentifier: <span class="string">"TestTableViewCell"</span>)</span><br><span class="line">    setupData()</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">setupData</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span>...<span class="number">100</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> model1 = <span class="type">TestModel</span>(imageName: <span class="string">"set_icon_about"</span>, title: <span class="string">"关于"</span>)</span><br><span class="line">      dataList.append(model1)</span><br><span class="line">      <span class="keyword">let</span> model2 = <span class="type">TestModel</span>(imageName: <span class="string">"set_icon_change"</span>, title: <span class="string">"头像"</span>)</span><br><span class="line">      dataList.append(model2)</span><br><span class="line">      <span class="keyword">let</span> model3 = <span class="type">TestModel</span>(imageName: <span class="string">"set_icon_clean"</span>, title: <span class="string">"清楚"</span>)</span><br><span class="line">      dataList.append(model3)</span><br><span class="line">      <span class="keyword">let</span> model4 = <span class="type">TestModel</span>(imageName: <span class="string">"set_icon_edit"</span>, title: <span class="string">"修改"</span>)</span><br><span class="line">      dataList.append(model4)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ViewController</span>: <span class="title">UITableViewDataSource</span>, <span class="title">UITableViewDelegate</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> dataList.<span class="built_in">count</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> cell = tableView.dequeueReusableCell(withIdentifier: <span class="string">"TestTableViewCell"</span>, <span class="keyword">for</span>: indexPath) <span class="keyword">as</span>! <span class="type">TestTableViewCell</span></span><br><span class="line">    <span class="keyword">let</span> model = dataList[indexPath.row]</span><br><span class="line">    cell.icon?.image = <span class="type">UIImage</span>(named: model.imageName);</span><br><span class="line">    cell.title?.text = model.title</span><br><span class="line">    <span class="keyword">return</span> cell</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, didSelectRowAt indexPath: IndexPath)</span></span> &#123;</span><br><span class="line">    tableView.deselectRow(at: indexPath, animated: <span class="literal">true</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> model = dataList[indexPath.row]</span><br><span class="line">    <span class="keyword">let</span> showtitle = model.title</span><br><span class="line">    <span class="keyword">let</span> label = <span class="type">UILabel</span>(frame: <span class="type">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="number">100</span>, height: <span class="number">30</span>))</span><br><span class="line">    label.text = showtitle</span><br><span class="line">    label.textAlignment = .center</span><br><span class="line">    label.backgroundColor = .lightGray</span><br><span class="line">    label.center = view.center</span><br><span class="line">    label.alpha = <span class="number">0</span></span><br><span class="line">    <span class="keyword">self</span>.view.addSubview(label)</span><br><span class="line">    </span><br><span class="line">    <span class="type">UIView</span>.animate(withDuration: <span class="number">0.25</span>, animations: &#123;</span><br><span class="line">      label.alpha = <span class="number">1</span></span><br><span class="line">    &#125;) &#123; (b) <span class="keyword">in</span></span><br><span class="line">      <span class="type">DispatchQueue</span>.main.asyncAfter(deadline: <span class="type">DispatchTime</span>.now() + <span class="number">2</span>, execute: &#123;</span><br><span class="line">        <span class="type">UIView</span>.animate(withDuration: <span class="number">0.25</span>, animations: &#123;</span><br><span class="line">          label.alpha = <span class="number">0</span></span><br><span class="line">        &#125;, completion: &#123; (b) <span class="keyword">in</span></span><br><span class="line">          label.removeFromSuperview()</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="ListView的基本使用"><a href="#ListView的基本使用" class="headerlink" title="ListView的基本使用"></a><code>ListView</code>的基本使用</h2><ol>
+<li><p><strong>在<code>activity_main.xml</code>中添加<code>ListView</code>布局，充满父容器</strong>，其实iOS中的storyboard和xib文件也是xml语言编写（也就是说和android的xml文件类似），只不过苹果公司开发Xcode可以图形化界面进行设置约束，而Android Studio尽管也可以通过拖控件进行布局，但是一般都不使用。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">ListView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/list_view"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置<code>ListView</code>子项布局test_item.xml。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/test_image"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:src</span>=<span class="string">"@drawable/set_icon_about"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/test_tile"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_gravity</span>=<span class="string">"center_vertical"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:text</span>=<span class="string">"hehe"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:textSize</span>=<span class="string">"21sp"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:layout_marginLeft</span>=<span class="string">"8dp"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义<code>ListView</code>的适配器<code>TestAdapter</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestAdapter</span> <span class="keyword">extends</span> <span class="title">ArrayAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> resourceID;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestAdapter</span><span class="params">(@NonNull Context context, <span class="keyword">int</span> resource, List&lt;TestModel&gt; objects)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, resource,objects);</span><br><span class="line">        resourceID = resource;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, @Nullable View convertView, @NonNull ViewGroup parent)</span> </span>&#123;</span><br><span class="line">        TestModel testModel = (TestModel)getItem(position);</span><br><span class="line">        View view;</span><br><span class="line">        ViewHolder viewHolder;</span><br><span class="line">        <span class="keyword">if</span> (convertView == <span class="keyword">null</span>) &#123;</span><br><span class="line">            view = LayoutInflater.from(getContext()).inflate(resourceID, parent, <span class="keyword">false</span>);</span><br><span class="line">            viewHolder = <span class="keyword">new</span> ViewHolder(view);</span><br><span class="line">            view.setTag(viewHolder);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            view = convertView;</span><br><span class="line">            viewHolder = (ViewHolder)view.getTag();</span><br><span class="line">        &#125;</span><br><span class="line">        viewHolder.imageView.setImageResource(testModel.getImageID());</span><br><span class="line">        viewHolder.textView.setText(testModel.getTitle());</span><br><span class="line">        <span class="keyword">return</span> view;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ViewHolder</span> </span>&#123;</span><br><span class="line">        ImageView imageView;</span><br><span class="line">        TextView textView;</span><br><span class="line">        ViewHolder(View view ) &#123;</span><br><span class="line">            imageView = (ImageView)view.findViewById(R.id.test_image);</span><br><span class="line">            textView = (TextView)view.findViewById(R.id.test_tile);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加Adapter数据，同iOS类似，demo添加了100条假数据。</p>
+</li>
+<li>在<code>onCreate</code>方法中创建一个<code>TestAdapter</code>对象adapter，并且设置为listView的适配器。为<code>ListView</code>item子项添加点击事件。<br><code>MainActivity</code>的代码如下：<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="title">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">List</span>&lt;<span class="type">TestModel</span>&gt; dataList = new <span class="type">ArrayList</span>&lt;&gt;();</span><br><span class="line">    @<span class="type">Override</span></span><br><span class="line">    protected void onCreate(<span class="type">Bundle</span> savedInstanceState) &#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(<span class="type">R</span>.layout.activity_main);</span><br><span class="line"></span><br><span class="line">        initsData();</span><br><span class="line">        <span class="type">TestAdapter</span> adapter = new <span class="type">TestAdapter</span>(<span class="type">MainActivity</span>.this,<span class="type">R</span>.layout.test_item,dataList);</span><br><span class="line">        <span class="type">ListView</span> listView = (<span class="type">ListView</span>)findViewById(<span class="type">R</span>.id.list_view);</span><br><span class="line">        listView.setAdapter(adapter);</span><br><span class="line">        listView.setOnItemClickListener(new <span class="type">AdapterView</span>.<span class="type">OnItemClickListener</span>() &#123;</span><br><span class="line">            @<span class="type">Override</span></span><br><span class="line">            <span class="keyword">public</span> void onItemClick(<span class="type">AdapterView</span>&lt;?&gt; adapterView, <span class="type">View</span> view, int i, long l) &#123;</span><br><span class="line">                <span class="type">TestModel</span> model = dataList.<span class="keyword">get</span>(i);</span><br><span class="line">                <span class="type">Toast</span>.makeText(<span class="type">MainActivity</span>.this,model.getTitle(),<span class="type">Toast</span>.<span class="type">LENGTH_SHORT</span>).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> void initsData() &#123;</span><br><span class="line">        <span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i ++) &#123;</span><br><span class="line">            <span class="type">TestModel</span> testModel = new <span class="type">TestModel</span>(<span class="type">R</span>.drawable.set_icon_about,<span class="string">"关于"</span>);</span><br><span class="line">            dataList.add(testModel);</span><br><span class="line">            <span class="type">TestModel</span> testModel2 = new <span class="type">TestModel</span>(<span class="type">R</span>.drawable.set_icon_change,<span class="string">"头像"</span>);</span><br><span class="line">            dataList.add(testModel2);</span><br><span class="line">            <span class="type">TestModel</span> testModel3 = new <span class="type">TestModel</span>(<span class="type">R</span>.drawable.set_icon_clean,<span class="string">"清楚"</span>);</span><br><span class="line">            dataList.add(testModel3);</span><br><span class="line">            <span class="type">TestModel</span> testModel4 = new <span class="type">TestModel</span>(<span class="type">R</span>.drawable.set_icon_edit,<span class="string">"修改"</span>);</span><br><span class="line">            dataList.add(testModel4);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="UITableView和ListView的对比"><a href="#UITableView和ListView的对比" class="headerlink" title="UITableView和ListView的对比"></a>UITableView和ListView的对比</h2><p>相同点：</p>
+<ol>
+<li>都有重用机制，来提高滑动性能；</li>
+<li>见文章开头所写；</li>
+</ol>
+<p>不同点：</p>
+<ol>
+<li><code>UITableView</code>继承自<code>UIScrollView</code>是一个滑动的View，而ListView则不是集成ScrollView。（或许这两点并没有没有可比性，毕竟是两个不同框架提供的库）</li>
+<li><code>UITableView</code>有两种样式，group和plain。而<code>ListView</code>只有一种类似于iOS的plain模式，<br><img src="http://upload-images.jianshu.io/upload_images/1603505-e0cd8fc6becd757c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="group样式"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-29d30456590ecad4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="plain样式"></li>
+</ol>
+<p>最后，文中使用的控件对比：<br>iOS图片显示控件UIImageView与Android的ImageView控件对应，文本显示控件iOS是UILabel，对应Android的TextView。<br><a href="https://github.com/XcqRomance/iOS_Android_Comparision/tree/listViewVStableView" target="_blank" rel="noopener">GitHub demo地址</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/24/2017-11-24/" rel="next" title="一个iOS开发者的android修行之路一：UIViewController与Activity的生命周期对比探究">
+                <i class="fa fa-chevron-left"></i> 一个iOS开发者的android修行之路一：UIViewController与Activity的生命周期对比探究
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/12/2017-12-12/" rel="prev" title="一个iOS开发者的android修行之路三：布局开发单位对比(pt VS dp)">
+                一个iOS开发者的android修行之路三：布局开发单位对比(pt VS dp) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/romance.jpg"
+                alt="Romance" />
+            
+              <p class="site-author-name" itemprop="name">Romance</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/XcqRomance" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/d1414d91084a" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#UITableView的基本使用"><span class="nav-number">1.</span> <span class="nav-text">UITableView的基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ListView的基本使用"><span class="nav-number">2.</span> <span class="nav-text">ListView的基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UITableView和ListView的对比"><span class="nav-number">3.</span> <span class="nav-text">UITableView和ListView的对比</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Romance</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://XcqRomance.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/11/28/2017-11-28/';
+          this.page.identifier = '2017/11/28/2017-11-28/';
+          this.page.title = '一个iOS开发者的android修行之路二：UITableView和ListView的对比探究';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://XcqRomance.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

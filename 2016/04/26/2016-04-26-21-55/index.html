@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="“我最大的动力？”时刻挑战自己。我把生活视为用不毕业的大学，每天我求知若渴。                        - 理查德 布兰森  今天打开简书一看，发现自己写的文章都是停留在一个月前，上一个月我主要是在做公司艺学教师版的国际版本的app。这也没办法啊，项目太紧张了，累得要死，每天工作到晚上十点。一方面是时间紧张，另一方面是我想用swift重写整个项目，既可以检验下自己之前学习sw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发(一)之OC过渡到Swift开发">
+<meta property="og:url" content="http://yoursite.com/2016/04/26/2016-04-26-21-55/index.html">
+<meta property="og:site_name" content="Romance的修行之路">
+<meta property="og:description" content="“我最大的动力？”时刻挑战自己。我把生活视为用不毕业的大学，每天我求知若渴。                        - 理查德 布兰森  今天打开简书一看，发现自己写的文章都是停留在一个月前，上一个月我主要是在做公司艺学教师版的国际版本的app。这也没办法啊，项目太紧张了，累得要死，每天工作到晚上十点。一方面是时间紧张，另一方面是我想用swift重写整个项目，既可以检验下自己之前学习sw">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-dbba08ee6276b9ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-fcbeaa06f27a9fef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-b0254994b67b3ee8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-93ab4b704f8d596d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-e9c10cd9b14d53d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-01-08T02:39:16.899Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS开发(一)之OC过渡到Swift开发">
+<meta name="twitter:description" content="“我最大的动力？”时刻挑战自己。我把生活视为用不毕业的大学，每天我求知若渴。                        - 理查德 布兰森  今天打开简书一看，发现自己写的文章都是停留在一个月前，上一个月我主要是在做公司艺学教师版的国际版本的app。这也没办法啊，项目太紧张了，累得要死，每天工作到晚上十点。一方面是时间紧张，另一方面是我想用swift重写整个项目，既可以检验下自己之前学习sw">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1603505-dbba08ee6276b9ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/04/26/2016-04-26-21-55/"/>
+
+
+
+
+
+  <title>iOS开发(一)之OC过渡到Swift开发 | Romance的修行之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Romance的修行之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">分享自己学习的点滴，和大家一起学习成长</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/04/26/2016-04-26-21-55/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Romance">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/romance.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romance的修行之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS开发(一)之OC过渡到Swift开发</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-04-26T21:55:40+08:00">
+                2016-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/26/2016-04-26-21-55/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/04/26/2016-04-26-21-55/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>“我最大的动力？”时刻挑战自己。我把生活视为用不毕业的大学，每天我求知若渴。                        - 理查德 布兰森</p>
+</blockquote>
+<p>今天打开简书一看，发现自己写的文章都是停留在一个月前，上一个月我主要是在做公司<a href="https://itunes.apple.com/cn/app/yi-xue-jiao-shi-ban-lao-shi/id1053804224?mt=8" target="_blank" rel="noopener">艺学教师版</a>的国际版本的app。这也没办法啊，项目太紧张了，累得要死，每天工作到晚上十点。一方面是时间紧张，另一方面是我想用swift重写整个项目，既可以检验下自己之前学习swift的效果，又通过项目真正提升自己swift编程能力。毕竟swift是趋势，下图是2016年4月TIOBE编程语言排行榜，足以说明学习swift的重要性，我们得紧跟着时代的的步伐。尽管工作辛苦，但是和大家分享我的学习之路，我是非常的happy的。我今天分享的主要是使用oc和swift混合编程中需要注意的细节。记录自己的学习路线，更重要的是让后学者可以少走很多坑！<br><img src="http://upload-images.jianshu.io/upload_images/1603505-dbba08ee6276b9ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="rating.png"></p>
+<p>总之，我使用swift写程序的感觉就是，一个字：爽；两个字：很爽；三个字：非常爽。写的代码程序是非常的简洁，也非常适合一些初学者学习，入门比OC低太多了。</p>
+<h2 id="注意点一：使用cocoapods管理第三方库，请添加use-frameworks！use-frameworks！use-frameworks！重要的事情说三遍"><a href="#注意点一：使用cocoapods管理第三方库，请添加use-frameworks！use-frameworks！use-frameworks！重要的事情说三遍" class="headerlink" title="注意点一：使用cocoapods管理第三方库，请添加use_frameworks！use_frameworks！use_frameworks！重要的事情说三遍"></a>注意点一：使用cocoapods管理第三方库，请添加use_frameworks！use_frameworks！use_frameworks！重要的事情说三遍</h2><p>在 Swift 项目中，cocoapod 仅支持以 Framework 方式添加框架，因此需要在 Podfile 中添加 use_frameworks！下面是我的Podfile文件，最后一个是swift的网络请求框架。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">use_frameworks!</span><br><span class="line">pod &apos;AFNetworking&apos;</span><br><span class="line">pod &apos;SDWebImage&apos;</span><br><span class="line">pod &apos;SVProgressHUD&apos;</span><br><span class="line">pod &apos;MJRefresh&apos;</span><br><span class="line">pod &apos;MJExtension&apos;</span><br><span class="line">pod &apos;KLCPopup&apos;</span><br><span class="line">pod &apos;UPYUN&apos;, &apos;~&gt; 1.0.0&apos;</span><br><span class="line">pod &apos;HyphenateFullSDK&apos;, &apos;~&gt; 3.1.1&apos;</span><br><span class="line">pod &apos;Alamofire&apos;, &apos;~&gt; 3.3.1&apos;</span><br></pre></td></tr></table></figure></p>
+<p>如果你的Podfile文件里面没有写 use_frameworks!在pod update时候将会出现下面的错误：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-fcbeaa06f27a9fef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="error.png"><br>在使用的时候你得在每个swift类中import 相应的第三方库就可以使用了，这也是其麻烦之处；比如我的项目中很多页面都需要使用SVProgressHUD 显示一些信息，那么我就必须在这些类中都写这句代码引入这个库</p>
+<pre><code>import SVProgressHUD
+</code></pre><p>按理来说，我在桥接文件中包含过一次就应该好了，但是我却一直不成功，希望解决这个问题的人，相互交流下！</p>
+<h2 id="注意点二：swift调用OC代码"><a href="#注意点二：swift调用OC代码" class="headerlink" title="注意点二：swift调用OC代码"></a>注意点二：swift调用OC代码</h2><h3 id="建立一个桥接文件，有两种方法："><a href="#建立一个桥接文件，有两种方法：" class="headerlink" title="建立一个桥接文件，有两种方法："></a>建立一个桥接文件，有两种方法：</h3><h4 id="方法一：新建一个oc的类，xcode会自动提示你建立一个桥接文件，然后将新建的oc类给删除就可以了，然后将需要在swift中调用的oc类的类名包含进来即可；"><a href="#方法一：新建一个oc的类，xcode会自动提示你建立一个桥接文件，然后将新建的oc类给删除就可以了，然后将需要在swift中调用的oc类的类名包含进来即可；" class="headerlink" title="方法一：新建一个oc的类，xcode会自动提示你建立一个桥接文件，然后将新建的oc类给删除就可以了，然后将需要在swift中调用的oc类的类名包含进来即可；"></a>方法一：新建一个oc的类，xcode会自动提示你建立一个桥接文件，然后将新建的oc类给删除就可以了，然后将需要在swift中调用的oc类的类名包含进来即可；</h4><p><img src="http://upload-images.jianshu.io/upload_images/1603505-b0254994b67b3ee8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="bridgingheader.png"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-93ab4b704f8d596d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Bridging-Header.png"></p>
+<h4 id="方法二：自己新建一个桥接头文件，File-gt-New-gt-File-gt-iOS-gt-Source-gt-Header-File，之后还得配置下桥接文件的路径，如下图所示，将新建的头文件路径添加进来就行了。"><a href="#方法二：自己新建一个桥接头文件，File-gt-New-gt-File-gt-iOS-gt-Source-gt-Header-File，之后还得配置下桥接文件的路径，如下图所示，将新建的头文件路径添加进来就行了。" class="headerlink" title="方法二：自己新建一个桥接头文件，File &gt; New &gt; File &gt; (iOS) &gt; Source &gt; Header File，之后还得配置下桥接文件的路径，如下图所示，将新建的头文件路径添加进来就行了。"></a>方法二：自己新建一个桥接头文件，File &gt; New &gt; File &gt; (iOS) &gt; Source &gt; Header File，之后还得配置下桥接文件的路径，如下图所示，将新建的头文件路径添加进来就行了。</h4><p><img src="http://upload-images.jianshu.io/upload_images/1603505-e9c10cd9b14d53d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="bridgeHeaderPath.png"></p>
+<h2 id="注意点三：OC调用swift代码"><a href="#注意点三：OC调用swift代码" class="headerlink" title="注意点三：OC调用swift代码"></a>注意点三：OC调用swift代码</h2><p>oc调用swift的类需要在.m文件中包含头文件</p>
+<pre><code>#import &quot;&lt;#YourProjectName#&gt;-Swift.h&quot;
+</code></pre><p>例如我的项目名称叫YXTeacherEn，所以包含的头文件叫</p>
+<pre><code>#import &quot;YXTeacherEn-Swift.h&quot;
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/29/2016-03-29/" rel="next" title="使用oschina托管自己项目">
+                <i class="fa fa-chevron-left"></i> 使用oschina托管自己项目
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/26/2016-04-26/" rel="prev" title="Mac开发中的小技巧">
+                Mac开发中的小技巧 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/romance.jpg"
+                alt="Romance" />
+            
+              <p class="site-author-name" itemprop="name">Romance</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/XcqRomance" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/d1414d91084a" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#注意点一：使用cocoapods管理第三方库，请添加use-frameworks！use-frameworks！use-frameworks！重要的事情说三遍"><span class="nav-number">1.</span> <span class="nav-text">注意点一：使用cocoapods管理第三方库，请添加use_frameworks！use_frameworks！use_frameworks！重要的事情说三遍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意点二：swift调用OC代码"><span class="nav-number">2.</span> <span class="nav-text">注意点二：swift调用OC代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#建立一个桥接文件，有两种方法："><span class="nav-number">2.1.</span> <span class="nav-text">建立一个桥接文件，有两种方法：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法一：新建一个oc的类，xcode会自动提示你建立一个桥接文件，然后将新建的oc类给删除就可以了，然后将需要在swift中调用的oc类的类名包含进来即可；"><span class="nav-number">2.1.1.</span> <span class="nav-text">方法一：新建一个oc的类，xcode会自动提示你建立一个桥接文件，然后将新建的oc类给删除就可以了，然后将需要在swift中调用的oc类的类名包含进来即可；</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法二：自己新建一个桥接头文件，File-gt-New-gt-File-gt-iOS-gt-Source-gt-Header-File，之后还得配置下桥接文件的路径，如下图所示，将新建的头文件路径添加进来就行了。"><span class="nav-number">2.1.2.</span> <span class="nav-text">方法二：自己新建一个桥接头文件，File &gt; New &gt; File &gt; (iOS) &gt; Source &gt; Header File，之后还得配置下桥接文件的路径，如下图所示，将新建的头文件路径添加进来就行了。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意点三：OC调用swift代码"><span class="nav-number">3.</span> <span class="nav-text">注意点三：OC调用swift代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Romance</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://XcqRomance.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2016/04/26/2016-04-26-21-55/';
+          this.page.identifier = '2016/04/26/2016-04-26-21-55/';
+          this.page.title = 'iOS开发(一)之OC过渡到Swift开发';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://XcqRomance.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

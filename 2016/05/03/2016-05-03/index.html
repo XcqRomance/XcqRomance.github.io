@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="mac," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="人生就像卫生纸，尽量少扯；时间就像卫生纸，看着挺多，用着用着就没了  本文将分享如何制作OS X EI 10.11系统的 u盘启动盘（只能使用mac电脑制作）以及Mac系统的安装步骤。  本文包含以下内容：  U盘启动盘的制作 Mac系统的安装步骤  U盘启动盘的制作先下载“ OS X EL”安装程序打开appstore，点击精选，在右上角搜索栏内输入“Capitan”，搜索到10.11.4，O">
+<meta name="keywords" content="mac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac系统U盘启动盘的制作及Mac系统的安装">
+<meta property="og:url" content="http://yoursite.com/2016/05/03/2016-05-03/index.html">
+<meta property="og:site_name" content="Romance的修行之路">
+<meta property="og:description" content="人生就像卫生纸，尽量少扯；时间就像卫生纸，看着挺多，用着用着就没了  本文将分享如何制作OS X EI 10.11系统的 u盘启动盘（只能使用mac电脑制作）以及Mac系统的安装步骤。  本文包含以下内容：  U盘启动盘的制作 Mac系统的安装步骤  U盘启动盘的制作先下载“ OS X EL”安装程序打开appstore，点击精选，在右上角搜索栏内输入“Capitan”，搜索到10.11.4，O">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-06ab57a328d8e2e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-96897318f07dbf43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-b334e2a79b661d09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-8e9e85ad70d5a1c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-f674c70282c61f72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-01-08T02:16:29.047Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mac系统U盘启动盘的制作及Mac系统的安装">
+<meta name="twitter:description" content="人生就像卫生纸，尽量少扯；时间就像卫生纸，看着挺多，用着用着就没了  本文将分享如何制作OS X EI 10.11系统的 u盘启动盘（只能使用mac电脑制作）以及Mac系统的安装步骤。  本文包含以下内容：  U盘启动盘的制作 Mac系统的安装步骤  U盘启动盘的制作先下载“ OS X EL”安装程序打开appstore，点击精选，在右上角搜索栏内输入“Capitan”，搜索到10.11.4，O">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1603505-06ab57a328d8e2e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/05/03/2016-05-03/"/>
+
+
+
+
+
+  <title>Mac系统U盘启动盘的制作及Mac系统的安装 | Romance的修行之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Romance的修行之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">分享自己学习的点滴，和大家一起学习成长</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/05/03/2016-05-03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Romance">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/romance.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romance的修行之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Mac系统U盘启动盘的制作及Mac系统的安装</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-03T13:50:26+08:00">
+                2016-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/05/03/2016-05-03/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/05/03/2016-05-03/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>人生就像卫生纸，尽量少扯；时间就像卫生纸，看着挺多，用着用着就没了</p>
+</blockquote>
+<p>本文将分享如何制作OS X EI 10.11系统的 u盘启动盘（只能使用mac电脑制作）以及Mac系统的安装步骤。 </p>
+<p>本文包含以下内容：</p>
+<ul>
+<li><a href="#1">U盘启动盘的制作</a></li>
+<li><a href="#2">Mac系统的安装步骤</a></li>
+</ul>
+<h1 id="U盘启动盘的制作"><a href="#U盘启动盘的制作" class="headerlink" title="U盘启动盘的制作"></a><span id="1">U盘启动盘的制作</span></h1><h2 id="先下载“-OS-X-EL”安装程序"><a href="#先下载“-OS-X-EL”安装程序" class="headerlink" title="先下载“ OS X EL”安装程序"></a>先下载“ OS X EL”安装程序</h2><p>打开appstore，点击精选，在右上角搜索栏内输入“Capitan”，搜索到10.11.4，OS X ELCapitan最新系统，点击下载或获取安装进行下载。下载完成，弹出提示是否需要更新，请勿点击更新。关闭App Store，并且打开finder，确认“ OS X EL”安装程序是否在“应用程序”中，下图是下载好的最新系统；<br><img src="http://upload-images.jianshu.io/upload_images/1603505-06ab57a328d8e2e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step1.png"></p>
+<h2 id="U盘格式化Mac-OS-扩展日志式"><a href="#U盘格式化Mac-OS-扩展日志式" class="headerlink" title="U盘格式化Mac OS 扩展日志式"></a>U盘格式化Mac OS 扩展日志式</h2><p>准备一个8GB的U盘，然后打开应用程序-实用工具-磁盘工具，左侧-选择U盘，然后点击右边“抹掉”选项，格式选择Mac OS 扩展日志式，磁盘名称一定要写MyVolume，然后点击抹掉。如下图所示：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-96897318f07dbf43.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step2.png"></p>
+<h2 id="使用终端命令制作安装盘"><a href="#使用终端命令制作安装盘" class="headerlink" title="使用终端命令制作安装盘"></a>使用终端命令制作安装盘</h2><p>抹掉U盘以后，打开应用程序-实用工具-终端：在终端中输入以下命令，直接复制粘贴即可，完成后，会提示输入管用员密码，然后直接输入管理员密码，按回车（输入时，电脑上不会有显示，直接输入，输入完回车即可，如果管理员未设置密码，请在系统偏好设置-帐户-更改密码中设置一个密码，这很重要，一定要设置一个有密码的帐户）<br>回车后，会再出现一行提示，输入Y，然后回车，此时，就会开始制作安装盘，大概在20-30分钟左右完成。中间请不要让电脑待机。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app</span><br></pre></td></tr></table></figure></p>
+<p>制作中：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-b334e2a79b661d09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step3.png"><br>制作完成：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-8e9e85ad70d5a1c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="finnish.png"><br>完成以上三步之后，U盘系统盘就制作完毕，打开U盘，将会看到有安装的系统；如下：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-f674c70282c61f72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="U盘.png"></p>
+<h1 id="Mac系统的安装"><a href="#Mac系统的安装" class="headerlink" title="Mac系统的安装"></a><span id="2">Mac系统的安装</span></h1><p><strong>操作这一步之前，请您先备份一下当前电脑里的重要资料</strong></p>
+<ol>
+<li>重启电脑，马上按住Command (⌘) ＋option＋R键。如果未接入互联网，请从地球仪图标的下方选取一个WIFI网络并连接。（此步骤通常需要20-30分钟的下载时间，此时间可能会根据网速有所不同）</li>
+<li>下载完成后会进入“OS X实用工具”选择“磁盘工具”，然后点按“继续”。</li>
+<li>在左侧选择您的硬盘（通常是磁盘工具对话框左侧首位顶格的磁盘），然后点按右侧“抹掉”标签。</li>
+<li>从“格式化”菜单中选取“Mac OS 扩展（日志式）”，输入名称来命名磁盘，然后点按右下角“抹掉”。</li>
+<li>磁盘完成抹掉后，请选取位于整个屏幕的左上角菜单“磁盘工具”&gt;“退出磁盘工具”，并重启电脑。</li>
+<li>重启电脑时，按住option键，选择U盘引导安装盘安装OS X系统，按提示操作，等待完成系统安装。</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mac/" rel="tag"># mac</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/27/2016-04-27/" rel="next" title="iOS开发(二)之swift中的json序列化">
+                <i class="fa fa-chevron-left"></i> iOS开发(二)之swift中的json序列化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/08/2016-05-08/" rel="prev" title="iOS集成百度地图实现在线建议地址查询">
+                iOS集成百度地图实现在线建议地址查询 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/romance.jpg"
+                alt="Romance" />
+            
+              <p class="site-author-name" itemprop="name">Romance</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/XcqRomance" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/d1414d91084a" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#U盘启动盘的制作"><span class="nav-number">1.</span> <span class="nav-text">U盘启动盘的制作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#先下载“-OS-X-EL”安装程序"><span class="nav-number">1.1.</span> <span class="nav-text">先下载“ OS X EL”安装程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#U盘格式化Mac-OS-扩展日志式"><span class="nav-number">1.2.</span> <span class="nav-text">U盘格式化Mac OS 扩展日志式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用终端命令制作安装盘"><span class="nav-number">1.3.</span> <span class="nav-text">使用终端命令制作安装盘</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mac系统的安装"><span class="nav-number">2.</span> <span class="nav-text">Mac系统的安装</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Romance</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://XcqRomance.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2016/05/03/2016-05-03/';
+          this.page.identifier = '2016/05/03/2016-05-03/';
+          this.page.title = 'Mac系统U盘启动盘的制作及Mac系统的安装';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://XcqRomance.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

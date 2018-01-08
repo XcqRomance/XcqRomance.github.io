@@ -80,12 +80,12 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Romance">
+<meta property="og:title" content="Romance的修行之路">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Romance">
+<meta property="og:site_name" content="Romance的修行之路">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Romance">
+<meta name="twitter:title" content="Romance的修行之路">
 
 
 
@@ -121,7 +121,7 @@
 
 
 
-  <title>Romance</title>
+  <title>Romance的修行之路</title>
   
 
 
@@ -152,12 +152,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Romance</span>
+        <span class="site-title">Romance的修行之路</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">分享自己学习的点滴，和大家一起学习成长</p>
       
   </div>
 
@@ -239,7 +239,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/05/first/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/28/2017-12-28/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Romance">
@@ -248,7 +248,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Romance">
+      <meta itemprop="name" content="Romance的修行之路">
     </span>
 
     
@@ -258,7 +258,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/05/first/" itemprop="url">first</a></h1>
+                <a class="post-title-link" href="/2017/12/28/2017-12-28/" itemprop="url">如何使用ReactNative优雅快速开发一个属于自己的app</a></h1>
         
 
         <div class="post-meta">
@@ -270,8 +270,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-05T16:02:26+08:00">
-                2018-01-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T17:36:26+08:00">
+                2017-12-28
               </time>
             
 
@@ -310,32 +310,48 @@
       
         
           
-            <p>先看整体app的效果，源码<a href="https://github.com/XcqRomance/Weather-ReactNative" target="_blank" rel="noopener">GitHub代码地址</a>，欢迎大家进行star和一起探讨。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-3c85db03a22b5261.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="悦月天气"></p>
+            <p>先看整体app的效果，源码<a href="https://github.com/XcqRomance/Weather-ReactNative" target="_blank" rel="noopener">GitHub代码地址</a>，欢迎大家进行star和一起探讨。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-3c85db03a22b5261.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="悦月天气" title="悦月天气"></p>
 <p>本人代码的开发环境信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Mac电脑系统：Mac OS X 10.13.2</span><br><span class="line">IDE：Sublime Text，version 3.0，Build 3143</span><br><span class="line">node版本：v9.3.0</span><br><span class="line">npm版本：5.6.0</span><br><span class="line">yarn版本:  1.3.2(npm和yarn使用其中一个就行)</span><br><span class="line">react-native版本: 0.51.0</span><br><span class="line">Xcode: Version 9.2 (9C40b)</span><br><span class="line">Android Studio 3.0.1</span><br></pre></td></tr></table></figure></p>
 <h2 id="一、工具篇-工欲善其事，必先利其器"><a href="#一、工具篇-工欲善其事，必先利其器" class="headerlink" title="一、工具篇-工欲善其事，必先利其器"></a>一、工具篇-工欲善其事，必先利其器</h2><p>我选择的代码编辑器是<a href="https://www.sublimetext.com/3" target="_blank" rel="noopener">Sublime Text</a>（可能需要翻墙才能访问下载，我在百度网盘分享一个链接：<a href="https://pan.baidu.com/s/1mhCy80C" target="_blank" rel="noopener">Sublime Text 3</a>，密码：bmjs），选择他来开发React Native应用的主要原因是他是<strong>免费的</strong>。但是想要高效使用Sublime开发就必须使用<strong>Sublime的插件包管理器Package Control</strong>下载几个高效开发的插件：<strong>JSX(ES6)语法高亮插件Babel</strong>、<strong>JSX代码格式化插件JsFormat</strong>、<strong>JSX语法检测插件ESLint</strong>。目前自己代码开发用到这三个就足够了。</p>
 <p><strong>我发现另一个开发工具<a href="https://expo.io/tools#snack" target="_blank" rel="noopener">Expo Snack</a>很强大，直接在浏览器上写RN代码，然后实时查看效果，迅速提升开发效率，还可将app发布到Expo上面进行查看，比如react-navigation的学习demo <a href="https://expo.io/@react-navigation/NavigationPlayground" target="_blank" rel="noopener">NavigationPlayground</a>，新手可以尝试使用这个工具进行开发。</strong></p>
 <ol>
 <li><p><strong>安装包管理器（<a href="https://github.com/wbond/package_control" target="_blank" rel="noopener">Package Control</a>）</strong><br>Tools -&gt; Command Palette…  -&gt; 输入：Install ，然后鼠标单击Package Control选项，Sublime编辑器的左下角应该会有文字提示正在下载。查看是否下载成功：Sublime Text -&gt; Preferences 最下面有Package Control</p>
 </li>
-<li><p><strong>安装JSX语法高亮插件：<a href="http://babeljs.io" target="_blank" rel="noopener">Babel</a></strong><br>先看效果：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-7b4685bfa8cdf5a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="sublime安装jsx语法高亮插件前后效果对比"><br>如今，React Native使用JSX（ES6）语法开发，sublime是没法高亮的，从上图左半部分的右下角和右半部分的右下角的区别在于可以看出默认JavaScript和Javascript(Babel)，这正是js和jsx语法的区别，但是默认是没有Babel语言选项的，我们需要Package Control进行下载。<br>安装步骤：<strong>快捷键Shift+Command+P -&gt; 输入：Install Package，回车 -&gt; 输入：Babel，回车。</strong><br><img src="http://upload-images.jianshu.io/upload_images/1603505-2f3982d6b7fb2967.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="下载Babel"><br>查看是否下载成功：Sublime Text -&gt; Preferences -&gt; Package Settings 里面是否有Babel。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-7ed319cc9f1ce92f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Babel下载成功"><br>切换语法为Babel，点击Sublime右下角语言这里切换为Babel，此源文件就可以高亮了。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-d07a80596f7e47d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="设置Babel"></p>
+<li><p><strong>安装JSX语法高亮插件：<a href="http://babeljs.io" target="_blank" rel="noopener">Babel</a></strong><br>先看效果：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-7b4685bfa8cdf5a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="sublime安装jsx语法高亮插件前后效果对比" title="sublime安装jsx语法高亮插件前后效果对比"><br>如今，React Native使用JSX（ES6）语法开发，sublime是没法高亮的，从上图左半部分的右下角和右半部分的右下角的区别在于可以看出默认JavaScript和Javascript(Babel)，这正是js和jsx语法的区别，但是默认是没有Babel语言选项的，我们需要Package Control进行下载。<br>安装步骤：<strong>快捷键Shift+Command+P -&gt; 输入：Install Package，回车 -&gt; 输入：Babel，回车。</strong><br><img src="http://upload-images.jianshu.io/upload_images/1603505-2f3982d6b7fb2967.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="下载Babel" title="下载Babel"><br>查看是否下载成功：<code>Sublime Text -&gt; Preferences -&gt; Package Settings</code> 里面是否有Babel。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-7ed319cc9f1ce92f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Babel下载成功" title="Babel下载成功"><br>切换语法为Babel，点击Sublime右下角语言这里切换为Babel，此源文件就可以高亮了。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-d07a80596f7e47d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="设置Babel" title="设置Babel"></p>
 </li>
 </ol>
 <p><strong>我遇到一个问题是：当我关闭了项目，下次再次打开，js文件的默认语言还是JavaScript，想要高亮还得在重复上一步操作：切换语法为Babel。如果哪位有一劳永逸的设置方法，请告知下！</strong></p>
 <ol>
-<li><strong>安装代码格式化插件：<a href="https://github.com/jdc0589/JsFormat" target="_blank" rel="noopener">JsFormat</a></strong><br>安装、查看的步骤和2一样，使用Package Control搜索JsFormat。<br><strong>最为主要的是需要其他配置：</strong><br><strong>首先，代码格式化快捷键ctrl+option+f，为了防止与其他插件快捷键冲突，我们最好在Key Bindings - User中添加如下json</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; &quot;keys&quot;: [&quot;ctrl+alt+f&quot;], &quot;command&quot;: &quot;js_format&quot;, &quot;context&quot;: [&#123;&quot;key&quot;: &quot;selector&quot;, &quot;operator&quot;: &quot;equal&quot;, &quot;operand&quot;: &quot;source.js,source.json&quot;&#125;] &#125;</span><br></pre></td></tr></table></figure>
+<li><strong>安装代码格式化插件：<a href="https://github.com/jdc0589/JsFormat" target="_blank" rel="noopener">JsFormat</a></strong><br>安装、查看的步骤和2一样，使用Package Control搜索JsFormat。<br><strong>最为主要的是需要其他配置：</strong><br><strong>首先，代码格式化快捷键ctrl+option+f，为了防止与其他插件快捷键冲突，我们最好在Key Bindings - User中添加如下json</strong><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">"keys"</span>: [<span class="string">"ctrl+alt+f"</span>], <span class="attr">"command"</span>: <span class="string">"js_format"</span>, <span class="attr">"context"</span>: [&#123;<span class="attr">"key"</span>: <span class="string">"selector"</span>, <span class="attr">"operator"</span>: <span class="string">"equal"</span>, <span class="attr">"operand"</span>: <span class="string">"source.js,source.json"</span>&#125;] &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p><img src="http://upload-images.jianshu.io/upload_images/1603505-0bb6cedc239f6743.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="JsFormat设置"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-940d3547519f9e0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="设置user keybindings file"><br>**其次，我们需要设置代码格式化对JSX的支持，如上图<figure class="highlight plain"><figcaption><span>- User**，并且添加如下json：</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">&#123;</span><br><span class="line">	&quot;e4x&quot;: true, // 支持jsx</span><br><span class="line">	&quot;format_on_save&quot;: false, // 保存自动代码格式化，默认也为false，可以不加</span><br><span class="line">	&quot;brace_style&quot;: &quot;collapse-preserve-inline&quot;, // &#123;&#125; 不换行，加与不加的效果自己体验</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>当我设置了<figure class="highlight plain"><figcaption><span>true```，我发现使用快捷键自动保存代码，触发代码格式化时有的代码会出现错乱，而且只是在ListView这部分会出现这样的情况，如下gif所示，如果哪位解决这个问题我们可以探讨下。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">![jsFormat.gif](http://upload-images.jianshu.io/upload_images/1603505-c64662381a91777f.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line">所以当我需要代码格式化时，我一般是选中需要代码格式化的部分进行代码格式化。</span><br><span class="line">4. **安装语法检测插件[ESLint](https://github.com/eslint/eslint)**</span><br><span class="line">**4.1 安装ESLint、以及ESLint插件**</span><br><span class="line">我选择的是**局部安装**（安装在当前项目目录/node_modules/目录下），（如果全局安装则都使用全局安装，安装在/usr/local/lib/node_modules目录下），在项目根目录下依次，终端依次执行以下命令：</span><br><span class="line">```shell</span><br><span class="line">$ npm install eslint --save-dev</span><br><span class="line"></span><br><span class="line">$ npm install eslint-plugin-react --save-dev # ESLint支持React语义JSX的插件</span><br><span class="line"></span><br><span class="line">$ npm install eslint-plugin-react-native # React Native 的插件</span><br><span class="line"></span><br><span class="line">$ npm install babel-eslint #支持ES6语法的插件</span><br></pre></td></tr></table></figure></p>
-<p>安装的时候注意是否出现<figure class="highlight plain"><figcaption><span>PEER DEPENDENCY```字段，出现了则代表安装失败，那么可以尝试全局安装。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">**4.2 配置```.eslintrc```文件**</span><br><span class="line">切换到项目根目录，包含packge.json的目录下，执行```eslint --init</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1603505-ca3111e81c81071b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="eslint选项"><br>之后在项目根目录生成了一个<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">```json</span><br><span class="line">&#123;</span><br><span class="line">    &quot;env&quot;: &#123;</span><br><span class="line">        &quot;es6&quot;: true,</span><br><span class="line">        &quot;node&quot;: true,</span><br><span class="line">        &quot;react-native/react-native&quot;: true</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;extends&quot;: [&quot;eslint:recommended&quot;, &quot;plugin:react/recommended&quot;,&quot;plugin:react-native/all&quot;],</span><br><span class="line">    &quot;plugins&quot;: [</span><br><span class="line">        &quot;react&quot;,</span><br><span class="line">        &quot;react-native&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;parser&quot;: &quot;babel-eslint&quot;,</span><br><span class="line">    &quot;parserOptions&quot;: &#123; </span><br><span class="line">        &quot;ecmaVersion&quot;: 6,</span><br><span class="line">        &quot;ecmaFeatures&quot;: &#123;</span><br><span class="line">            &quot;jsx&quot;: true</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;rules&quot;: &#123; // 规则，包括React Native语法的规则</span><br><span class="line">        &quot;class-methods-use-this&quot;: 0,</span><br><span class="line">        &quot;react-native/no-color-literals&quot;: 0,</span><br><span class="line">        &quot;react-native/no-unused-styles&quot;: 0,</span><br><span class="line">        &quot;react-native/no-inline-styles&quot;: 0,</span><br><span class="line">        &quot;react-native/split-platform-components&quot;: 2,</span><br><span class="line">        &quot;no-unused-vars&quot;: 0,</span><br><span class="line">        &quot;no-use-before-define&quot;: 0,</span><br><span class="line">        &quot;no-console&quot;: 0,</span><br><span class="line">        &quot;react/prop-types&quot;: 0,</span><br><span class="line">        &quot;react/no-direct-mutation-state&quot;: 0</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>想要更详细的配置可以查看下官网的<a href="https://eslint.org/docs/user-guide/configuring" target="_blank" rel="noopener">Configuring ESLint</a>。<br><strong>4.3 安装Sublime插件SublimeLinter、SublimeLinter-contrib-eslint</strong><br>使用package control进行安装，然后配置setting-user文件如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;user&quot;: &#123;</span><br><span class="line">        &quot;debug&quot;: true,</span><br><span class="line">        &quot;delay&quot;: 0.25,</span><br><span class="line">        &quot;error_color&quot;: &quot;D02000&quot;,</span><br><span class="line">        &quot;gutter_theme&quot;: &quot;Packages/SublimeLinter/gutter-themes/Default/Default.gutter-theme&quot;,</span><br><span class="line">        &quot;gutter_theme_excludes&quot;: [],</span><br><span class="line">        &quot;lint_mode&quot;: &quot;background&quot;,</span><br><span class="line">        &quot;linters&quot;: &#123;</span><br><span class="line">            &quot;eslint&quot;: &#123;</span><br><span class="line">                &quot;@disable&quot;: false,</span><br><span class="line">                &quot;args&quot;: [],</span><br><span class="line">                &quot;excludes&quot;: []</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;jsxhint&quot;: &#123;</span><br><span class="line">                &quot;@disable&quot;: false,</span><br><span class="line">                &quot;args&quot;: [],</span><br><span class="line">                &quot;excludes&quot;: []</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;mark_style&quot;: &quot;outline&quot;,</span><br><span class="line">        &quot;no_column_highlights_line&quot;: false,</span><br><span class="line">        &quot;passive_warnings&quot;: false,</span><br><span class="line">        &quot;paths&quot;: &#123;</span><br><span class="line">            &quot;linux&quot;: [],</span><br><span class="line">            &quot;osx&quot;: [],</span><br><span class="line">            &quot;windows&quot;: []</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;python_paths&quot;: &#123;</span><br><span class="line">            &quot;linux&quot;: [],</span><br><span class="line">            &quot;osx&quot;: [],</span><br><span class="line">            &quot;windows&quot;: []</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;rc_search_limit&quot;: 3,</span><br><span class="line">        &quot;shell_timeout&quot;: 10,</span><br><span class="line">        &quot;show_errors_on_save&quot;: false,</span><br><span class="line">        &quot;show_marks_in_minimap&quot;: true,</span><br><span class="line">        &quot;syntax_map&quot;: &#123;</span><br><span class="line">            &quot;html (django)&quot;: &quot;html&quot;,</span><br><span class="line">            &quot;html (rails)&quot;: &quot;html&quot;,</span><br><span class="line">            &quot;html 5&quot;: &quot;html&quot;,</span><br><span class="line">            &quot;javascript (babel)&quot;: &quot;javascript&quot;,</span><br><span class="line">            &quot;magicpython&quot;: &quot;python&quot;,</span><br><span class="line">            &quot;php&quot;: &quot;html&quot;,</span><br><span class="line">            &quot;python django&quot;: &quot;python&quot;,</span><br><span class="line">            &quot;pythonimproved&quot;: &quot;python&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;tooltip_fontsize&quot;: &quot;1rem&quot;,</span><br><span class="line">        &quot;tooltip_theme&quot;: &quot;Packages/SublimeLinter/tooltip-themes/Default/Default.tooltip-theme&quot;,</span><br><span class="line">        &quot;tooltip_theme_excludes&quot;: [],</span><br><span class="line">        &quot;tooltips&quot;: false,</span><br><span class="line">        &quot;use_current_shell_path&quot;: false,</span><br><span class="line">        &quot;warning_color&quot;: &quot;DDB700&quot;,</span><br><span class="line">        &quot;wrap_find&quot;: true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1603505-5ba86db405656bd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="settings-user"><br>效果如下：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-7b7bdfe84c5af893.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="静态语法检测效果"></p>
-<h2 id="二、代码篇"><a href="#二、代码篇" class="headerlink" title="二、代码篇"></a>二、代码篇</h2><p><strong>悦月天气这个app比较简单（<a href="https://github.com/XcqRomance/Weather-ReactNative" target="_blank" rel="noopener">GitHub代码地址</a>），主要有两部分：城市天气展示界面，选择城市界面。</strong>首页的天气预报的接口使用的是和风天气免费的每天1000次访问的API，城市列表数据使用的郭霖的第一行代码的接口。下面是一套RN代码分别在iPhone6模拟器和android模拟器的效果，<strong>代码复用率几乎为100%</strong>。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-e9f2ddf9991126f1.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="android_weather.gif"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-3c85db03a22b5261.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ios_weather.gif"></p>
-<p>开发这个app花费我总共一周的时间，包括去学习RN最基本的 <figure class="highlight plain"><figcaption><span>Native官网的资料](http://facebook.github.io/react-native/)，而不是[React Native 中文网](http://reactnative.cn)，但是这个就需要一点英语基础了，遇到实在不懂的，完全可以使用翻译工具解决，看原始英文文档的好处是可以接触最新的技术，同时提升自己的英语水平。比如下面要提及的比如</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br></pre></td><td class="code"><pre><span class="line">```create-react-native-app、Expo```等等技术。</span><br><span class="line">1. 创建项目：[create-react-native-app](https://github.com/react-community/create-react-native-app)</span><br><span class="line">我使用的是终端命令：```create-react-native-app DailyWeather```而不是```react-native init DailyWeather```来创建的项目。这二者最大的区别就是，前者没有嵌入式，直接npm start或者yarn start就能运行项目，再结合[Expo app](https://expo.io/tools#client)就能在模拟器实时查看运行效果，没有ios和android这两个文件目录，一个纯js项目，不能通过Xcode或者Android Studio开发工具打开项目进行配置。由于我这个app的icon图标和启动图片是使用原生配置，所以需要执行```npm run eject```或```yarn run eject```命令，生成这两个ios和android目录，然后通过配置Xcode和Android Studio来配置icon图标和启动页。</span><br><span class="line">![create-react-native-app DailyWeather项目目录](http://upload-images.jianshu.io/upload_images/1603505-dae01f5ebd637270.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line">![react-native init DailyWeather 以及 yarn run eject后项目目录](http://upload-images.jianshu.io/upload_images/1603505-aae7d50be1a5db7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line">2. 运行项目</span><br><span class="line">在项目目录执行```yarn run eject```之前（也就是有ios和android两个工程项目目录之前），我是直接执行```yarn start```启动一个开发服务器，然后在模拟器或者手机上使用Expo app 打开悦月天气app进行开发调试；之后我就直接通过Xcode和Android Studio分别打开项目然后运行在模拟器上，运行之前得先将```AppDelegate.m```的第21行代码```jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@&quot;index&quot; fallbackResource:nil];```改为```jsCodeLocation = [NSURL URLWithString:@&quot;http://127.0.0.1:8081/index.bundle?platform=ios&amp;dev=true&quot;];```否则运行将报错：</span><br><span class="line">![](http://upload-images.jianshu.io/upload_images/1603505-79c01b39ee1a9797.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line"></span><br><span class="line">3. 首页代码编写</span><br><span class="line">![](http://upload-images.jianshu.io/upload_images/1603505-11ea750b4fdd3b6a.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line"></span><br><span class="line">```javascript(Babel)</span><br><span class="line">class HomeScreen extends Component &lt; &#123;&#125; &gt; &#123;</span><br><span class="line"></span><br><span class="line">  //组件的构造方法，在组建创建的时候调用</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    var ds = new ListView.DataSource(&#123;</span><br><span class="line">      rowHasChanged: (r1, r2) =&gt; r1 !== r2</span><br><span class="line">    &#125;);</span><br><span class="line">    this.state = &#123;</span><br><span class="line">      isLoading: true,</span><br><span class="line">      quiltyColor: true,</span><br><span class="line">      refreshing: false,</span><br><span class="line">      dataSource: ds,</span><br><span class="line">      suggegstions: &#123;&#125;, // 代表一个空json,生活建议</span><br><span class="line">      aqi: &#123;&#125;, // aqi</span><br><span class="line">      basic: &#123;&#125;,</span><br><span class="line">      title: &apos;海淀&apos; // 默认获取海淀区的天气</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 页面的渲染</span><br><span class="line">  render() &#123;</span><br><span class="line">    if (this.state.isLoading) &#123;</span><br><span class="line">      return (</span><br><span class="line">        &lt;View style=&#123;&#123;flex: 1, justifyContent: &apos;center&apos;, alignItems: &apos;center&apos;&#125;&#125;&gt;</span><br><span class="line">          &lt;ActivityIndicator/&gt;</span><br><span class="line">        &lt;/View&gt;</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line">    return (</span><br><span class="line">      &lt;View style=&#123;&#123;flex: 1&#125;&#125;&gt;</span><br><span class="line">        &#123;/*北京图*/&#125;</span><br><span class="line">        &lt;ImageBackground source=&#123;&#123;uri: &apos;http://cn.bing.com/az/hprichbg/rb/BarHarborCave_ROW9345444229_1920x1080.jpg&apos;&#125;&#125;  style=&#123;&#123;width: screenWidth, height: screenHeight&#125;&#125;&gt;</span><br><span class="line">          &lt;ScrollView style = &#123;&#123;flex: 1&#125;&#125; </span><br><span class="line">            refreshControl=&#123;</span><br><span class="line">              &lt;RefreshControl refreshing=&#123;this.state.refreshing&#125; onRefresh=&#123;this._onRefresh.bind(this)&#125;/&gt;</span><br><span class="line">            &#125;&gt;</span><br><span class="line">            &#123;/*渲染头部信息*/&#125;</span><br><span class="line">            &#123;this.reanderHeader()&#125;</span><br><span class="line">            &#123;/*渲染天气预报列表*/&#125;</span><br><span class="line">            &#123;this.reanderForecast()&#125;</span><br><span class="line">            &#123;/*渲染天气质量*/&#125;</span><br><span class="line">            &#123;this.renderAirquilty()&#125;</span><br><span class="line">            &#123;/*渲染生活指数*/&#125;</span><br><span class="line">            &#123;this.renderSuggestion()&#125;</span><br><span class="line">          &lt;/ScrollView&gt; </span><br><span class="line">        &lt;/ImageBackground&gt;</span><br><span class="line">      &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  _onRefresh() &#123;</span><br><span class="line">    this.setupData(this.state.title);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 组件已经装载，绘制完毕调用</span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    console.log(screenWidth)</span><br><span class="line">    console.log(screenHeight)</span><br><span class="line">    this.setupData(this.state.title);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 组件即将卸载，组件要被从界面上移除时调用</span><br><span class="line">  componentWillUnmount() &#123;</span><br><span class="line">    console.log(&apos;HomeScreen&apos;,&apos;componentWillUnmount&apos;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  setupData(cityname) &#123;</span><br><span class="line">    // cityid可以使用cityid 也可以使用 城市名，选择城市回调回来</span><br><span class="line">    let urlstr = &apos;http://guolin.tech/api/weather?key=41dd96cb90344217acbf5fe0813f16cd&apos; + &apos;&amp;cityid=&apos; + cityname</span><br><span class="line">    console.log(urlstr)</span><br><span class="line">    fetch(urlstr)</span><br><span class="line">      .then((response) =&gt; response.json())</span><br><span class="line">      .then((responseJson) =&gt; &#123;</span><br><span class="line">        console.log(&apos;success1&apos;, responseJson);</span><br><span class="line">        console.log(&apos;success2&apos;, responseJson.HeWeather[0].daily_forecast);</span><br><span class="line">        console.log(&apos;success3&apos;, responseJson.HeWeather[0].suggestion);</span><br><span class="line"></span><br><span class="line">        this.setState(&#123;</span><br><span class="line">          refreshing: false,</span><br><span class="line">          isLoading: false,</span><br><span class="line">          dataSource: this.state.dataSource.cloneWithRows(responseJson.HeWeather[0].daily_forecast),</span><br><span class="line">          suggegstions: responseJson.HeWeather[0].suggestion,</span><br><span class="line">          aqi: responseJson.HeWeather[0].aqi,</span><br><span class="line">          title: responseJson.HeWeather[0].basic.city,</span><br><span class="line">          des: responseJson.HeWeather[0].now.cond.txt,</span><br><span class="line">          temp: responseJson.HeWeather[0].now.tmp,</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">      .catch((error) =&gt; &#123;</span><br><span class="line">        console.error(error);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  reanderHeader() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;View style=&#123;styles.header&#125;&gt;</span><br><span class="line"></span><br><span class="line">            &lt;View style=&#123;&#123;flexDirection: &apos;row&apos;, alignItems: &apos;center&apos; ,marginTop: 44, marginBottom: 10&#125;&#125;&gt;</span><br><span class="line">              &lt;Text style=&#123;styles.headerTitle&#125;&gt;&#123;this.state.title&#125;&lt;/Text&gt;</span><br><span class="line">              &lt;TouchableOpacity onPress=&#123;() =&gt; this.props.navigation.navigate(&apos;City&apos;,&#123;name: this.state.title, currentLevel: 0, callBack: (data) =&gt; &#123;</span><br><span class="line">                  console.log(data) // weather_id</span><br><span class="line">                  this.setupData(data);</span><br><span class="line">                &#125;&#125;)&#125;&gt;</span><br><span class="line">                &lt;Image source=&#123;require(&apos;./address.png&apos;)&#125;/&gt;</span><br><span class="line">              &lt;/TouchableOpacity&gt;</span><br><span class="line">            &lt;/View&gt;</span><br><span class="line">            &lt;Text style=&#123;styles.headerDes&#125;&gt;&#123;this.state.des&#125;&lt;/Text&gt;</span><br><span class="line">            &lt;Text style=&#123;styles.headerTepe&#125;&gt;&#123;this.state.temp&#125;℃&lt;/Text&gt;</span><br><span class="line">      &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  reanderForecast() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;View style=&#123;styles.forecast&#125;&gt;</span><br><span class="line">            &lt;Text style=&#123;&#123;color: &apos;white&apos;, fontSize: 20, marginBottom: 10&#125;&#125;&gt;预报&lt;/Text&gt;</span><br><span class="line">            &lt;ListView </span><br><span class="line">              dataSource=&#123;this.state.dataSource&#125;</span><br><span class="line">              renderRow=&#123;(rowData) =&gt;  (</span><br><span class="line">                &lt;View style=&#123;styles.listView&#125;&gt;</span><br><span class="line">                  &lt;Text style=&#123;&#123;color: &apos;white&apos;,flex: 1&#125;&#125;&gt;&#123;rowData.date&#125;&lt;/Text&gt;</span><br><span class="line">                  &lt;Text style=&#123;&#123;color: &apos;white&apos;,flex: 1&#125;&#125;&gt;&#123;rowData.cond.txt_d&#125;&lt;/Text&gt;</span><br><span class="line">                  &lt;Text style=&#123;&#123;color: &apos;white&apos;,flex: 1&#125;&#125;&gt;&#123;rowData.tmp.max&#125;&lt;/Text&gt;</span><br><span class="line">                  &lt;Text style=&#123;&#123;color: &apos;white&apos;,flex: 1&#125;&#125;&gt;&#123;rowData.tmp.min&#125;&lt;/Text&gt;</span><br><span class="line">                &lt;/View&gt;</span><br><span class="line">              )&#125;/&gt; </span><br><span class="line">      &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  renderAirquilty() &#123;</span><br><span class="line">    let &#123;</span><br><span class="line">      aqi</span><br><span class="line">    &#125; = this.state;</span><br><span class="line">    return (</span><br><span class="line">      &lt;View&gt;</span><br><span class="line">          &lt;View style=&#123;styles.suggestion&#125;&gt;</span><br><span class="line">            &lt;View style=&#123;&#123;flexDirection: &apos;row&apos;,justifyContent: &apos;flex-start&apos;, alignItems: &apos;center&apos;,padding: 20&#125;&#125;&gt;</span><br><span class="line">              &lt;Text style=&#123;&#123;color: &apos;white&apos;,fontSize: 20&#125;&#125;&gt;空气质量：&lt;/Text&gt;</span><br><span class="line">              &lt;Text style=&#123;&#123;color: &apos;red&apos;,fontSize: 17&#125;&#125;&gt;&#123;aqi.city.qlty&#125;&lt;/Text&gt;</span><br><span class="line">            &lt;/View&gt;</span><br><span class="line">            &lt;View style=&#123;&#123;flex: 1,flexDirection: &apos;row&apos;&#125;&#125;&gt;</span><br><span class="line">              &lt;View style=&#123;&#123;flex: 1, alignItems: &apos;center&apos; &#125;&#125;&gt;</span><br><span class="line">                &lt;Text style=&#123;styles.airQuiltyDes&#125;&gt;AQI指数&lt;/Text&gt;</span><br><span class="line">                &lt;Text style=&#123;styles.airQuiltyValue&#125;&gt;&#123;aqi.city.aqi&#125;&lt;/Text&gt;</span><br><span class="line">              &lt;/View&gt;</span><br><span class="line">              &lt;View style=&#123;&#123;flex: 1, alignItems: &apos;center&apos; &#125;&#125;&gt;</span><br><span class="line">                &lt;Text style=&#123;styles.airQuiltyDes&#125;&gt;PM2.5&lt;/Text&gt;</span><br><span class="line">                &lt;Text style=&#123;styles.airQuiltyValue&#125;&gt;&#123;aqi.city.pm25&#125;&lt;/Text&gt;</span><br><span class="line">              &lt;/View&gt;</span><br><span class="line">            &lt;/View&gt;</span><br><span class="line">            &lt;View style=&#123;&#123;flex: 1,flexDirection: &apos;row&apos;&#125;&#125;&gt;</span><br><span class="line">              &lt;View style=&#123;&#123;flex: 1,alignItems: &apos;center&apos; &#125;&#125;&gt;</span><br><span class="line">                &lt;Text style=&#123;styles.airQuiltyDes&#125;&gt;PM10&lt;/Text&gt;</span><br><span class="line">                &lt;Text style=&#123;styles.airQuiltyValue&#125;&gt;&#123;aqi.city.pm10&#125;&lt;/Text&gt;</span><br><span class="line">              &lt;/View&gt;</span><br><span class="line">              &lt;View style=&#123;&#123;flex: 1, alignItems: &apos;center&apos; &#125;&#125;&gt;</span><br><span class="line">                &lt;Text style=&#123;styles.airQuiltyDes&#125;&gt;O3指数&lt;/Text&gt;</span><br><span class="line">                &lt;Text style=&#123;styles.airQuiltyValue&#125;&gt;&#123;aqi.city.o3&#125;&lt;/Text&gt;</span><br><span class="line">              &lt;/View&gt;</span><br><span class="line">            &lt;/View&gt;</span><br><span class="line">          &lt;/View&gt;</span><br><span class="line">        &lt;/View&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  renderSuggestion() &#123;</span><br><span class="line">    let &#123;</span><br><span class="line">      suggegstions</span><br><span class="line">    &#125; = this.state;</span><br><span class="line">    return (</span><br><span class="line">      &lt;View style=&#123;styles.suggestion&#125;&gt;</span><br><span class="line">          &lt;Text style=&#123;&#123;color: &apos;white&apos;,fontSize: 20,marginBottom: 20,marginTop: 20,marginLeft: 20&#125;&#125;&gt;生活建议&lt;/Text&gt;</span><br><span class="line"></span><br><span class="line">          &lt;Text style=&#123;styles.suggestionDes&#125;&gt;空气质量：&#123;suggegstions.air.txt&#125;&lt;/Text&gt;</span><br><span class="line">          &lt;Text style=&#123;styles.suggestionDes&#125;&gt;舒适度：&#123;suggegstions.comf.txt&#125;&lt;/Text&gt;</span><br><span class="line">          &lt;Text style=&#123;styles.suggestionDes&#125;&gt;洗车：&#123;suggegstions.cw.txt&#125;&lt;/Text&gt;</span><br><span class="line">          &lt;Text style=&#123;styles.suggestionDes&#125;&gt;穿衣：&#123;suggegstions.drsg.txt&#125;&lt;/Text&gt;</span><br><span class="line">          &lt;Text style=&#123;styles.suggestionDes&#125;&gt;感冒：&#123;suggegstions.flu.txt&#125;&lt;/Text&gt;</span><br><span class="line">          &lt;Text style=&#123;styles.suggestionDes&#125;&gt;运动：&#123;suggegstions.sport.txt&#125;&lt;/Text&gt;</span><br><span class="line">          &lt;Text style=&#123;styles.suggestionDes&#125;&gt;旅游：&#123;suggegstions.trav.txt&#125;&lt;/Text&gt;</span><br><span class="line">          &lt;Text style=&#123;styles.suggestionDes&#125;&gt;紫外线：&#123;suggegstions.uv.txt&#125;&lt;/Text&gt;</span><br><span class="line">        &lt;/View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>我们主要看<figure class="highlight plain"><figcaption><span>demo，也就慢慢会了基本布局。背景图使用的是[ImageBackground组件](https://github.com/facebook/react-native/tree/9637dd4a1b78d5f6da510b1b4ad10d45d67badbf/Libraries/Image)，首页信息显示使用的是[ScrollView组件](http://facebook.github.io/react-native/docs/scrollview.html)，三天的预报使用的[ListView组件](http://facebook.github.io/react-native/docs/listview.html)，其他的就是其他组件嵌套布局起来的。**这里遇到过的两个阻碍，一是页面背景原先使用Image组件，但是发现他不能够嵌套其他元素；其次就是页面路由，使用的react-navigation的StackNavigator，在这里花费了两天学习，包括他的 [官方demo](https://github.com/react-navigation/react-navigation) [NavigationPlayground](https://expo.io/@react-navigation/NavigationPlayground)（得先下载[Expo app](https://expo.io/tools#client)进行扫面二维码打开）**；</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line">3. 城市列表代码编写</span><br><span class="line">![](http://upload-images.jianshu.io/upload_images/1603505-08b9360366dcfd7e.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line">```javascript</span><br><span class="line">class CityScreen extends React.Component &#123;</span><br><span class="line"></span><br><span class="line">  static navigationOptions = (&#123;navigation&#125;) =&gt; (&#123;</span><br><span class="line">    headerMode: &apos;float&apos;,</span><br><span class="line">    gesturesEnabled: true,</span><br><span class="line">    headerTitle: `$&#123;navigation.state.params.name&#125;`,</span><br><span class="line">    headerLeft:  (</span><br><span class="line">      &lt;TouchableOpacity onPress=&#123;() =&gt; &#123;</span><br><span class="line">          navigation.goBack(null)        </span><br><span class="line">      &#125;&#125;&gt;</span><br><span class="line">        &lt;Image source=&#123;require(&apos;./moments_btn_back.png&apos;)&#125; style=&#123;&#123;marginLeft: 8&#125;&#125;/&gt;    </span><br><span class="line">      &lt;/TouchableOpacity&gt;</span><br><span class="line">      ),</span><br><span class="line">    headerStyle: &#123;</span><br><span class="line">      backgroundColor: &apos;#6666ff&apos;,</span><br><span class="line">    &#125;,</span><br><span class="line">    headerTintColor: &apos;white&apos;,</span><br><span class="line">    headerTitleStyle: &#123;</span><br><span class="line">      fontSize: 20</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">  </span><br><span class="line">    this.state = &#123;</span><br><span class="line">      loading: true,</span><br><span class="line">      currentLevel: 0, // 0:province, 1:city, 2:county;</span><br><span class="line">      provinces: [&#123;&#125;],</span><br><span class="line">      provinceData: &#123;&#125;,</span><br><span class="line">      cityData: &#123;&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    const &#123; navigation &#125; = this.props;</span><br><span class="line">    const &#123; state, setParams, goBack &#125; = navigation;</span><br><span class="line">    const &#123; params, currentLevel &#125; = state;</span><br><span class="line">    if (this.state.loading) &#123;</span><br><span class="line">      return  (&lt;View style=&#123;&#123;flex: 1, justifyContent: &apos;center&apos;, alignItems: &apos;center&apos;&#125;&#125;&gt;</span><br><span class="line">        &lt;ActivityIndicator/&gt;</span><br><span class="line">      &lt;/View&gt;)</span><br><span class="line">    &#125; </span><br><span class="line">    return (</span><br><span class="line">        &lt;FlatList style=&#123;&#123;backgroundColor: &apos;white&apos;&#125;&#125;</span><br><span class="line">          data=&#123;this.state.provinces&#125;</span><br><span class="line">          renderItem=&#123;(&#123;item&#125;) =&gt; &#123; </span><br><span class="line">            return (</span><br><span class="line">              &lt;TouchableOpacity </span><br><span class="line">                  style=&#123;&#123;justifyContent: &apos;center&apos;, alignItems: &apos;center&apos;,height: 44&#125;&#125;</span><br><span class="line">                  onPress=&#123;() =&gt; &#123;</span><br><span class="line">                    setParams(&#123;name: item.name&#125;)</span><br><span class="line">                    let level = this.state.currentLevel</span><br><span class="line">                    if (this.state.currentLevel === 0) &#123;</span><br><span class="line">                      this.state.provinceData = item</span><br><span class="line">                    &#125; else if (this.state.currentLevel === 1) &#123;</span><br><span class="line">                      this.state.cityData = item</span><br><span class="line">                    &#125;</span><br><span class="line">                    if (this.state.currentLevel === 2) &#123;</span><br><span class="line">                      console.log(&quot;goBack&quot;)</span><br><span class="line">                      state.params.callBack(item.weather_id) // 回调</span><br><span class="line">                      goBack(null)</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                      this.state.currentLevel = level + 1</span><br><span class="line">                      setParams(&#123;currentLevel: level + 1&#125;)</span><br><span class="line">                      console.log(this.state.currentLevel)</span><br><span class="line">                      // console.log(this.state.provinceData )</span><br><span class="line">                      this.state.loading = true </span><br><span class="line">                      this.setupData(this.state.currentLevel)</span><br><span class="line">                    &#125;</span><br><span class="line">                  &#125;&#125;&gt;</span><br><span class="line">                  &lt;Text style=&#123;&#123; color: &apos;gray&apos;, fontSize: 20&#125;&#125; &gt;&#123;item.name&#125; &lt;/Text&gt;   </span><br><span class="line">              &lt;/TouchableOpacity&gt;</span><br><span class="line">             </span><br><span class="line">            )&#125; &#125;</span><br><span class="line">          ItemSeparatorComponent=&#123; () =&gt; &#123; return (</span><br><span class="line">            &lt;View style=&#123;&#123;height: 1, backgroundColor: &apos;#eee&apos;&#125;&#125;/&gt; //&lt;/View&gt;</span><br><span class="line">            )&#125;&#125;</span><br><span class="line">          keyExtractor=&#123;</span><br><span class="line">            (item, index) =&gt; item.id</span><br><span class="line">          &#125;</span><br><span class="line">        /&gt;</span><br><span class="line">      )</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    this.setupData(0)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  setupData(level) &#123;</span><br><span class="line">  </span><br><span class="line">    var urlstr = &apos;&apos;</span><br><span class="line">    </span><br><span class="line">    if (level == 0) &#123;</span><br><span class="line">      urlstr = &apos;http://guolin.tech/api/china&apos;</span><br><span class="line">    &#125; else if (level == 1) &#123;</span><br><span class="line">      let provinceData = this.state.provinceData</span><br><span class="line">      console.log(provinceData)</span><br><span class="line">      urlstr = &apos;http://guolin.tech/api/china/&apos; + `$&#123;provinceData.id&#125;`</span><br><span class="line">    &#125; else if (level == 2) &#123;</span><br><span class="line">      let provinceData = this.state.provinceData</span><br><span class="line">      let cityData = this.state.cityData</span><br><span class="line">      urlstr = &apos;http://guolin.tech/api/china/&apos; + `$&#123;provinceData.id&#125;` + &apos;/&apos; + `$&#123;cityData.id&#125;`</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(urlstr)</span><br><span class="line">    fetch(urlstr)</span><br><span class="line">    .then((response) =&gt; response.json())</span><br><span class="line">    .then((responseJson) =&gt; &#123;</span><br><span class="line">      console.log(responseJson)</span><br><span class="line">      this.setState(&#123;</span><br><span class="line">        loading: false,</span><br><span class="line">        provinces: responseJson,</span><br><span class="line">        currentLevel: level,</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch((error) =&gt; &#123;</span><br><span class="line">        console.error(error);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-0bb6cedc239f6743.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="JsFormat设置" title="JsFormat设置"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-940d3547519f9e0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="设置user keybindings file"><br><strong>其次，我们需要设置代码格式化对JSX的支持，如上图JsFormat设置 我们打开Settings-&gt;User</strong> ，并且添加如下json：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">"e4x"</span>: <span class="literal">true</span>, <span class="comment">// 支持jsx</span></span><br><span class="line">	<span class="string">"format_on_save"</span>: <span class="literal">false</span>, <span class="comment">// 保存自动代码格式化，默认也为false，可以不加</span></span><br><span class="line">	<span class="string">"brace_style"</span>: <span class="string">"collapse-preserve-inline"</span>, <span class="comment">// &#123;&#125; 不换行，加与不加的效果自己体验</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当我设置了<code>&quot;format_on_save&quot;: true</code>，我发现使用快捷键自动保存代码，触发代码格式化时有的代码会出现错乱，而且只是在ListView这部分会出现这样的情况，如下gif所示，如果哪位解决这个问题我们可以探讨下。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-c64662381a91777f.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="jsFormat.gif" title="jsFormat.gif"><br>所以当我需要代码格式化时，我一般是选中需要代码格式化的部分进行代码格式化。</p>
+<ol>
+<li><strong>安装语法检测插件<a href="https://github.com/eslint/eslint" target="_blank" rel="noopener">ESLint</a></strong><br><strong>4.1 安装ESLint、以及ESLint插件</strong><br>我选择的是<strong>局部安装</strong>（安装在当前项目目录/node_modules/目录下），（如果全局安装则都使用全局安装，安装在/usr/local/lib/node_modules目录下），在项目根目录下依次，终端依次执行以下命令：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npm install eslint --save-dev</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> npm install eslint-plugin-react --save-dev # ESLint支持React语义JSX的插件</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> npm install eslint-plugin-react-native # React Native 的插件</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> npm install babel-eslint #支持ES6语法的插件</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>安装的时候注意是否出现 <code>UNMET PEER DEPENDENCY</code> 字段，出现了则代表安装失败，那么可以尝试全局安装。<br><strong>4.2 配置<code>.eslintrc</code>文件</strong><br>切换到项目根目录(即包含packge.json的目录下)，执行<code>eslint --init</code><br><img src="http://upload-images.jianshu.io/upload_images/1603505-ca3111e81c81071b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="eslint选项" title="eslint选项"><br>之后在项目根目录生成了一个<code>.eslintrc.json</code>文件，并且配置如下：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"env"</span>: &#123;</span><br><span class="line">        <span class="attr">"es6"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"node"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"react-native/react-native"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"extends"</span>: [<span class="string">"eslint:recommended"</span>, <span class="string">"plugin:react/recommended"</span>,<span class="string">"plugin:react-native/all"</span>],</span><br><span class="line">    <span class="attr">"plugins"</span>: [</span><br><span class="line">        <span class="string">"react"</span>,</span><br><span class="line">        <span class="string">"react-native"</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"parser"</span>: <span class="string">"babel-eslint"</span>,</span><br><span class="line">    <span class="attr">"parserOptions"</span>: &#123; </span><br><span class="line">        <span class="attr">"ecmaVersion"</span>: <span class="number">6</span>,</span><br><span class="line">        <span class="attr">"ecmaFeatures"</span>: &#123;</span><br><span class="line">            <span class="attr">"jsx"</span>: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    "rules": &#123; // 规则，包括React Native语法的规则</span><br><span class="line">        "class-methods-use-this": 0,</span><br><span class="line">        "react-native/no-color-literals": 0,</span><br><span class="line">        "react-native/no-unused-styles": 0,</span><br><span class="line">        "react-native/no-inline-styles": 0,</span><br><span class="line">        "react-native/split-platform-components": 2,</span><br><span class="line">        "no-unused-vars": 0,</span><br><span class="line">        "no-use-before-define": 0,</span><br><span class="line">        "no-console": 0,</span><br><span class="line">        "react/prop-types": 0,</span><br><span class="line">        "react/no-direct-mutation-state": 0</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>想要更详细的配置可以查看下官网的<a href="https://eslint.org/docs/user-guide/configuring" target="_blank" rel="noopener">Configuring ESLint</a>。<br><strong>4.3 安装Sublime插件SublimeLinter、SublimeLinter-contrib-eslint</strong><br>使用package control进行安装，然后配置setting-user文件如下：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"user"</span>: &#123;</span><br><span class="line">        <span class="attr">"debug"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"delay"</span>: <span class="number">0.25</span>,</span><br><span class="line">        <span class="attr">"error_color"</span>: <span class="string">"D02000"</span>,</span><br><span class="line">        <span class="attr">"gutter_theme"</span>: <span class="string">"Packages/SublimeLinter/gutter-themes/Default/Default.gutter-theme"</span>,</span><br><span class="line">        <span class="attr">"gutter_theme_excludes"</span>: [],</span><br><span class="line">        <span class="attr">"lint_mode"</span>: <span class="string">"background"</span>,</span><br><span class="line">        <span class="attr">"linters"</span>: &#123;</span><br><span class="line">            <span class="attr">"eslint"</span>: &#123;</span><br><span class="line">                <span class="attr">"@disable"</span>: <span class="literal">false</span>,</span><br><span class="line">                <span class="attr">"args"</span>: [],</span><br><span class="line">                <span class="attr">"excludes"</span>: []</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">"jsxhint"</span>: &#123;</span><br><span class="line">                <span class="attr">"@disable"</span>: <span class="literal">false</span>,</span><br><span class="line">                <span class="attr">"args"</span>: [],</span><br><span class="line">                <span class="attr">"excludes"</span>: []</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"mark_style"</span>: <span class="string">"outline"</span>,</span><br><span class="line">        <span class="attr">"no_column_highlights_line"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"passive_warnings"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"paths"</span>: &#123;</span><br><span class="line">            <span class="attr">"linux"</span>: [],</span><br><span class="line">            <span class="attr">"osx"</span>: [],</span><br><span class="line">            <span class="attr">"windows"</span>: []</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"python_paths"</span>: &#123;</span><br><span class="line">            <span class="attr">"linux"</span>: [],</span><br><span class="line">            <span class="attr">"osx"</span>: [],</span><br><span class="line">            <span class="attr">"windows"</span>: []</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"rc_search_limit"</span>: <span class="number">3</span>,</span><br><span class="line">        <span class="attr">"shell_timeout"</span>: <span class="number">10</span>,</span><br><span class="line">        <span class="attr">"show_errors_on_save"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"show_marks_in_minimap"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"syntax_map"</span>: &#123;</span><br><span class="line">            <span class="attr">"html (django)"</span>: <span class="string">"html"</span>,</span><br><span class="line">            <span class="attr">"html (rails)"</span>: <span class="string">"html"</span>,</span><br><span class="line">            <span class="attr">"html 5"</span>: <span class="string">"html"</span>,</span><br><span class="line">            <span class="attr">"javascript (babel)"</span>: <span class="string">"javascript"</span>,</span><br><span class="line">            <span class="attr">"magicpython"</span>: <span class="string">"python"</span>,</span><br><span class="line">            <span class="attr">"php"</span>: <span class="string">"html"</span>,</span><br><span class="line">            <span class="attr">"python django"</span>: <span class="string">"python"</span>,</span><br><span class="line">            <span class="attr">"pythonimproved"</span>: <span class="string">"python"</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">"tooltip_fontsize"</span>: <span class="string">"1rem"</span>,</span><br><span class="line">        <span class="attr">"tooltip_theme"</span>: <span class="string">"Packages/SublimeLinter/tooltip-themes/Default/Default.tooltip-theme"</span>,</span><br><span class="line">        <span class="attr">"tooltip_theme_excludes"</span>: [],</span><br><span class="line">        <span class="attr">"tooltips"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"use_current_shell_path"</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">"warning_color"</span>: <span class="string">"DDB700"</span>,</span><br><span class="line">        <span class="attr">"wrap_find"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-5ba86db405656bd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="settings-user" title="settings-user"><br>效果如下：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-7b7bdfe84c5af893.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="静态语法检测效果"></p>
+<h2 id="二、代码篇"><a href="#二、代码篇" class="headerlink" title="二、代码篇"></a>二、代码篇</h2><p><strong>悦月天气这个app比较简单（<a href="https://github.com/XcqRomance/Weather-ReactNative" target="_blank" rel="noopener">GitHub代码地址</a>），主要有两部分：城市天气展示界面，选择城市界面。</strong>首页的天气预报的接口使用的是和风天气免费的每天1000次访问的API，城市列表数据使用的郭霖的第一行代码的接口。下面是一套RN代码分别在iPhone6模拟器和android模拟器的效果，<strong>代码复用率几乎为100%</strong>。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-e9f2ddf9991126f1.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="android_weather.gif" title="android_weather.gif"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-3c85db03a22b5261.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ios_weather.gif" title="ios_weather.gif"></p>
+<p>开发这个app花费我总共一周的时间，包括去学习RN最基本的 <code>JSX语法、组件、state状态以及props</code>，到现在全部完成整个app，到目前为止，我也只能算是懂一点皮毛，至于要更加深入的理解、使用，则需要更多的实践和学习，所以这代码部分我更多的是以一个初学者的身份来怎么快速进行编码和解决问题。至于学习教程我建议使用<a href="http://facebook.github.io/react-native/" target="_blank" rel="noopener">React Native官网的资料</a>，而不是<a href="http://reactnative.cn" target="_blank" rel="noopener">React Native 中文网</a>，但是这个就需要一点英语基础了，遇到实在不懂的，完全可以使用翻译工具解决，看原始英文文档的好处是可以接触最新的技术，同时提升自己的英语水平。比如下面要提及的比如<br><code>create-react-native-app、Expo</code>等等技术。</p>
+<ol>
+<li>创建项目：<a href="https://github.com/react-community/create-react-native-app" target="_blank" rel="noopener">create-react-native-app</a><br>我使用的是终端命令：<code>create-react-native-app DailyWeather</code>而不是<code>react-native init DailyWeather</code>来创建的项目。这二者最大的区别就是，前者没有嵌入式，直接npm start或者yarn start就能运行项目，再结合<a href="https://expo.io/tools#client" target="_blank" rel="noopener">Expo app</a>就能在模拟器实时查看运行效果，没有ios和android这两个文件目录，一个纯js项目，不能通过Xcode或者Android Studio开发工具打开项目进行配置。由于我这个app的icon图标和启动图片是使用原生配置，所以需要执行<code>npm run eject</code>或<code>yarn run eject</code>命令，生成这两个ios和android目录，然后通过配置Xcode和Android Studio来配置icon图标和启动页。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-dae01f5ebd637270.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="create-react-native-app DailyWeather项目目录" title="create-react-native-app DailyWeather项目目录"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-aae7d50be1a5db7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="react-native init DailyWeather 以及 yarn run eject后项目目录" title="react-native init DailyWeather 以及 yarn run eject后项目目录"></li>
+<li><p>运行项目<br>在项目目录执行<code>yarn run eject</code>之前（也就是有ios和android两个工程项目目录之前），我是直接执行<code>yarn start</code>启动一个开发服务器，然后在模拟器或者手机上使用Expo app 打开悦月天气app进行开发调试；之后我就直接通过Xcode和Android Studio分别打开项目然后运行在模拟器上，运行之前得先将<code>AppDelegate.m</code>的第21行代码<code>jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@&quot;index&quot; fallbackResource:nil];</code>改为<code>jsCodeLocation = [NSURL URLWithString:@&quot;http://127.0.0.1:8081/index.bundle?platform=ios&amp;dev=true&quot;];</code>否则运行将报错：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-79c01b39ee1a9797.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>首页代码编写<br><img src="http://upload-images.jianshu.io/upload_images/1603505-11ea750b4fdd3b6a.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HomeScreen</span> <span class="keyword">extends</span> <span class="title">Component</span> &lt; </span>&#123;&#125; &gt; &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//组件的构造方法，在组建创建的时候调用</span></span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">var</span> ds = <span class="keyword">new</span> ListView.DataSource(&#123;</span><br><span class="line">      rowHasChanged: <span class="function">(<span class="params">r1, r2</span>) =&gt;</span> r1 !== r2</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      isLoading: <span class="literal">true</span>,</span><br><span class="line">      quiltyColor: <span class="literal">true</span>,</span><br><span class="line">      refreshing: <span class="literal">false</span>,</span><br><span class="line">      dataSource: ds,</span><br><span class="line">      suggegstions: &#123;&#125;, <span class="comment">// 代表一个空json,生活建议</span></span><br><span class="line">      aqi: &#123;&#125;, <span class="comment">// aqi</span></span><br><span class="line">      basic: &#123;&#125;,</span><br><span class="line">      title: <span class="string">'海淀'</span> <span class="comment">// 默认获取海淀区的天气</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 页面的渲染</span></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.state.isLoading) &#123;</span><br><span class="line">      <span class="keyword">return</span> (</span><br><span class="line">        &lt;View style=&#123;&#123;<span class="attr">flex</span>: <span class="number">1</span>, <span class="attr">justifyContent</span>: <span class="string">'center'</span>, <span class="attr">alignItems</span>: <span class="string">'center'</span>&#125;&#125;&gt;</span><br><span class="line">          &lt;ActivityIndicator/&gt;</span><br><span class="line">        &lt;<span class="regexp">/View&gt;</span></span><br><span class="line"><span class="regexp">      )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    return (</span></span><br><span class="line"><span class="regexp">      &lt;View style=&#123;&#123;flex: 1&#125;&#125;&gt;</span></span><br><span class="line"><span class="regexp">        &#123;/</span>*北京图*<span class="regexp">/&#125;</span></span><br><span class="line"><span class="regexp">        &lt;ImageBackground source=&#123;&#123;uri: 'http:/</span><span class="regexp">/cn.bing.com/</span>az/hprichbg/rb/BarHarborCave_ROW9345444229_1920x1080.jpg<span class="string">'&#125;&#125;  style=&#123;&#123;width: screenWidth, height: screenHeight&#125;&#125;&gt;</span></span><br><span class="line"><span class="string">          &lt;ScrollView style = &#123;&#123;flex: 1&#125;&#125; </span></span><br><span class="line"><span class="string">            refreshControl=&#123;</span></span><br><span class="line"><span class="string">              &lt;RefreshControl refreshing=&#123;this.state.refreshing&#125; onRefresh=&#123;this._onRefresh.bind(this)&#125;/&gt;</span></span><br><span class="line"><span class="string">            &#125;&gt;</span></span><br><span class="line"><span class="string">            &#123;/*渲染头部信息*/&#125;</span></span><br><span class="line"><span class="string">            &#123;this.reanderHeader()&#125;</span></span><br><span class="line"><span class="string">            &#123;/*渲染天气预报列表*/&#125;</span></span><br><span class="line"><span class="string">            &#123;this.reanderForecast()&#125;</span></span><br><span class="line"><span class="string">            &#123;/*渲染天气质量*/&#125;</span></span><br><span class="line"><span class="string">            &#123;this.renderAirquilty()&#125;</span></span><br><span class="line"><span class="string">            &#123;/*渲染生活指数*/&#125;</span></span><br><span class="line"><span class="string">            &#123;this.renderSuggestion()&#125;</span></span><br><span class="line"><span class="string">          &lt;/ScrollView&gt; </span></span><br><span class="line"><span class="string">        &lt;/ImageBackground&gt;</span></span><br><span class="line"><span class="string">      &lt;/View&gt;</span></span><br><span class="line"><span class="string">    );</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  _onRefresh() &#123;</span></span><br><span class="line"><span class="string">    this.setupData(this.state.title);</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  // 组件已经装载，绘制完毕调用</span></span><br><span class="line"><span class="string">  componentDidMount() &#123;</span></span><br><span class="line"><span class="string">    console.log(screenWidth)</span></span><br><span class="line"><span class="string">    console.log(screenHeight)</span></span><br><span class="line"><span class="string">    this.setupData(this.state.title);</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  // 组件即将卸载，组件要被从界面上移除时调用</span></span><br><span class="line"><span class="string">  componentWillUnmount() &#123;</span></span><br><span class="line"><span class="string">    console.log('</span>HomeScreen<span class="string">','</span>componentWillUnmount<span class="string">')</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  setupData(cityname) &#123;</span></span><br><span class="line"><span class="string">    // cityid可以使用cityid 也可以使用 城市名，选择城市回调回来</span></span><br><span class="line"><span class="string">    let urlstr = '</span>http:<span class="comment">//guolin.tech/api/weather?key=41dd96cb90344217acbf5fe0813f16cd' + '&amp;cityid=' + cityname</span></span><br><span class="line">    <span class="built_in">console</span>.log(urlstr)</span><br><span class="line">    fetch(urlstr)</span><br><span class="line">      .then(<span class="function">(<span class="params">response</span>) =&gt;</span> response.json())</span><br><span class="line">      .then(<span class="function">(<span class="params">responseJson</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'success1'</span>, responseJson);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'success2'</span>, responseJson.HeWeather[<span class="number">0</span>].daily_forecast);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'success3'</span>, responseJson.HeWeather[<span class="number">0</span>].suggestion);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">          refreshing: <span class="literal">false</span>,</span><br><span class="line">          isLoading: <span class="literal">false</span>,</span><br><span class="line">          dataSource: <span class="keyword">this</span>.state.dataSource.cloneWithRows(responseJson.HeWeather[<span class="number">0</span>].daily_forecast),</span><br><span class="line">          suggegstions: responseJson.HeWeather[<span class="number">0</span>].suggestion,</span><br><span class="line">          aqi: responseJson.HeWeather[<span class="number">0</span>].aqi,</span><br><span class="line">          title: responseJson.HeWeather[<span class="number">0</span>].basic.city,</span><br><span class="line">          des: responseJson.HeWeather[<span class="number">0</span>].now.cond.txt,</span><br><span class="line">          temp: responseJson.HeWeather[<span class="number">0</span>].now.tmp,</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">      .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(error);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  reanderHeader() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;View style=&#123;styles.header&#125;&gt;</span><br><span class="line"></span><br><span class="line">            &lt;View style=&#123;&#123;<span class="attr">flexDirection</span>: <span class="string">'row'</span>, <span class="attr">alignItems</span>: <span class="string">'center'</span> ,<span class="attr">marginTop</span>: <span class="number">44</span>, <span class="attr">marginBottom</span>: <span class="number">10</span>&#125;&#125;&gt;</span><br><span class="line">              &lt;Text style=&#123;styles.headerTitle&#125;&gt;&#123;<span class="keyword">this</span>.state.title&#125;&lt;<span class="regexp">/Text&gt;</span></span><br><span class="line"><span class="regexp">              &lt;TouchableOpacity onPress=&#123;() =&gt; this.props.navigation.navigate('City',&#123;name: this.state.title, currentLevel: 0, callBack: (data) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">                  console.log(data) /</span><span class="regexp">/ weather_id</span></span><br><span class="line"><span class="regexp">                  this.setupData(data);</span></span><br><span class="line"><span class="regexp">                &#125;&#125;)&#125;&gt;</span></span><br><span class="line"><span class="regexp">                &lt;Image source=&#123;require('./</span>address.png<span class="string">')&#125;/&gt;</span></span><br><span class="line"><span class="string">              &lt;/TouchableOpacity&gt;</span></span><br><span class="line"><span class="string">            &lt;/View&gt;</span></span><br><span class="line"><span class="string">            &lt;Text style=&#123;styles.headerDes&#125;&gt;&#123;this.state.des&#125;&lt;/Text&gt;</span></span><br><span class="line"><span class="string">            &lt;Text style=&#123;styles.headerTepe&#125;&gt;&#123;this.state.temp&#125;℃&lt;/Text&gt;</span></span><br><span class="line"><span class="string">      &lt;/View&gt;</span></span><br><span class="line"><span class="string">    );</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  reanderForecast() &#123;</span></span><br><span class="line"><span class="string">    return (</span></span><br><span class="line"><span class="string">      &lt;View style=&#123;styles.forecast&#125;&gt;</span></span><br><span class="line"><span class="string">            &lt;Text style=&#123;&#123;color: '</span>white<span class="string">', fontSize: 20, marginBottom: 10&#125;&#125;&gt;预报&lt;/Text&gt;</span></span><br><span class="line"><span class="string">            &lt;ListView </span></span><br><span class="line"><span class="string">              dataSource=&#123;this.state.dataSource&#125;</span></span><br><span class="line"><span class="string">              renderRow=&#123;(rowData) =&gt;  (</span></span><br><span class="line"><span class="string">                &lt;View style=&#123;styles.listView&#125;&gt;</span></span><br><span class="line"><span class="string">                  &lt;Text style=&#123;&#123;color: '</span>white<span class="string">',flex: 1&#125;&#125;&gt;&#123;rowData.date&#125;&lt;/Text&gt;</span></span><br><span class="line"><span class="string">                  &lt;Text style=&#123;&#123;color: '</span>white<span class="string">',flex: 1&#125;&#125;&gt;&#123;rowData.cond.txt_d&#125;&lt;/Text&gt;</span></span><br><span class="line"><span class="string">                  &lt;Text style=&#123;&#123;color: '</span>white<span class="string">',flex: 1&#125;&#125;&gt;&#123;rowData.tmp.max&#125;&lt;/Text&gt;</span></span><br><span class="line"><span class="string">                  &lt;Text style=&#123;&#123;color: '</span>white<span class="string">',flex: 1&#125;&#125;&gt;&#123;rowData.tmp.min&#125;&lt;/Text&gt;</span></span><br><span class="line"><span class="string">                &lt;/View&gt;</span></span><br><span class="line"><span class="string">              )&#125;/&gt; </span></span><br><span class="line"><span class="string">      &lt;/View&gt;</span></span><br><span class="line"><span class="string">    );</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  renderAirquilty() &#123;</span></span><br><span class="line"><span class="string">    let &#123;</span></span><br><span class="line"><span class="string">      aqi</span></span><br><span class="line"><span class="string">    &#125; = this.state;</span></span><br><span class="line"><span class="string">    return (</span></span><br><span class="line"><span class="string">      &lt;View&gt;</span></span><br><span class="line"><span class="string">          &lt;View style=&#123;styles.suggestion&#125;&gt;</span></span><br><span class="line"><span class="string">            &lt;View style=&#123;&#123;flexDirection: '</span>row<span class="string">',justifyContent: '</span>flex-start<span class="string">', alignItems: '</span>center<span class="string">',padding: 20&#125;&#125;&gt;</span></span><br><span class="line"><span class="string">              &lt;Text style=&#123;&#123;color: '</span>white<span class="string">',fontSize: 20&#125;&#125;&gt;空气质量：&lt;/Text&gt;</span></span><br><span class="line"><span class="string">              &lt;Text style=&#123;&#123;color: '</span>red<span class="string">',fontSize: 17&#125;&#125;&gt;&#123;aqi.city.qlty&#125;&lt;/Text&gt;</span></span><br><span class="line"><span class="string">            &lt;/View&gt;</span></span><br><span class="line"><span class="string">            &lt;View style=&#123;&#123;flex: 1,flexDirection: '</span>row<span class="string">'&#125;&#125;&gt;</span></span><br><span class="line"><span class="string">              &lt;View style=&#123;&#123;flex: 1, alignItems: '</span>center<span class="string">' &#125;&#125;&gt;</span></span><br><span class="line"><span class="string">                &lt;Text style=&#123;styles.airQuiltyDes&#125;&gt;AQI指数&lt;/Text&gt;</span></span><br><span class="line"><span class="string">                &lt;Text style=&#123;styles.airQuiltyValue&#125;&gt;&#123;aqi.city.aqi&#125;&lt;/Text&gt;</span></span><br><span class="line"><span class="string">              &lt;/View&gt;</span></span><br><span class="line"><span class="string">              &lt;View style=&#123;&#123;flex: 1, alignItems: '</span>center<span class="string">' &#125;&#125;&gt;</span></span><br><span class="line"><span class="string">                &lt;Text style=&#123;styles.airQuiltyDes&#125;&gt;PM2.5&lt;/Text&gt;</span></span><br><span class="line"><span class="string">                &lt;Text style=&#123;styles.airQuiltyValue&#125;&gt;&#123;aqi.city.pm25&#125;&lt;/Text&gt;</span></span><br><span class="line"><span class="string">              &lt;/View&gt;</span></span><br><span class="line"><span class="string">            &lt;/View&gt;</span></span><br><span class="line"><span class="string">            &lt;View style=&#123;&#123;flex: 1,flexDirection: '</span>row<span class="string">'&#125;&#125;&gt;</span></span><br><span class="line"><span class="string">              &lt;View style=&#123;&#123;flex: 1,alignItems: '</span>center<span class="string">' &#125;&#125;&gt;</span></span><br><span class="line"><span class="string">                &lt;Text style=&#123;styles.airQuiltyDes&#125;&gt;PM10&lt;/Text&gt;</span></span><br><span class="line"><span class="string">                &lt;Text style=&#123;styles.airQuiltyValue&#125;&gt;&#123;aqi.city.pm10&#125;&lt;/Text&gt;</span></span><br><span class="line"><span class="string">              &lt;/View&gt;</span></span><br><span class="line"><span class="string">              &lt;View style=&#123;&#123;flex: 1, alignItems: '</span>center<span class="string">' &#125;&#125;&gt;</span></span><br><span class="line"><span class="string">                &lt;Text style=&#123;styles.airQuiltyDes&#125;&gt;O3指数&lt;/Text&gt;</span></span><br><span class="line"><span class="string">                &lt;Text style=&#123;styles.airQuiltyValue&#125;&gt;&#123;aqi.city.o3&#125;&lt;/Text&gt;</span></span><br><span class="line"><span class="string">              &lt;/View&gt;</span></span><br><span class="line"><span class="string">            &lt;/View&gt;</span></span><br><span class="line"><span class="string">          &lt;/View&gt;</span></span><br><span class="line"><span class="string">        &lt;/View&gt;</span></span><br><span class="line"><span class="string">    )</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  renderSuggestion() &#123;</span></span><br><span class="line"><span class="string">    let &#123;</span></span><br><span class="line"><span class="string">      suggegstions</span></span><br><span class="line"><span class="string">    &#125; = this.state;</span></span><br><span class="line"><span class="string">    return (</span></span><br><span class="line"><span class="string">      &lt;View style=&#123;styles.suggestion&#125;&gt;</span></span><br><span class="line"><span class="string">          &lt;Text style=&#123;&#123;color: '</span>white<span class="string">',fontSize: 20,marginBottom: 20,marginTop: 20,marginLeft: 20&#125;&#125;&gt;生活建议&lt;/Text&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">          &lt;Text style=&#123;styles.suggestionDes&#125;&gt;空气质量：&#123;suggegstions.air.txt&#125;&lt;/Text&gt;</span></span><br><span class="line"><span class="string">          &lt;Text style=&#123;styles.suggestionDes&#125;&gt;舒适度：&#123;suggegstions.comf.txt&#125;&lt;/Text&gt;</span></span><br><span class="line"><span class="string">          &lt;Text style=&#123;styles.suggestionDes&#125;&gt;洗车：&#123;suggegstions.cw.txt&#125;&lt;/Text&gt;</span></span><br><span class="line"><span class="string">          &lt;Text style=&#123;styles.suggestionDes&#125;&gt;穿衣：&#123;suggegstions.drsg.txt&#125;&lt;/Text&gt;</span></span><br><span class="line"><span class="string">          &lt;Text style=&#123;styles.suggestionDes&#125;&gt;感冒：&#123;suggegstions.flu.txt&#125;&lt;/Text&gt;</span></span><br><span class="line"><span class="string">          &lt;Text style=&#123;styles.suggestionDes&#125;&gt;运动：&#123;suggegstions.sport.txt&#125;&lt;/Text&gt;</span></span><br><span class="line"><span class="string">          &lt;Text style=&#123;styles.suggestionDes&#125;&gt;旅游：&#123;suggegstions.trav.txt&#125;&lt;/Text&gt;</span></span><br><span class="line"><span class="string">          &lt;Text style=&#123;styles.suggestionDes&#125;&gt;紫外线：&#123;suggegstions.uv.txt&#125;&lt;/Text&gt;</span></span><br><span class="line"><span class="string">        &lt;/View&gt;</span></span><br><span class="line"><span class="string">    );</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>我们主要看<code>render()</code>方法，这个方法主要进行页面的渲染。说实话，刚开始使用Flexbox布局时还真别扭（使用iOS布局技术AutoLayout久了），最后按照使用Flexbox倒腾了几个 demo，也就慢慢会了基本布局。背景图使用的是<a href="https://github.com/facebook/react-native/tree/9637dd4a1b78d5f6da510b1b4ad10d45d67badbf/Libraries/Image" target="_blank" rel="noopener">ImageBackground组件</a>，首页信息显示使用的是<a href="http://facebook.github.io/react-native/docs/scrollview.html" target="_blank" rel="noopener">ScrollView组件</a>，三天的预报使用的<a href="http://facebook.github.io/react-native/docs/listview.html" target="_blank" rel="noopener">ListView组件</a>，其他的就是其他组件嵌套布局起来的。<strong>这里遇到过的两个阻碍，一是页面背景原先使用Image组件，但是发现他不能够嵌套其他元素；其次就是页面路由，使用的react-navigation的StackNavigator，在这里花费了两天学习，包括他的 <a href="https://github.com/react-navigation/react-navigation" target="_blank" rel="noopener">官方demo</a> <a href="https://expo.io/@react-navigation/NavigationPlayground" target="_blank" rel="noopener">NavigationPlayground</a>（得先下载<a href="https://expo.io/tools#client" target="_blank" rel="noopener">Expo app</a>进行扫面二维码打开）</strong>；</p>
+<ol>
+<li>城市列表代码编写<br><img src="http://upload-images.jianshu.io/upload_images/1603505-08b9360366dcfd7e.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CityScreen</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> navigationOptions = <span class="function">(<span class="params">&#123;navigation&#125;</span>) =&gt;</span> (&#123;</span><br><span class="line">    headerMode: <span class="string">'float'</span>,</span><br><span class="line">    gesturesEnabled: <span class="literal">true</span>,</span><br><span class="line">    headerTitle: <span class="string">`<span class="subst">$&#123;navigation.state.params.name&#125;</span>`</span>,</span><br><span class="line">    headerLeft:  (</span><br><span class="line">      &lt;TouchableOpacity onPress=&#123;() =&gt; &#123;</span><br><span class="line">          navigation.goBack(<span class="literal">null</span>)        </span><br><span class="line">      &#125;&#125;&gt;</span><br><span class="line">        &lt;Image source=&#123;<span class="built_in">require</span>(<span class="string">'./moments_btn_back.png'</span>)&#125; style=&#123;&#123;<span class="attr">marginLeft</span>: <span class="number">8</span>&#125;&#125;/&gt;    </span><br><span class="line">      &lt;<span class="regexp">/TouchableOpacity&gt;</span></span><br><span class="line"><span class="regexp">      ),</span></span><br><span class="line"><span class="regexp">    headerStyle: &#123;</span></span><br><span class="line"><span class="regexp">      backgroundColor: '#6666ff',</span></span><br><span class="line"><span class="regexp">    &#125;,</span></span><br><span class="line"><span class="regexp">    headerTintColor: 'white',</span></span><br><span class="line"><span class="regexp">    headerTitleStyle: &#123;</span></span><br><span class="line"><span class="regexp">      fontSize: 20</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  constructor(props) &#123;</span></span><br><span class="line"><span class="regexp">    super(props);</span></span><br><span class="line"><span class="regexp">  </span></span><br><span class="line"><span class="regexp">    this.state = &#123;</span></span><br><span class="line"><span class="regexp">      loading: true,</span></span><br><span class="line"><span class="regexp">      currentLevel: 0, /</span><span class="regexp">/ 0:province, 1:city, 2:county;</span></span><br><span class="line"><span class="regexp">      provinces: [&#123;&#125;],</span></span><br><span class="line"><span class="regexp">      provinceData: &#123;&#125;,</span></span><br><span class="line"><span class="regexp">      cityData: &#123;&#125;</span></span><br><span class="line"><span class="regexp">    &#125;;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  render() &#123;</span></span><br><span class="line"><span class="regexp">    const &#123; navigation &#125; = this.props;</span></span><br><span class="line"><span class="regexp">    const &#123; state, setParams, goBack &#125; = navigation;</span></span><br><span class="line"><span class="regexp">    const &#123; params, currentLevel &#125; = state;</span></span><br><span class="line"><span class="regexp">    if (this.state.loading) &#123;</span></span><br><span class="line"><span class="regexp">      return  (&lt;View style=&#123;&#123;flex: 1, justifyContent: 'center', alignItems: 'center'&#125;&#125;&gt;</span></span><br><span class="line"><span class="regexp">        &lt;ActivityIndicator/</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/View&gt;)</span></span><br><span class="line"><span class="regexp">    &#125; </span></span><br><span class="line"><span class="regexp">    return (</span></span><br><span class="line"><span class="regexp">        &lt;FlatList style=&#123;&#123;backgroundColor: 'white'&#125;&#125;</span></span><br><span class="line"><span class="regexp">          data=&#123;this.state.provinces&#125;</span></span><br><span class="line"><span class="regexp">          renderItem=&#123;(&#123;item&#125;) =&gt; &#123; </span></span><br><span class="line"><span class="regexp">            return (</span></span><br><span class="line"><span class="regexp">              &lt;TouchableOpacity </span></span><br><span class="line"><span class="regexp">                  style=&#123;&#123;justifyContent: 'center', alignItems: 'center',height: 44&#125;&#125;</span></span><br><span class="line"><span class="regexp">                  onPress=&#123;() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">                    setParams(&#123;name: item.name&#125;)</span></span><br><span class="line"><span class="regexp">                    let level = this.state.currentLevel</span></span><br><span class="line"><span class="regexp">                    if (this.state.currentLevel === 0) &#123;</span></span><br><span class="line"><span class="regexp">                      this.state.provinceData = item</span></span><br><span class="line"><span class="regexp">                    &#125; else if (this.state.currentLevel === 1) &#123;</span></span><br><span class="line"><span class="regexp">                      this.state.cityData = item</span></span><br><span class="line"><span class="regexp">                    &#125;</span></span><br><span class="line"><span class="regexp">                    if (this.state.currentLevel === 2) &#123;</span></span><br><span class="line"><span class="regexp">                      console.log("goBack")</span></span><br><span class="line"><span class="regexp">                      state.params.callBack(item.weather_id) /</span><span class="regexp">/ 回调</span></span><br><span class="line"><span class="regexp">                      goBack(null)</span></span><br><span class="line"><span class="regexp">                    &#125; else &#123;</span></span><br><span class="line"><span class="regexp">                      this.state.currentLevel = level + 1</span></span><br><span class="line"><span class="regexp">                      setParams(&#123;currentLevel: level + 1&#125;)</span></span><br><span class="line"><span class="regexp">                      console.log(this.state.currentLevel)</span></span><br><span class="line"><span class="regexp">                      /</span><span class="regexp">/ console.log(this.state.provinceData )</span></span><br><span class="line"><span class="regexp">                      this.state.loading = true </span></span><br><span class="line"><span class="regexp">                      this.setupData(this.state.currentLevel)</span></span><br><span class="line"><span class="regexp">                    &#125;</span></span><br><span class="line"><span class="regexp">                  &#125;&#125;&gt;</span></span><br><span class="line"><span class="regexp">                  &lt;Text style=&#123;&#123; color: 'gray', fontSize: 20&#125;&#125; &gt;&#123;item.name&#125; &lt;/</span>Text&gt;   </span><br><span class="line">              &lt;<span class="regexp">/TouchableOpacity&gt;</span></span><br><span class="line"><span class="regexp">             </span></span><br><span class="line"><span class="regexp">            )&#125; &#125;</span></span><br><span class="line"><span class="regexp">          ItemSeparatorComponent=&#123; () =&gt; &#123; return (</span></span><br><span class="line"><span class="regexp">            &lt;View style=&#123;&#123;height: 1, backgroundColor: '#eee'&#125;&#125;/</span>&gt; <span class="comment">//&lt;/View&gt;</span></span><br><span class="line">            )&#125;&#125;</span><br><span class="line">          keyExtractor=&#123;</span><br><span class="line">            (item, index) =&gt; item.id</span><br><span class="line">          &#125;</span><br><span class="line">        /&gt;</span><br><span class="line">      )</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setupData(<span class="number">0</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  setupData(level) &#123;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">var</span> urlstr = <span class="string">''</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (level == <span class="number">0</span>) &#123;</span><br><span class="line">      urlstr = <span class="string">'http://guolin.tech/api/china'</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (level == <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">let</span> provinceData = <span class="keyword">this</span>.state.provinceData</span><br><span class="line">      <span class="built_in">console</span>.log(provinceData)</span><br><span class="line">      urlstr = <span class="string">'http://guolin.tech/api/china/'</span> + <span class="string">`<span class="subst">$&#123;provinceData.id&#125;</span>`</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (level == <span class="number">2</span>) &#123;</span><br><span class="line">      <span class="keyword">let</span> provinceData = <span class="keyword">this</span>.state.provinceData</span><br><span class="line">      <span class="keyword">let</span> cityData = <span class="keyword">this</span>.state.cityData</span><br><span class="line">      urlstr = <span class="string">'http://guolin.tech/api/china/'</span> + <span class="string">`<span class="subst">$&#123;provinceData.id&#125;</span>`</span> + <span class="string">'/'</span> + <span class="string">`<span class="subst">$&#123;cityData.id&#125;</span>`</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(urlstr)</span><br><span class="line">    fetch(urlstr)</span><br><span class="line">    .then(<span class="function">(<span class="params">response</span>) =&gt;</span> response.json())</span><br><span class="line">    .then(<span class="function">(<span class="params">responseJson</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(responseJson)</span><br><span class="line">      <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">        loading: <span class="literal">false</span>,</span><br><span class="line">        provinces: responseJson,</span><br><span class="line">        currentLevel: level,</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(error);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <p>列表我是用的是<a href="http://facebook.github.io/react-native/docs/using-a-listview.html" target="_blank" rel="noopener">FlatList组件</a>，这个页面遇到的阻碍有两个，一是点击item更换navigation的headertitle；二是最后的点击城市回调数据给首页同时更新首页数据。</p>
-<p>###总结<br><strong>你可能会说这个app很简单，的确他很简单（比如没有地图，没有数据持久化等等，未来说不定就有了），只是一个简单的界面展示。但是只有当你真正实践去开发一个属于你的app时，你会发现其实过程没有你想的简单；但是当你完成时，你就会感觉小有成就，特别是能够分享出去，让更多的人看到。</strong>前两天看到池建强老师的2018技术趋势预测，移动开发学点js也很不错。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><strong>你可能会说这个app很简单，的确他很简单（比如没有地图，没有数据持久化等等，未来说不定就有了），只是一个简单的界面展示。但是只有当你真正实践去开发一个属于你的app时，你会发现其实过程没有你想的简单；但是当你完成时，你就会感觉小有成就，特别是能够分享出去，让更多的人看到。</strong>前两天看到池建强老师的2018技术趋势预测，移动开发学点js也很不错。</p>
 
           
         
@@ -384,7 +400,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/05/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/17/2016-12-17/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Romance">
@@ -393,7 +409,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Romance">
+      <meta itemprop="name" content="Romance的修行之路">
     </span>
 
     
@@ -403,7 +419,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/05/hello-world/" itemprop="url">Hello World</a></h1>
+                <a class="post-title-link" href="/2016/12/17/2016-12-17/" itemprop="url">我的2016年个人总结</a></h1>
         
 
         <div class="post-meta">
@@ -415,8 +431,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-05T13:57:54+08:00">
-                2018-01-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-17T00:51:57+08:00">
+                2016-12-17
               </time>
             
 
@@ -455,15 +471,645 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+            <p>转眼2016还剩不到半个月的时间，想着年初简书第一篇文章写的2016年计划以及立下的目标，现在看了看，真是差了老远！为了生活的苟且，斗志也被生活慢慢消磨！甚至把时间消耗在每天无所事事的刷刷朋友圈以及微博的八卦上面（我粗略统计了下自己花费在这上面的时间每天至少两个小时）。安逸的生活过惯了！真的就没有当初斗志和激情，对编程也没有了之前的热爱！<strong>于此同时，我也有些迷茫，我一直在思考我的一生该怎么度过？我这么努力工作的的意义是什么！我也一直希望我成功的速度，比父母老去的要快。外面的世界很精彩，我一直想去体验！外面的美食很好吃，我想去尝尝，以及父母家人还没有来得及尽孝报恩！我终将一直在寻求答案的路途中。</strong></p>
+<p>在此记录自己2016一年中对工作、生活以及家人的所思所想，见证自己的成长，体验到的人生的酸甜苦辣，以此共勉：</p>
+<h2 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h2><p>作为一个程序员，工作就是整天对着电脑敲敲代码，朝十晚六（不过这一般都很难做到），一般是更晚，项目紧的时候周末加加班是在正常不过的了。平时开开会讨论讨论技术，对对进度，工作闲余和同事们聊聊热点新闻、八卦！晚上回家，玩玩游戏，看看视频！写写文章。这就是程序员的一天生活！<br>我五月底从上家公司辞职，进入了现在的公司。其实那时我挺舍不得的，熟悉的工作环境，熟悉的同事朋友，更重要的是离住的地方近，自己骑自行车10多分钟就到；有的人还经常联系，有的人就随着时间慢慢联系就少了。但是人往高处走，在一个公司呆久了，就不得不考虑自己的发展及未来，以及当时的互联网形势不容乐观。过完年回来我就知道我该走了，毕竟知道自己继续在这呆着已经没有什么发展了也没有学习以及提升的空间了！一旦自己有了清晰的定位之后，我就立马着手简历，应聘职位，不到一周我就拿到面试三家公司，其中两家给了offer！并且选择了我熟悉的，更认可教育公司也就是现在的工作的公司，而非当时火的不行的直播互联网公司！我知道，这就像15年的o2o一样，到年底洗牌的时候一大批做直播肯定会死！现在回头看，确实是明智的选择。<br><strong>进入新的公司，新的环境，一切都很好！我也很快的融入了新的集体，队伍也越来越庞大，做的产品也跟着计划在部署。我需要做的，能够做的是，高效高质的完成自己的工作，不拖团队的后腿，跟着团队走！尽管工作日晚上都得加会班，但是疲惫的心中确实会有一种喜悦感，成就感，自己努力、整个团队努力完成的项目逐渐得到用户的使用和认可。</strong><br>公司的福利和氛围还是非常好的，加班的水果，零食每天都有，零食有大家都爱吃的卫龙牌辣条，鸡翅，鸡爪等等；好多人来了不久，就发现比自己刚公司时胖了好多。公司加班晚餐也很丰盛，几乎一周一次的那个板面是我们很多人所喜爱的，感觉比外面餐馆的还正宗。我们男同胞们在晚餐前后还会来几局桌上足球，这也是一天繁重的工作中唯一的放松休闲的方式。公司9月份还组织了一次丰宁坝上草原的团建活动，看到他们发的图片就知道玩的很嗨。我其实很想去的，当初投票去哪里玩的时候，我就极力推荐去草原，可当时我奶奶突然病重，我就请假回家看奶奶了。</p>
+<p>下面是在公司随机拍摄的点滴：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-ba34f08f212025d2.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="超好玩的桌上足球" title="超好玩的桌上足球"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-f305325b125c1e2e.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="干净整洁的办公区域" title="干净整洁的办公区域"> </p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-f44fcd06ab7f26fa.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="美味的晚餐，也是大家最爱吃的牛肉板面" title="美味的晚餐，也是大家最爱吃的牛肉板面"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-b21688331a87b1db.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我没去成的丰宁坝上草原大合影" title="我没去成的丰宁坝上草原大合影"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-d2113e983226fb12.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一群充满朝气的年轻团队" title="一群充满朝气的年轻团队"></p>
+<h2 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h2><p>网上常有人带讽刺意味的说程序员：人傻，钱多，死的早！但我很不喜欢这样的标签，每个人都有自己的活法，既然选择了这条道，那就冒着头皮也得走下去。不可否认，今年关于程序员猝死的消息还不少，而原因无非就是高强度的工作，连续的加班。可能我也还没真正体验过那种提倡加班文化的公司，如BAT这些互联网大佬公司，所以不知道这究竟是怎样一个强度，当然我也一直想去体验一番。但我在这想说的是：怪自己罗！自己的生命都不珍惜，那能怨谁。身体是革命的本钱！如果公司强制加班，而你有感觉自己扛不住，那可以辞职啊！据说年初才被挖进滴滴的YYKit的作者前段时间从滴滴辞职，原因就是加班。<br><strong>每个人都有自己选择的权利！而我的选择就是工作时候好好工作，周末时间好好生活，好好放松，好好锻炼身体。</strong>我大学四年就有坚持跑步的习惯，晚上有时间就会去操场跑几圈；空闲时间还经常会去打篮球(尽管技术可能不怎样，但开心就好，也经常和几个哥们去球场一起打分组)。和几个哥们来北京工作后，我也坚持跑步（经常从林萃桥地铁站沿着奥林匹克公园那条路跑回家）大汗淋漓一场！那时周末也经常一起约起打篮球、爬爬北京周边的山！后来，北京周边的山都爬过了，也就很少去了。还有就是当初一起来北京的朋友好多因各种原因都回广州、深圳发展了！所以周末能约的人就少了！于是我就自己办了张健身卡，跑跑步，游游泳，练练器械，练练肌肉！还买了辆自行车，加入了骑遍天下骑行俱乐部，认识了很多朋友，俱乐部经常组织骑行活动！也经常跟着俱乐部骑行，去了草原天路，野三坡！还和一个哥们骑行去了天津，那时正好节假日，我的车中途又爆胎，耽误了点时间，不然也不至于晚上才到那里！由于没有提前预定房间，那时真的房间爆满，出来游的人真多，没有多余的房间，我们当时骑遍了天津的酒店都没有房间了，那时感到真的很绝望，晚上又累又饿！最后在一家大众浴池的大堂入宿了一晚，那条件实在是差，因为很多人也没找到房间，都住找到来了，所以什么人都有，看视频放外音的，睡觉打呼的，后半夜还有两人因为床铺打架的，我实在受不了，一整晚都没睡好，第二天骑到香河时实在是不骑不动了！只好叫了辆面的，送到了东五环！到达已到晚上，手机也没电了，没有导航；幸亏帝都好心人多，借用了下手机导航了下，以及向一位大爷问了路，最好才回到家！<strong>通过这事我都长了个心眼，外出远行去一些热门景点节假日期间必须得事先预定房间，否则就只能露宿街头，还有就是手机出门前充满电，以及带一块备用移动电源。</strong>有时工作烦躁时我还会下班回家去刷长安街，从五棵松到国贸，再原路返回每次骑行经过天安门的感觉都不一样！一场大汗淋漓之后，心中顿时轻松许多！我还骑行上下班过一段时间，从西四环到东北三环20来公里一个多小时，可惜前段时间我的爱车在公司楼下被偷了，所以只暂时只能乖乖坐地铁上下班了，明年开春准备买一辆公路自行车！</p>
+<p>下面是我骑行的拍的一些照片：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-ed43b261454b66d3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="草原天路的第一个坡，大家都是推上来的" title="草原天路的第一个坡，大家都是推上来的"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-279ec302849b08b6.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="最美的路牌" title="最美的路牌"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-c50c443ab9ddaa74.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一望无际的草原和大风轮" title="一望无际的草原和大风轮"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-43efa870e385977b.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="美味的烤全羊" title="美味的烤全羊"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-6935828031d897b2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="和我一起天津骑行的哥们" title="和我一起天津骑行的哥们"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-7dd882c194b2315a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="这是骑行者最爱的一个pose" title="这是骑行者最爱的一个pose"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-a35d484bffe87897.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="百里峡大合照" title="百里峡大合照"></p>
+<h2 id="家人"><a href="#家人" class="headerlink" title="家人"></a>家人</h2><p>一个人来北京打拼，远离父母，一年也就回家两三次，最大的愿望是家人身体健康，远离疾病！但是发生的两件事让我很艰难，痛苦！一是上半年父亲汽车追尾，面包车报废，庆幸的是父亲并没什么大碍，另一件是奶奶去世，则让我至今都没有缓过神来，我现在都有些不相信奶奶就这样去世了，就这样离我而去，甚至不时的在某个深夜从梦中惊醒时都会痛哭流泪。这一切都来得太突然，而我却是在电话里听到这个噩耗，我以为平时这么健朗的奶奶肯定没什么大毛病，我以为国庆我回家见奶奶还是会使那个过年我回北京工作时候在我耳边唠叨这唠叨那的那个奶奶。然而这一切将无法实现，<strong>我也没能见到奶奶最后一面！只听姐姐说，奶奶走前眼角流下了一滴泪！我不知道这一滴眼泪代表着什么。但我知道了，尽孝得趁早。知道了离家之后才知道恋家，也真的只有长大之后，自己开始计算生活的时候才知道，父母为了我付出了多少</strong>。<br>我从医生那里得知奶奶时因为蛛网膜下腔出血压迫脑部神经导致坏死而不能说话和病重，直至最后去世，从家里邻居得知奶奶出现状况那天早晨都还去了集市上卖点自己种的小菜，奶奶这一辈子都很勤俭节约，我从记事开始就是跟着奶奶过，父亲因为在家做养猪生意亏本8万多（那是在2000年左右，对于一个农村家庭来说，这可是一笔巨款）被迫南下打工，于是我就一直跟着奶奶，所以和奶奶的感情非常深刻，她经常和我讲她小时候是多么的艰苦，受当时重男轻女的观念的影响，她也没有读过书，也不认识字，我曾想教她学，但真的太费力了，于是也没有学会；还教育我不要浪费粮食（这也让我至今吃饭，碗里的米饭都基本不会剩余，吃多少，打多少的习惯），还说现在的社会怎么怎么好，要我珍惜现在的美好生活，做人也得行得正坐得端，她很喜欢看毛主席相关的电影，家中至今保留关于毛泽东DVD影片都快有上百部了，所以我也经常跟着奶奶一起看，但是她经常将一部电视剧看了一遍又一遍，有时回到家她还经常和我谈论这些剧情，我至今记得有一次回家我放学回家看她在看《毛岸英》，情节刚好是毛岸英牺牲了，她就在那感慨这么好的一个孩子怎么就没了，还和我说毛主席让他儿子上前线是多么多么伟大，叫我要像毛岸英学习。。。他最惋惜毛岸英，而我却一般会受不了她的唠叨直接走开，就去会玩自己的。现在回想起来这些是那么的熟悉，却又是那么的遥远；我以后回家再也无法听到奶奶在我耳边的唠叨。奶奶的去世我还知道了<strong>我们永远不知道下一刻会发生什么，我们也永远不知道明天和意外哪一个先来。我们唯一能做的，只是好好珍惜活着的每一分钟，善待与我们相遇的每一个人。</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-a63cdb7942ffb00d.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="做完第一次手术，我在赶回家的路上与她视频，还能听到她叫我乳名" title="做完第一次手术，我在赶回家的路上与她视频，还能听到她叫我乳名"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-874485fdb45dac21.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我赶回去后，奶奶情况越来越不容乐观，每天从大脑里面抽出来的血水，也越来越浑浊" title="我赶回去后，奶奶情况越来越不容乐观，每天从大脑里面抽出来的血水，也越来越浑浊"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-2f0135b0bec259a3.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="在重症监护室的奶奶，每天只能规定的时间见半个小时" title="在重症监护室的奶奶，每天只能规定的时间见半个小时"></p>
+<p>面对奶奶的疾病，我感到了无能为力！感觉到人类的渺小、生命的渺小！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/06/11/2016-06-11/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Romance">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/romance.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romance的修行之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/06/11/2016-06-11/" itemprop="url">一个iOS程序员的面试心得</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-11T22:42:22+08:00">
+                2016-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>前言<br>前段时间经过一段长时间的纠结，终于决定离开公司另谋出路。我的上家公司是一家创业公司做教育o2o的，没有融资（也一直没有拉到融资），是一家传统的少儿教育艺术培训学校投资成立的一家互联网教育公司。大家都知道去年o2o非常火，但有一个弊端就是烧钱烧的厉害，而传统行业也想借着移动互联网这东风乘势发展壮大，他也有个弊端就是没有那些新兴的互联网公司那么有魄力，有思维，毕竟做传统行业做久了有其思维局限；后面因为资金的原因，产品出来了却一直推广不开来，尽管这个项目从最开始成立的时候我就来了，也算是元老级别的人物了，但是我一直看不到未来的发展！于是我就决定离开！另谋发展！</p>
+<h1 id="言归正传，我的求职者之路"><a href="#言归正传，我的求职者之路" class="headerlink" title="言归正传，我的求职者之路"></a>言归正传，我的求职者之路</h1><ul>
+<li>骑驴找马</li>
+<li>招聘平台很重要（干货）</li>
+<li>面试环节（干货）</li>
+</ul>
+<h2 id="骑驴找马"><a href="#骑驴找马" class="headerlink" title="骑驴找马"></a>骑驴找马</h2><p>说真的，我的求职我算是比较顺利的，因为我就面试了的第一家公司就直接给了offer，他是做少儿英语教育的。而我是利用上班时间去面试的，前言部分我也说过，公司产品<a href="https://itunes.apple.com/cn/app/yi-xue-yi-shu-jiao-yu-fu-wu/id1043472268?mt=8" target="_blank" rel="noopener">艺学</a>去年过年以前就基本完成了，过年回来也就改改小bug，新增小需求，学习swift、php、h5，事情比较少，自己比较闲，而且之前加班有调休没有用完，所以一旦有面试机会就可以请个半天假去面试，也就是大家熟称的<strong>骑驴找马</strong>。</p>
+<p>在这里我不得不警告想换公司的程序员们不要辞职之后再找工作（当然你觉得你有这个能力，那也可以这么做），风险太大，我一个朋友的朋友从过年到现在4个月了都没有找到工作（在各大平台上投递简历300多份，共有面试机会20个左右，当然很大一部分原因是他整天玩游戏，根本就没有集中精力找工作，简历写的不咋样）；大家都知道去年是iOS开发的的顶峰时期，iOS移动开发人员需求量算是达到了顶峰，于是大批的毕业生和其他其行业的人员通过培训掌握iOS开发，导致供求关系的天平向公司这边倾斜，然后去年年末又是互联网寒冬，大批的互联网为公司倒闭，所以工作不好找；</p>
+<h2 id="招聘平台很重要"><a href="#招聘平台很重要" class="headerlink" title="招聘平台很重要"></a>招聘平台很重要</h2><p>我推荐<strong>boss直聘</strong>，等待周期短，直接和对方hr、CTO或者CEO聊听对话，对方看你简历不错直接就有面试机会。</p>
+<p><em>2017.08.30补充：前段时间爆出的李文星之死，面试者自己需要留个心眼，毕竟别为了急着找工作而不假思索的去面试，网上有好多防骗指南，我这里也分享一个<a href="https://pan.baidu.com/s/1o8ds7pS" target="_blank" rel="noopener">求职防骗指南</a> 提取密码: dbbq</em></p>
+<p>找工作之初，我就开始关注各大招聘信息平台，手机里面也下载了相应app比如拉钩网，boss直聘，猎聘，脉脉，智联招聘，看到上面发布的的职位还是挺多的，薪资也还行，但貌似没有去年那么好，公司的职位要求也提高了许多；我花费整整一天的时间填写好自己的详细信息，并且写好了简历；开始了我的投递简历过程，刚开始我还是很谨慎的，只是在拉勾上面投了我中意的公司；以及在猎聘上和猎头联系，以及在脉脉上和一些大公司联系！</p>
+<p>不管是和猎头沟通还是通过脉脉和这些BAT一样的一线的互联网公司的相关人员交流，看了我的简历都指出我的技术能力可以，但是就是教育背景不行；前两家公司都是在创业型的小公司工作，单挑项目，app不出名，比较小众，尽管能锻炼能力，但是说实在的这样的工作经历真心不好找下家，此刻我才明白，必须得去大公司镀镀金，我毕业的吉首大学，咋一听是不是以为和吉林大学有点关系，其实毛关系都没有，后者是985高校，前者只是湖南省一个很普通的2本；而且我想大多数人应该和我一样都不是名牌学校出来，这找工作就看出了差异，猎头看我不是985、211出来的，直接就说不给我推，后面我也就没在猎聘上投了；而且好多猎头是骗你简历。</p>
+<p>而我在拉勾上投递的都是像新浪，小米，百度，京东这样的大公司，但是结果可想而知，等了将一两周的时间，人家好不容易看了我的简历，立马被标记为不合适；<br><img src="http://upload-images.jianshu.io/upload_images/1603505-efe85587994d4e97.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="resume.PNG"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-1105ba625d0e3995.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="sorry.PNG"></p>
+<p>所以我建议大家别用拉勾网投，对方处理你的简历时间长，你耗不起，如果你要投，也得投回复率高的公司；<br>后面我果断换了boss直聘，你看中某个职位能够直接和对方聊听，对方看了你的微简历感觉还ok的话就会和你聊下去，否者基本上不会理你，所以在boss直聘上面的微简历一定要写好，写的详细点，自己的优势，充分展示自己，让hr能够给你面试机会；</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-d08779ee20ecd83c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="boss.png"></p>
+<h2 id="面试环节"><a href="#面试环节" class="headerlink" title="面试环节"></a>面试环节</h2><ol>
+<li>hr面试<br>无非就是问一些诸如，为什么离开现公司，期望工资多少，未来有什么发展之类的！这些你就根据个人如实回答就行</li>
+<li>技术面试（做好充足准备）<br>现在iOS面试的也就那么些题目，所以就算你不会，那么背，你都要背下来；我推荐两个不错的链接，供大家学习；<br>（1）<a href="https://wangmeng.gitbooks.io/ios-note/content/interview_1.html" target="_blank" rel="noopener">iOS面试题</a>，这里面有基础篇，UI篇，原理篇很全面；<br>（2）<a href="https://github.com/ChenYilong/iOSInterviewQuestions/blob/master/01《招聘一个靠谱的iOS》面试题参考答案/《招聘一个靠谱的iOS》面试题参考答案（上）.md" target="_blank" rel="noopener">招聘一个靠谱的 iOS</a>，这里面有许多涉及底层的知识，如runtime，runloop。但是想要真正理解，还是得自己敲代码才行。<br>我敢说，只要你把把这两个里面的问题都弄懂，一般iOS的技术面试你90%都没什么问题！</li>
+<li>加分点<br>我认为这一点非常重要，程序员必须要有建立自己的技术博客，GitHub有自己的开源项目，AppStore有自己的app等等这些都能为你的面试加分。这很能在面试官面前体现你的专业性。</li>
+</ol>
+<p>最后，给大家分享Easy写的<a href="链接: https://pan.baidu.com/s/1jHHgfiA 密码: p4sg">程序员跳槽全攻略</a>，对我们程序员未来的发展分析的很透彻，通过这个你能知道自己未来是要走技术大牛路线、管理路线或是自己创业！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/29/2016-03-29/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Romance">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/romance.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romance的修行之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/03/29/2016-03-29/" itemprop="url">使用oschina托管自己项目</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-29T15:28:39+08:00">
+                2016-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p> 好的程序猿之所以编程，不是为了赚大钱或装逼，而是纯粹享受其中。</p>
+</blockquote>
+<p>众所周知，开源中国社区 <a href="http://git.oschina.net" target="_blank" rel="noopener">http://git.oschina.net</a> 是一个为中国的IT技术人员提供一个全面的、快捷更新的用来检索开源软件以及交流使用开源经验的平台，是目前中国最大的开源技术社区。相比于GitHub，由于他的服务器在国内，访问速度更快，更主要是可以免费建立私有项目；</p>
+<p><strong>下面就分享下自己今天用Mac电脑在oschina上托管自己私有项目的步骤，</strong>本文主要包含以下两大内容：</p>
+<ul>
+<li><strong>托管新建项目</strong></li>
+<li><strong>托管已有项目</strong></li>
+</ul>
+<h1 id="托管新建项目"><a href="#托管新建项目" class="headerlink" title="托管新建项目"></a>托管新建项目</h1><h2 id="一、配置SSH-key"><a href="#一、配置SSH-key" class="headerlink" title="一、配置SSH key"></a>一、配置SSH key</h2><ol>
+<li>第一步：注册账号，点击这里：<a href="http://git.oschina.net" target="_blank" rel="noopener">http://git.oschina.net</a> 进行注册（这步骤就不啰嗦了，地球人都知道）</li>
+<li>第二步：添加SSH公钥（SSH key可以让你在你的电脑和 Git @ OSC 之间建立安全的加密连接，开源中国帮助文档地址：<a href="https://git.oschina.net/oschina/git-osc/wikis/帮助#ssh-keys）" target="_blank" rel="noopener">https://git.oschina.net/oschina/git-osc/wikis/帮助#ssh-keys）</a><br><1> 打开终端，按照如下命令来生成ssh-keys ，xxxxx@xxxxx.com 就用你的注册邮箱就可以了，<blockquote>
+<p>ssh-keygen -t rsa -C “xxxxx@xxxxx.com”   </p>
+</blockquote>
+</1></li>
+</ol>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-fcbce645237dc75c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step1.png"><br>出现Enter file in which to save the key (/Users/xcq/.ssh/id_rsa): 时，直接回车就行（为了方便全程回车，可以不用输入rss文件名和密码）；如果之前已经添加过ssh-keys将出现以下提示：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-d134d9444eb7cae1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="message.png"><br>直接出入n,然后回车，避免重复添加！</p>
+<p><2>输入以下命令，查看你的public key（下图红色括号的内容），并把他添加到 Git @ OSC <a href="http://git.oschina.net/keys" target="_blank" rel="noopener">http://git.oschina.net/keys</a></2></p>
+<blockquote>
+<p>cat ~/.ssh/id_rsa.pub</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-738a8c8269d7cd54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step2.png"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-33ddbb9cd9f10289.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step3.png"></p>
+<p><3>添加后，在终端（Terminal）中输入</3></p>
+<blockquote>
+<p>ssh -T git@git.oschina.net</p>
+</blockquote>
+<p>若返回</p>
+<blockquote>
+<p>Welcome to Git@OSC, yourname! </p>
+</blockquote>
+<p>则证明添加成功。</p>
+<h2 id="二、在oschina上面新建项目"><a href="#二、在oschina上面新建项目" class="headerlink" title="二、在oschina上面新建项目"></a>二、在oschina上面新建项目</h2><ol>
+<li><a href="http://git.oschina.net" target="_blank" rel="noopener">http://git.oschina.net</a> 登录自己账号之后，进行如下操作：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-64d3956e8dde7aea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step4.png"></li>
+<li>注意：开源许可协议选择 MIT License ， GitIgnore可以选择也可以不选择，不选择则需有第三大步（三、添加gitignore）的配置，<br><img src="http://upload-images.jianshu.io/upload_images/1603505-fad61a80f2edddfd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step5.png"></li>
+<li>点击创建之后，跳转到如下页面：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-c28f8bb63cc41389.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step6.png"> </li>
+<li>拷贝ssh地址，先用终端命令cd（我这是cd /Users/xcq/Desktop/YiXueCompany ） 改变当前目录为你需要托管的项目目录文件下，然后在终端输入如下指令（其中git@git.oschina.net:xxx/ProjectName.git为你拷贝的ssh地址）<br><img src="http://upload-images.jianshu.io/upload_images/1603505-93dbe143b2c50df4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step7.png"> <blockquote>
+<p>$ git clone git@git.oschina.net:xxx/ProjectName.git</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="三、添加gitignore-（如果在上一步-，即二、在oschina上面新建项目时添加了-gitignore文件，则此步略过）"><a href="#三、添加gitignore-（如果在上一步-，即二、在oschina上面新建项目时添加了-gitignore文件，则此步略过）" class="headerlink" title="三、添加gitignore （如果在上一步,，即二、在oschina上面新建项目时添加了.gitignore文件，则此步略过）"></a>三、添加gitignore （如果在上一步,，即二、在oschina上面新建项目时添加了.gitignore文件，则此步略过）</h2><p>注：添加 .gitignore 文件之后每次提交时不会将个人的项目设置信息（例如：末次打开的文件，调试断点等）提交到服务器，在团队开发中非常重要</p>
+<ol>
+<li>打开<a href="https://github.com/github/gitignore" target="_blank" rel="noopener">https://github.com/github/gitignore</a> 下载gitignore项目文件，里面包含了各种语言的gitignore配置；</li>
+<li>打开终端， 改变当前目录为你需要托管的项目目录文件下，输入以下命令（其中/Users/xcq/Downloads/gitignore-master/Swift.gitignore为刚刚下载的gitignore路径，我这里是新建的swift项目，所以选择Swift.gitignore）<blockquote>
+<p>cp /Users/xcq/Downloads/gitignore-master/Swift.gitignore .gitignore<br>git add .  # 将修改添加至暂存区<br>git commit -m”添加gitignore”  # 提交修改并且添加备注信息<br>git push # 将修改推送到远程服务器</p>
+</blockquote>
+</li>
+</ol>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-486169eef320e256.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step8.png"></p>
+<h2 id="四、新建项目"><a href="#四、新建项目" class="headerlink" title="四、新建项目"></a>四、新建项目</h2><ol>
+<li>用xcode新建swift项目，保存到托管的项目目录，还有点要注意就是<strong>不要勾选</strong><br><img src="http://upload-images.jianshu.io/upload_images/1603505-3368e11bba08b024.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step9.png"></li>
+<li>提交的时候勾选，就会提交到oschina上面建立的远程仓库。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-097d1fa56fd7f6c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step10.png"></li>
+</ol>
+<p><strong>已上四步是教你如何将一个全新的项目添加到oschina；还有一种需求<br>那就是将已有的本地项目上传到oschina</strong></p>
+<h1 id="托管已有项目，即将已有的本地项目上传到oschina"><a href="#托管已有项目，即将已有的本地项目上传到oschina" class="headerlink" title="托管已有项目，即将已有的本地项目上传到oschina"></a>托管已有项目，即将已有的本地项目上传到oschina</h1><ol>
+<li>前三步的操作与上面一样；</li>
+<li>接下来，做以下操作：打开终端，切换到你的项目目录下，依次输入以下命令<blockquote>
+<p>git init .<br>git pull git@git.oschina.net:xxxx/Demo.git<br>git add -A .<br>git commit -am “纳入版本控制”s<br>git push git@git.oschina.net:xxxxxxx/Demo.git     master</p>
+</blockquote>
+</li>
+</ol>
+<p>其中<code>git@git.oschina.net:xxxx/Demo.git</code>就是你新建远程仓库的地址，即step7.png图片的地址。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-5aac72b58e8541e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step11.png"></p>
+<p><strong>完毕，✌️✌️✌️，分享是一种美德，坚持就是胜利，坚持分享自己的学习点滴！</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/22/2016-03-22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Romance">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/romance.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romance的修行之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/03/22/2016-03-22/" itemprop="url">Mac电脑双系统的安装</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-22T15:49:17+08:00">
+                2016-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>昨天公司一个做文秘的同事由于公司给配的电脑很不给力，用个office，再打开一两个其他的软件就卡的要死，最后实在是受不了，就差砸电脑了。所以只好把她12年末买的一款2012年中的MacBook Pro拿过来准备安装win7（mac电脑虽好，但是对于经常用office做编辑的人来说，mac电脑显然不能够满足工作的需要），看了她macPro的配置(处理器：2.9 GHz Intel Core i7，8 GB内存，硬盘容量750G)之后第一反应是真土豪啊，居然把这么好的电脑藏在家中不用，太浪费了。虽然之前也没安装双系统，但是作为一个程序猿技术男，此时正是一展身手的好机会啊，好让妹子们也崇拜下咋们，给咋们程序猿长长脸。</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本篇文章将教你一步一步在MAC电脑使用 Boot Camp 安装windows系统，尽管作为一个iOS开发者用mac笔记本确实体验很好，但是有时确实有特殊的需求需要用windows系统。(本文将以Mac机型为：MacBook Pro 13 英寸，2012 年中 的电脑安装win7 64位为例演示，切记：<strong>安装windows系统之前必须先确定你的mac电脑能否匹配windows系统版本</strong>，<a href="https://support.apple.com/zh-cn/HT205016" target="_blank" rel="noopener">点击这里查看</a>) </p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol>
+<li>一个64位的win7的ISO镜像文件，<a href="链接: https://pan.baidu.com/s/1eRLYb3G 密码: c6j2">点击这里</a>下载我在百度云盘共享一个win7镜像；(反正就是得下载一个靠谱的iso镜像，我第一次安装失败就是因为在网上随便下载的镜像是坏的，导致最后提示window未能启动)</li>
+<li>两个U盘或者移动硬盘，一个16G已上 MS-DOS (FAT) 格式的作为系统安装盘，和一个8G已上 MS-DOS (FAT) 格式的的装驱动程序的驱动盘。有移动硬盘尽量用移动硬盘，因为速度快，为你节省时间；(第一次操作过程很慢的一部分原因的就是因为U盘不给力，导致整个安装过程非常慢，后面果断换成的)</li>
+<li>互联网连接，网速越快，安装过程速度越快！(白天第一次安装失败，过程慢，等得我是非常痛苦，下班后果断回家弄，100M的网，这速度溜溜的，整个过程不到两小时就安装好了) 。</li>
+<li>首次安装 Windows 时，建议留出 30 GB 可用磁盘空间，如果您是从之前版本的 Windows 升级，则建议留出 40 GB 的可用磁盘空间</li>
+</ol>
+<h1 id="win7系统安装"><a href="#win7系统安装" class="headerlink" title="win7系统安装"></a>win7系统安装</h1><h2 id="一、系统安装盘的准备：-此步骤在需要安装双系统的mac电脑上操作"><a href="#一、系统安装盘的准备：-此步骤在需要安装双系统的mac电脑上操作" class="headerlink" title="一、系统安装盘的准备：(此步骤在需要安装双系统的mac电脑上操作)"></a>一、系统安装盘的准备：(此步骤在需要安装双系统的mac电脑上操作)</h2><ol>
+<li>插入系统盘，将之前下载好的win7的ISO镜像文件拷贝到桌面，然后删除系统盘的ISO镜像文件，是系统盘成为空白盘；</li>
+<li>用Spotlight搜索Boot Camp助理，或者打开launchpad–》其他–》Boot Camp助理 ,打开的界面如下：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-e396e46cfe150a0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="bootcamp.png" title="bootcamp"></li>
+<li>点击继续，按下图进行勾选（<strong>切记只勾选前两个，最后一个不要勾选</strong>）<br><img src="http://upload-images.jianshu.io/upload_images/1603505-2c1f5fd62b7db452.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step2.jpg" title="step2"></li>
+<li>点击继续，出现以下界面<br><img src="http://upload-images.jianshu.io/upload_images/1603505-e5678c91596aa47d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step3.jpg" title="step3"><br>点击选取，选择之前保存在mac电脑桌面的ISO镜像文件，目的磁盘就是那个系统安装盘，并且保持与你的Mac的连接，直到windows安装完成</li>
+<li>点击继续，会出现以下界面（整个过程将会持续至少半个小时，这取决于你的U盘和网速，我在这步都要疯掉了，等了一个多小时都没成功，果断换了新的U盘和100M网络）<br><img src="http://upload-images.jianshu.io/upload_images/1603505-d69a885ee6cd58d2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step4.jpg" title="step4"></li>
+<li>step4.jpg完成之后，会弹出以下界面：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-3879938d7cc1c869.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step5.jpg" title="step5"></li>
+<li>至此为止，系统安装盘已经准备好了，点击退出关闭“Boot Camp助理”窗口以退出此应用。</li>
+</ol>
+<h2 id="二、驱动盘的准备：-因为上一步骤需要部分时间，所以在进行上一步骤的同时，你可以另一台电脑上面进行此步骤的操作，节省时间"><a href="#二、驱动盘的准备：-因为上一步骤需要部分时间，所以在进行上一步骤的同时，你可以另一台电脑上面进行此步骤的操作，节省时间" class="headerlink" title="二、驱动盘的准备：(因为上一步骤需要部分时间，所以在进行上一步骤的同时，你可以另一台电脑上面进行此步骤的操作，节省时间)"></a>二、驱动盘的准备：(因为上一步骤需要部分时间，所以在进行上一步骤的同时，你可以另一台电脑上面进行此步骤的操作，节省时间)</h2><ol>
+<li>从苹果官网上<a href="https://support.apple.com/zh-cn/HT205016" target="_blank" rel="noopener">按Mac机型列出的BootCamp要求</a>来查找您所用的 Windows 版本和 Mac 所需的 Windows 支持软件（驱动程序）如下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-1566fd38a037cb52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step6.png" title="step6"></li>
+<li>点击step6.png红色箭头指向的‘5’将跳转到下载页面，如下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-83087977b14b9536.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step7.png" title="step7"></li>
+<li>点击下载，得到的是zip包，解压之后的BootCamp5文件夹（这就是需要下载的驱动程序）如下：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-815f18c341ee825a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step8.png" title="step8"> </li>
+<li>将上一步得到的BootCamp5文件保存到事先准备好的驱动盘中。</li>
+</ol>
+<h2 id="三、正式安装：（系统安装盘一直连接在电脑上，直到安装win7成功）"><a href="#三、正式安装：（系统安装盘一直连接在电脑上，直到安装win7成功）" class="headerlink" title="三、正式安装：（系统安装盘一直连接在电脑上，直到安装win7成功）"></a>三、正式安装：（系统安装盘一直连接在电脑上，直到安装win7成功）</h2><ol>
+<li>将驱动盘的BootCamp5文件拖动到系统安装盘中，在系统提示您是否要替换系统安装盘上的现有项目时，请点按“是”。</li>
+<li>再次打开“Boot Camp 助理”，然后点按“继续”。</li>
+<li>切记仅勾选第三个，即仅选择“安装 Windows7或更高版本”选项。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-435a653c1c26bfcc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step9.png" title="step9"></li>
+<li>点击继续，然后按照屏幕提示重新对您的驱动器进行分区，然后安装 Windows。</li>
+<li>完成该助理的操作后，Mac 会重新启动至 Windows 安装程序。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-b1be47f39b49069a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="安装.jpg" title="安装"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-31c9ab7519990a69.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="安装2.JPG" title="安装2"></li>
+<li>在系统询问您要在何处安装 Windows 时，请选择 BOOTCAMP 分区，然后点按“驱动器选项”，并对您的 Boot Camp 分区进行格式化。如下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-7e6f8900108bc268.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step10.jpg" title="step10"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-4b5736344b9aaea0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step11.png" title="step11"></li>
+<li>点击下一步将出现以下界面：(此步骤也需要等待一段时间)<br><img src="http://upload-images.jianshu.io/upload_images/1603505-16bf523d0189b77d.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step12.JPG" title="step12"></li>
+<li>等待一段时间后，也就大功告成了。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-b62505845a78c904.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step13.JPG" title="step13"></li>
+</ol>
+<h2 id="四、安装驱动（因为到这步为止，电脑还不能联网，有线网，无线网络都连不上，所以我怀疑没有网卡驱动）"><a href="#四、安装驱动（因为到这步为止，电脑还不能联网，有线网，无线网络都连不上，所以我怀疑没有网卡驱动）" class="headerlink" title="四、安装驱动（因为到这步为止，电脑还不能联网，有线网，无线网络都连不上，所以我怀疑没有网卡驱动）"></a>四、安装驱动（因为到这步为止，电脑还不能联网，有线网，无线网络都连不上，所以我怀疑没有网卡驱动）</h2><ul>
+<li>苹果官方给的操作步骤：<br>window安装成功后但是还没有任何驱动，是不能上网的，这时需要安装系统盘中的驱动，按照step7给的步骤操作，<br><img src="http://upload-images.jianshu.io/upload_images/1603505-43be283b303b9ad2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step13.png" title="step13"></li>
+<li>我实际的操作<br>从我的驱动盘中找到并安装无线网卡驱动然后就可以上网了，如下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-73feb46e9a86167a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step14.png" title="step14"><br>最后交由驱动精灵来给我win7系统安装其他驱动和打系统补丁。<h2 id="到此你的mac电脑双系统也就安装成功了，可以愉快的玩耍了，"><a href="#到此你的mac电脑双系统也就安装成功了，可以愉快的玩耍了，" class="headerlink" title="到此你的mac电脑双系统也就安装成功了，可以愉快的玩耍了，"></a>到此你的mac电脑双系统也就安装成功了，可以愉快的玩耍了，</h2></li>
+</ul>
+<h1 id="安装失败的解决方法"><a href="#安装失败的解决方法" class="headerlink" title="安装失败的解决方法"></a>安装失败的解决方法</h1><ol>
+<li>我第一次安装是失败了，在安装过程中出现了下图的问题，最后只好重新安装，并且换了一个win7系统镜像文件。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-cf92b034f049a90d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="fail.jpg" title="fail"><br>第一步，此时需要先把电脑强制关机，就是按住电源键；<br>第二步，再开机，听到开机声或者白屏之后按住option按键或者一直按住option键，直到看到启动磁盘选项，选择Mac的系统盘就可以了；<br>第三步，进入 Boot Camp助理选项，前面的选项不要勾选，只勾选最后的删除win选项，<br>第四步，重新按照我说的步骤操作进行win7系统安装。</li>
+</ol>
+<blockquote>
+<p>我们终此一生，就是要摆脱他人的期待，找到真正的自己;</p>
+</blockquote>
+<p>记录学习的点滴，以此勉励不断奋斗的自己✌️✌️✌️</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/08/2016-03-08/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Romance">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/romance.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romance的修行之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/03/08/2016-03-08/" itemprop="url">Mac电脑的PHP开发环境配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-08T17:51:09+08:00">
+                2016-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>刚过完年，项目事情不多，老大叫我们趁着这段闲暇时间多学点其他知识，于是我和另一个iOS伙伴一起学习PHP知识，但是遇到一个问题：那就是mac 电脑的php环境配置。所以就整理了下配置方法，希望对以后的学习者可以上手更快，不要像我们一样倒腾的半天。</p>
+<h1 id="需要什么？"><a href="#需要什么？" class="headerlink" title="需要什么？"></a>需要什么？</h1><ol>
+<li>安装 web 服务器；</li>
+<li>安装 PHP；</li>
+<li>安装数据库，比如Navigate Premium, MySQL。</li>
+</ol>
+<p>因为mac电脑 的OS X系统已经自带apache和php，所以只要创建.php 文件，然后上传到 web 目录中即可。服务器会自动对它们进行解析。所以你无需编译或安装任何额外的工具。下面是具体的步骤。</p>
+<ul>
+<li>apache配置<br>1、我们需要手动开启apache服务，打开终端输入以下命令：sudo apachectl start ；手动开启后，在浏览器中输入localhost或者127.0.0.1  后会显示“It works!” 字样，则说明Apache服务开启成功；如下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-90bc429d52ca2d0b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="it works.png"><br>2、修改Apache的配置文件 ,终端中输入以下命令:sudo vim/etc/apache2/httpd.conf，然后输入电脑密码就可以进入编辑了；找到#LoadModule php5_module libexec/apache2/libphp5.so，去掉前面的注释符“#”(这里涉及一些<a href="http://www.douban.com/note/75797151/" target="_blank" rel="noopener">mac终端终端命令</a>懂一些基本命令就可以了,这里的话按i进入编辑模式,按Esc退出编辑模式，然后输入:wq退出vim并且保存修改)；如下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-7fe4923a2aa71d37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="config.png"><br>3、已上两步之后，在终端输入命令： sudo apachectl restart ；我们就可以重启下Apache，至此Apache就已经配置好了。<br>4、下面就可以写个简单“hello word！”php程序来检验下。Mac OS 的Apache2的默认根目录：/Library/WebServer/Documents；我们可以在这个目录下新建.php文件，但是在此之前我们最好先安装一个php编辑器，不然用vim 编辑器没那么方便；我用的是Sublime Text2，大家可以在<a href="http://www.sublimetext.com" target="_blank" rel="noopener">Sublime Text官网</a>下载。<br>  打开终端输入一下两条命令：<br>touch /Library/WebServer/Documents/hello.php<br>open /Library/WebServer/Documents/hello.php<br>输入<br>&lt;?php<br>echo “hello word!”;<br>?&gt;</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-63097419df5b281e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hello.png"></p>
+<ul>
+<li>安装数据库（Navigate Premium）<br>具体安装我就不说了，网上有很多教程；<br>start MySQL Server 如图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-59be7afe5c6ff6b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mysql.png"></li>
+</ul>
+<p>新建数据库<br><img src="http://upload-images.jianshu.io/upload_images/1603505-700b842cf4e516d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="nav.png"></p>
+<p>密码不用填写：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-7bf73b0eb613baf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="database.png"></p>
+<p>到此环境就配好了，大家可以写程序了！！！数据库的安装写的比较简单，主要因为网上教程很多，而且不同开发人员用的工具都不一样，所以一笔带过。</p>
 
           
         
@@ -549,7 +1195,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -557,6 +1203,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>

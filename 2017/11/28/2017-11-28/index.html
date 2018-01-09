@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="尽管现在主流的移动设备的屏幕尺寸都越来越大，特别是iPhone X的出现，以后的趋势都是全屏手机，但是一屏的显示的内容还是有限的，当我们需要有大量数据需要展示时就可以使用这两个控件。这两个控件的相同点都是允许用户上下滑动，以便展示屏幕区域外的内容。很多主流的应用，比如微信、QQ的消息列表，微信朋友圈，微博等等应用的很多界面都是使用这两个控件实现的。 UITableView的基本使用 iOS添加一个">
+<meta name="description" content="尽管现在主流的移动设备的屏幕尺寸都越来越大，特别是iPhone X的出现，以后的趋势都是全屏手机，但是一屏的显示的内容还是有限的，当我们需要有大量数据需要展示时就可以使用这两个控件。这两个控件的相同点都是允许用户上下滑动，以便展示屏幕区域外的内容。很多主流的应用，比如微信、QQ的消息列表，微信朋友圈，微博等等应用的很多界面都是使用这两个控件实现的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一个iOS开发者的android修行之路二：UITableView和ListView的对比探究">
 <meta property="og:url" content="http://yoursite.com/2017/11/28/2017-11-28/index.html">
 <meta property="og:site_name" content="Romance的修行之路">
-<meta property="og:description" content="尽管现在主流的移动设备的屏幕尺寸都越来越大，特别是iPhone X的出现，以后的趋势都是全屏手机，但是一屏的显示的内容还是有限的，当我们需要有大量数据需要展示时就可以使用这两个控件。这两个控件的相同点都是允许用户上下滑动，以便展示屏幕区域外的内容。很多主流的应用，比如微信、QQ的消息列表，微信朋友圈，微博等等应用的很多界面都是使用这两个控件实现的。 UITableView的基本使用 iOS添加一个">
+<meta property="og:description" content="尽管现在主流的移动设备的屏幕尺寸都越来越大，特别是iPhone X的出现，以后的趋势都是全屏手机，但是一屏的显示的内容还是有限的，当我们需要有大量数据需要展示时就可以使用这两个控件。这两个控件的相同点都是允许用户上下滑动，以便展示屏幕区域外的内容。很多主流的应用，比如微信、QQ的消息列表，微信朋友圈，微博等等应用的很多界面都是使用这两个控件实现的。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-23fde223e96c7a45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-e0cd8fc6becd757c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-29d30456590ecad4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-01-08T02:52:26.136Z">
+<meta property="og:updated_time" content="2018-01-08T12:17:59.860Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个iOS开发者的android修行之路二：UITableView和ListView的对比探究">
-<meta name="twitter:description" content="尽管现在主流的移动设备的屏幕尺寸都越来越大，特别是iPhone X的出现，以后的趋势都是全屏手机，但是一屏的显示的内容还是有限的，当我们需要有大量数据需要展示时就可以使用这两个控件。这两个控件的相同点都是允许用户上下滑动，以便展示屏幕区域外的内容。很多主流的应用，比如微信、QQ的消息列表，微信朋友圈，微博等等应用的很多界面都是使用这两个控件实现的。 UITableView的基本使用 iOS添加一个">
+<meta name="twitter:description" content="尽管现在主流的移动设备的屏幕尺寸都越来越大，特别是iPhone X的出现，以后的趋势都是全屏手机，但是一屏的显示的内容还是有限的，当我们需要有大量数据需要展示时就可以使用这两个控件。这两个控件的相同点都是允许用户上下滑动，以便展示屏幕区域外的内容。很多主流的应用，比如微信、QQ的消息列表，微信朋友圈，微博等等应用的很多界面都是使用这两个控件实现的。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1603505-23fde223e96c7a45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -101,7 +101,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -293,9 +293,53 @@
 
           
           
+             <span id="/2017/11/28/2017-11-28/" class="leancloud_visitors" data-flag-title="一个iOS开发者的android修行之路二：UITableView和ListView的对比探究">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,555
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
           
 
           
@@ -314,6 +358,7 @@
 
       
         <p>尽管现在主流的移动设备的屏幕尺寸都越来越大，特别是iPhone X的出现，以后的趋势都是全屏手机，但是一屏的显示的内容还是有限的，当我们需要有大量数据需要展示时就可以使用这两个控件。这两个控件的相同点都是允许用户上下滑动，以便展示屏幕区域外的内容。很多主流的应用，比如微信、QQ的消息列表，微信朋友圈，微博等等应用的很多界面都是使用这两个控件实现的。</p>
+<a id="more"></a>
 <h2 id="UITableView的基本使用"><a href="#UITableView的基本使用" class="headerlink" title="UITableView的基本使用"></a><code>UITableView</code>的基本使用</h2><ol>
 <li>iOS添加一个<code>UITableView</code>有两种方式。一是：纯代码初始化一个<code>UITableView</code>；二是在<code>storyboard</code>中直接拖入一个<code>UITableView</code>并且设置约束添加，同时设置tableView的dataSource和delegate为ViewController。这两种方式并没有优劣之分，使用第二种方式是苹果推荐的快速开发的方式。我的事例代码选择的第二种方法。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-23fde223e96c7a45.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="在storyboard添加UITableView的四步曲"></li>
 <li><strong>自定义<code>UITableViewCell</code></strong>，勾选同时勾选xib,我这里命名为<code>TestTableViewCell</code>，里面添加两个控件ImageView和Label，同时设置应用。同时设置xib中的重用identifier为：<code>TestTableViewCell</code>。</li>
@@ -489,7 +534,7 @@ var jiathis_config={
                 alt="Romance" />
             
               <p class="site-author-name" itemprop="name">Romance</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">只要有梦，总有属于自己的江山</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -588,6 +633,15 @@ var jiathis_config={
   <span class="author" itemprop="copyrightHolder">Romance</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">39.8k</span>
+  
 </div>
 
 
@@ -599,7 +653,7 @@ var jiathis_config={
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -699,13 +753,6 @@ var jiathis_config={
   
   
 
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
@@ -770,6 +817,113 @@ var jiathis_config={
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("azI86hyx7h0XuALpk30TBaD3-gzGzoHsz", "pNpi4lAvl42VFLag0W1SuJiD");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 

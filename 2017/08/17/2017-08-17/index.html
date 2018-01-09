@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -111,7 +111,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-8638c5486b0e7606.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-bef8cac173c9557e.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-f73fdccf18fd082c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-01-07T02:17:20.413Z">
+<meta property="og:updated_time" content="2018-01-08T12:23:04.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用TestFlight对iOS app beta版本测试实战">
 <meta name="twitter:description" content="前言TestFlight是苹果官方提供给开发者对预发布版本进行测试的工具或者说是一种服务。通过本文你将知道如何使用TestFlight添加测试人员以及邀请外部测试人员进行测试。本文参考苹果官方提供的方法教程 我们知道苹果开发者可以申请的账号有三类个人、公司、企业这三大类(其实还有一类就是教育机构，比如大学，但是我们一般用得少，所以不说)苹果官方定义几大分类传送门，个人、公司开发者账号的会员费99$">
@@ -123,7 +123,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -315,9 +315,53 @@
 
           
           
+             <span id="/2017/08/17/2017-08-17/" class="leancloud_visitors" data-flag-title="使用TestFlight对iOS app beta版本测试实战">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,481
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
           
 
           
@@ -337,6 +381,7 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>TestFlight是苹果官方提供给开发者对<strong>预发布版本</strong>进行测试的工具或者说是一种服务。通过本文你将知道如何使用TestFlight添加测试人员以及邀请外部测试人员进行测试。本文参考<a href="https://help.apple.com/itunes-connect/developer/#/devdc42b26b8" target="_blank" rel="noopener">苹果官方提供的方法教程</a></p>
 <p>我们知道苹果开发者可以申请的账号有三类<strong>个人、公司、企业</strong>这三大类(其实还有一类就是教育机构，比如大学，但是我们一般用得少，所以不说)<a href="https://developer.apple.com/support/compare-memberships/" target="_blank" rel="noopener">苹果官方定义几大分类传送门</a>，个人、公司开发者账号的会员费99$一年，企业级账号是299$一年。</p>
+<a id="more"></a>
 <p>关于在iOS app测试我们知道由于苹果的安全签名机制，我们开发的app想要对外测试(比如给公司客户、领导等等)并不是一件容易的事情。对于企业级账号我们可以之间让用户下载，信任之后直接使用，但是这类app并不能发布到App Store，所以也就无法进行本文所说的TestFlight Beta Testing功能，一般是企业内部使用的app才会选择。对于大部分互联网公司，肯定是选择<strong>公司级别的账号</strong>，最终需要发布到App Store的，而这类账户的测试就很麻烦，有100台设备限制，而且还得事先获取设备UDID，然后导出ipa，链接itunes安装，总之整个流程下来特别繁琐。当然还有一种是简便方式就是通过第三方的分发平台，比如蒲公英，TestBird；但这不在我们的讨论范围之内。</p>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p><strong>注意：本文的操作都所使用的开发者账号是前言部分说的第二种：99$的Appstore公司开发者账号</strong></p>
 <h3 id="提前准备的工作：有手动打包或者自动打包构建好的好的ipa文件。如下图"><a href="#提前准备的工作：有手动打包或者自动打包构建好的好的ipa文件。如下图" class="headerlink" title="提前准备的工作：有手动打包或者自动打包构建好的好的ipa文件。如下图"></a>提前准备的工作：有手动打包或者自动打包构建好的好的ipa文件。如下图</h3><p><img src="http://upload-images.jianshu.io/upload_images/1603505-b17159f62be469ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="导出的ipa"></p>
@@ -498,7 +543,7 @@ var jiathis_config={
                 alt="Romance" />
             
               <p class="site-author-name" itemprop="name">Romance</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">只要有梦，总有属于自己的江山</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -597,6 +642,15 @@ var jiathis_config={
   <span class="author" itemprop="copyrightHolder">Romance</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">39.8k</span>
+  
 </div>
 
 
@@ -608,7 +662,7 @@ var jiathis_config={
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -708,13 +762,6 @@ var jiathis_config={
   
   
 
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
@@ -779,6 +826,113 @@ var jiathis_config={
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("azI86hyx7h0XuALpk30TBaD3-gzGzoHsz", "pNpi4lAvl42VFLag0W1SuJiD");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 

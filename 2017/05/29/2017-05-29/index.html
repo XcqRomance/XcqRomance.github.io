@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-ebab5c0fceb71293.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-a09687342e22ef07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-b9a1a108c48cd94a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-01-08T02:49:56.783Z">
+<meta property="og:updated_time" content="2018-01-08T12:25:43.022Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解iOS设计模式">
 <meta name="twitter:description" content="做 iOS开发也好几年了，记得自己刚入行时，对iOS 开发模式也是一知半解，后面项目做多了，以及看一些优秀书籍之后对他有了进一步的理解；发现自己写的代码中无形之中就用了很多的设计模式，只不过是不知道相应的设计模式术语而已，所以决定把自己做的项目中的一个小模块来写一篇iOS设计模式的文章，一是记录自己的学习；二是让入门者可以作为参考，来理解iOS设计模式。设计模式是软件设计中常见问题的可重复使用的解">
@@ -107,7 +107,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -299,9 +299,53 @@
 
           
           
+             <span id="/2017/05/29/2017-05-29/" class="leancloud_visitors" data-flag-title="深入理解iOS设计模式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,586
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
           
 
           
@@ -319,7 +363,7 @@
       
 
       
-        <p>做 iOS开发也好几年了，记得自己刚入行时，对iOS 开发模式也是一知半解，后面项目做多了，以及看一些优秀书籍之后对他有了进一步的理解；发现自己写的代码中无形之中就用了很多的设计模式，只不过是不知道相应的设计模式术语而已，所以决定把自己做的项目中的一个小模块来写一篇iOS设计模式的文章，一是记录自己的学习；二是让入门者可以作为参考，来理解iOS设计模式。<strong>设计模式是软件设计中常见问题的可重复使用的解决方案。 它们是旨在帮助您编写易于理解和重用的代码的模板。 它们还可以帮助您创建松散耦合的代码，以便您可以在代码中更改或替换组件，而不必太麻烦。</strong>本文将通过一个小项目的形式来讲解iOS的设计模式。通过跟着我一步一步操作你将学到：<strong>什么是设计模式；为什么要使用设计模式；以及怎样在自己的项目中使用合适的设计模式。</strong><br>设计模式分为三大类：</p>
+        <p>做 iOS开发也好几年了，记得自己刚入行时，对iOS 开发模式也是一知半解，后面项目做多了，以及看一些优秀书籍之后对他有了进一步的理解；发现自己写的代码中无形之中就用了很多的设计模式，只不过是不知道相应的设计模式术语而已，所以决定把自己做的项目中的一个小模块来写一篇iOS设计模式的文章，一是记录自己的学习；二是让入门者可以作为参考，来理解iOS设计模式。<strong>设计模式是软件设计中常见问题的可重复使用的解决方案。 它们是旨在帮助您编写易于理解和重用的代码的模板。 它们还可以帮助您创建松散耦合的代码，以便您可以在代码中更改或替换组件，而不必太麻烦。</strong>本文将通过一个小项目的形式来讲解iOS的设计模式。通过跟着我一步一步操作你将学到：<strong>什么是设计模式；为什么要使用设计模式；以及怎样在自己的项目中使用合适的设计模式。</strong><br><a id="more"></a><br>设计模式分为三大类：</p>
 <ol>
 <li>构造模式:单例模式(Singleton)，抽象工厂模式(Abstract Factory)等等；</li>
 <li>结构模式:MVC，适配器模式(Adapter)，外观模式(Facade)，装饰模式(Decorator)等等；</li>
@@ -505,7 +549,7 @@ var jiathis_config={
                 alt="Romance" />
             
               <p class="site-author-name" itemprop="name">Romance</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">只要有梦，总有属于自己的江山</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -604,6 +648,15 @@ var jiathis_config={
   <span class="author" itemprop="copyrightHolder">Romance</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">39.8k</span>
+  
 </div>
 
 
@@ -615,7 +668,7 @@ var jiathis_config={
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -715,13 +768,6 @@ var jiathis_config={
   
   
 
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
@@ -786,6 +832,113 @@ var jiathis_config={
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("azI86hyx7h0XuALpk30TBaD3-gzGzoHsz", "pNpi4lAvl42VFLag0W1SuJiD");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -95,7 +95,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-5276a72347f6c05b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-8a4e30e827382204.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-c479dd4d51bdb214.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-01-08T01:28:01.540Z">
+<meta property="og:updated_time" content="2018-01-08T12:18:26.346Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS11,iPhoneX适配,Xcode9遇到的问题以及解决方案探讨">
 <meta name="twitter:description" content="以下问题是自己在升级Xcode9后，在iOS11设备运行项目后遇到的问题，在此记录，说不定你也到过类似的问题，我们可以一起探讨，解决问题。 自定义导航栏高度无效使用Xcode9和Xcode8运行同样一份代码，Xcode8中运行到iOS11系统的手机上导航栏高度是自定义的高度，而Xcode9运行高度就成了系统的44pt的高度了；目前还没有找到有效的解决方案；之前iOS11beta5版本苹果给修复了这">
@@ -107,7 +107,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -299,9 +299,53 @@
 
           
           
+             <span id="/2017/10/19/2017-10-19/" class="leancloud_visitors" data-flag-title="iOS11,iPhoneX适配,Xcode9遇到的问题以及解决方案探讨">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
           
 
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,865
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
           
 
           
@@ -320,7 +364,9 @@
 
       
         <p>以下问题是自己在升级Xcode9后，在iOS11设备运行项目后遇到的问题，在此记录，说不定你也到过类似的问题，我们可以一起探讨，解决问题。</p>
-<h2 id="自定义导航栏高度无效"><a href="#自定义导航栏高度无效" class="headerlink" title="自定义导航栏高度无效"></a><strong>自定义导航栏高度无效</strong></h2><p>使用Xcode9和Xcode8运行同样一份代码，Xcode8中运行到iOS11系统的手机上导航栏高度是自定义的高度，而Xcode9运行高度就成了系统的44pt的高度了；目前还没有找到有效的解决方案；之前iOS11beta5版本苹果给修复了这个bug，正式系统发布后又出现了这个问题；<br>区别如下：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-ab1ec39839f94589.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>自定义<code>UINavigationBar</code>代码如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">let</span> customNavigationBarHeight: <span class="type">CGFloat</span> = isPad ? <span class="number">75</span> : <span class="number">60</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomNavigationBar</span>: <span class="title">UINavigationBar</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">sizeThatFits</span><span class="params">(<span class="number">_</span> size: CGSize)</span></span> -&gt; <span class="type">CGSize</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">CGSize</span>(width: <span class="type">UIScreen</span>.main.bounds.width, height: customNavigationBarHeight)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">layoutSubviews</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.layoutSubviews()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> subview <span class="keyword">in</span> subviews &#123;</span><br><span class="line">      subview.center.y = frame.height / <span class="number">2</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">titleVerticalPositionAdjustment</span><span class="params">(<span class="keyword">for</span> barMetrics: UIBarMetrics)</span></span> -&gt; <span class="type">CGFloat</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> -(frame.height - <span class="number">44</span>)/<span class="number">2</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="自定义导航栏高度无效"><a href="#自定义导航栏高度无效" class="headerlink" title="自定义导航栏高度无效"></a><strong>自定义导航栏高度无效</strong></h2><p>使用Xcode9和Xcode8运行同样一份代码，Xcode8中运行到iOS11系统的手机上导航栏高度是自定义的高度，而Xcode9运行高度就成了系统的44pt的高度了；目前还没有找到有效的解决方案；之前iOS11beta5版本苹果给修复了这个bug，正式系统发布后又出现了这个问题；</p>
+<a id="more"></a>
+<p>区别如下：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-ab1ec39839f94589.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>自定义<code>UINavigationBar</code>代码如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">let</span> customNavigationBarHeight: <span class="type">CGFloat</span> = isPad ? <span class="number">75</span> : <span class="number">60</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomNavigationBar</span>: <span class="title">UINavigationBar</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">sizeThatFits</span><span class="params">(<span class="number">_</span> size: CGSize)</span></span> -&gt; <span class="type">CGSize</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="type">CGSize</span>(width: <span class="type">UIScreen</span>.main.bounds.width, height: customNavigationBarHeight)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">layoutSubviews</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">super</span>.layoutSubviews()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> subview <span class="keyword">in</span> subviews &#123;</span><br><span class="line">      subview.center.y = frame.height / <span class="number">2</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">titleVerticalPositionAdjustment</span><span class="params">(<span class="keyword">for</span> barMetrics: UIBarMetrics)</span></span> -&gt; <span class="type">CGFloat</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> -(frame.height - <span class="number">44</span>)/<span class="number">2</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>在stackeroverflow曾经搜索到一个解决方案的确能够在iOS11设备上修改导航栏高度，但是存在两个问题：第一导航栏标题栏不垂直居中；第二导航控制器的rootviewcontroller如果是tableVeiwController或者有tableView的topInset还是44pt，没有相应的跟着导航栏的高度下移：<br>重写layoutSubviews()的方法如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">layoutSubviews</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">super</span>.layoutSubviews()</span><br><span class="line"></span><br><span class="line">  backgroundColor = .black</span><br><span class="line">  frame = <span class="type">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="type">UIScreen</span>.main.bounds.width, height: customNavigationBarHeight)</span><br><span class="line">  <span class="keyword">for</span> subview <span class="keyword">in</span> <span class="keyword">self</span>.subviews &#123;</span><br><span class="line">    printLog(subview)</span><br><span class="line">    <span class="keyword">let</span> stringFromClass = <span class="type">NSStringFromClass</span>(subview.classForCoder)</span><br><span class="line">    <span class="keyword">if</span> stringFromClass.<span class="built_in">contains</span>(<span class="string">"BarBackground"</span>) &#123;</span><br><span class="line">      subview.frame = <span class="type">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="keyword">self</span>.frame.width, height: customNavigationBarHeight)</span><br><span class="line">      subview.backgroundColor = .blue<span class="comment">//self.backgroundColor</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> stringFromClass.<span class="built_in">contains</span>(<span class="string">"BarContent"</span>) &#123;</span><br><span class="line">      subview.frame = <span class="type">CGRect</span>(x: subview.frame.origin.x, y: <span class="number">0</span>, width: subview.frame.width, height: customNavigationBarHeight)</span><br><span class="line">      subview.backgroundColor = .red<span class="comment">//self.backgroundColor</span></span><br><span class="line">      subview.center.y = customNavigationBarHeight / <span class="number">2</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      subview.center.y = frame.height / <span class="number">2</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>效果和分析图如下：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-8ed88a5b9da74b28.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/1603505-9e4c0e13a94b2a95.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>这个问题还有待进一步探讨解决方案，如果哪位有解决方案，我们可以一起探讨下！</p>
 <h2 id="使用Xcode9打包上传构建版本时，收到警告，意思是缺少1024x1024px的Icon图片；"><a href="#使用Xcode9打包上传构建版本时，收到警告，意思是缺少1024x1024px的Icon图片；" class="headerlink" title="使用Xcode9打包上传构建版本时，收到警告，意思是缺少1024x1024px的Icon图片；"></a>使用Xcode9打包上传构建版本时，收到警告，意思是<strong>缺少1024x1024px的Icon图片</strong>；</h2><p><strong>解决方案：在项目Assets.xcassets的AppIcon中添加一张要求尺寸的Icon图片；</strong><br>邮件内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Dear developer,</span><br><span class="line"></span><br><span class="line">We have discovered one or more issues with your recent delivery for &quot;励步云学习&quot;. Your delivery was successful, but you may wish to correct the following issues in your next delivery:</span><br><span class="line"></span><br><span class="line">Missing Marketing Icon - iOS Apps must include a 1024x1024px Marketing Icon in PNG format. Apps that do not include the Marketing Icon cannot be submitted for App Review or Beta App Review.</span><br><span class="line"></span><br><span class="line">After you’ve corrected the issues, you can use Xcode or Application Loader to upload a new binary to iTunes Connect.</span><br><span class="line"></span><br><span class="line">Regards,</span><br><span class="line"></span><br><span class="line">The App Store team</span><br></pre></td></tr></table></figure></p>
@@ -474,7 +520,7 @@ var jiathis_config={
                 alt="Romance" />
             
               <p class="site-author-name" itemprop="name">Romance</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">只要有梦，总有属于自己的江山</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -573,6 +619,15 @@ var jiathis_config={
   <span class="author" itemprop="copyrightHolder">Romance</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">39.8k</span>
+  
 </div>
 
 
@@ -584,7 +639,7 @@ var jiathis_config={
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
 
 
 
@@ -684,13 +739,6 @@ var jiathis_config={
   
   
 
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
@@ -755,6 +803,113 @@ var jiathis_config={
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("azI86hyx7h0XuALpk30TBaD3-gzGzoHsz", "pNpi4lAvl42VFLag0W1SuJiD");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 

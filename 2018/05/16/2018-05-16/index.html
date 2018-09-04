@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="先说下背景，就是项目新增一个需求需要接入一个第三方的sdk，我们需要使用这个第三方sdk提供的一个model类（叫他MaterialMeta）数据，但是它提供的所有信息并不够我们业务需求的使用，还得添加它的model类几个属性值（比如时间戳值等），以便于我们这边使用。做这个的需求想到了好几个方案：一个是使用继承、一个是重写一个本地类将，">
+<meta name="description" content="由使用Associated Objects不当导致app闪退总结前段时间项目新增一个需求需要接入一个第三方的sdk，我们需要使用这个第三方sdk提供的一个model类MMdata数据，具体我们的需要实现的是：在sdk进行网络请求回来的数据回调中[MMdata]数组通过OC中runtime获取MMdata.m的一些私有属性及其变量的值然后将这些数据上传到我们自己服务器审核这些数据，服务器返回[MMd">
 <meta property="og:type" content="article">
-<meta property="og:title" content="由使用Associated Objects导致app闪退总结">
+<meta property="og:title" content="iOS开发遇坑总结">
 <meta property="og:url" content="http://yoursite.com/2018/05/16/2018-05-16/index.html">
 <meta property="og:site_name" content="Romance的修行之路">
-<meta property="og:description" content="先说下背景，就是项目新增一个需求需要接入一个第三方的sdk，我们需要使用这个第三方sdk提供的一个model类（叫他MaterialMeta）数据，但是它提供的所有信息并不够我们业务需求的使用，还得添加它的model类几个属性值（比如时间戳值等），以便于我们这边使用。做这个的需求想到了好几个方案：一个是使用继承、一个是重写一个本地类将，">
+<meta property="og:description" content="由使用Associated Objects不当导致app闪退总结前段时间项目新增一个需求需要接入一个第三方的sdk，我们需要使用这个第三方sdk提供的一个model类MMdata数据，具体我们的需要实现的是：在sdk进行网络请求回来的数据回调中[MMdata]数组通过OC中runtime获取MMdata.m的一些私有属性及其变量的值然后将这些数据上传到我们自己服务器审核这些数据，服务器返回[MMd">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-03T11:11:48.389Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1603505-368ec58aa8ef8edd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-09-04T07:00:27.083Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="由使用Associated Objects导致app闪退总结">
-<meta name="twitter:description" content="先说下背景，就是项目新增一个需求需要接入一个第三方的sdk，我们需要使用这个第三方sdk提供的一个model类（叫他MaterialMeta）数据，但是它提供的所有信息并不够我们业务需求的使用，还得添加它的model类几个属性值（比如时间戳值等），以便于我们这边使用。做这个的需求想到了好几个方案：一个是使用继承、一个是重写一个本地类将，">
+<meta name="twitter:title" content="iOS开发遇坑总结">
+<meta name="twitter:description" content="由使用Associated Objects不当导致app闪退总结前段时间项目新增一个需求需要接入一个第三方的sdk，我们需要使用这个第三方sdk提供的一个model类MMdata数据，具体我们的需要实现的是：在sdk进行网络请求回来的数据回调中[MMdata]数组通过OC中runtime获取MMdata.m的一些私有属性及其变量的值然后将这些数据上传到我们自己服务器审核这些数据，服务器返回[MMd">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1603505-368ec58aa8ef8edd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -125,7 +127,7 @@
 
 
 
-  <title>由使用Associated Objects导致app闪退总结 | Romance的修行之路</title>
+  <title>iOS开发遇坑总结 | Romance的修行之路</title>
   
 
 
@@ -293,7 +295,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">由使用Associated Objects导致app闪退总结</h1>
+          <h1 class="post-title" itemprop="name headline">iOS开发遇坑总结</h1>
         
 
         <div class="post-meta">
@@ -339,7 +341,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  132
+                  1,335
                 </span>
               
 
@@ -355,7 +357,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -376,7 +378,17 @@
       
 
       
-        <p>先说下背景，就是项目新增一个需求需要接入一个第三方的sdk，我们需要使用这个第三方sdk提供的一个model类（叫他MaterialMeta）数据，但是它提供的所有信息并不够我们业务需求的使用，还得添加它的model类几个属性值（比如时间戳值等），以便于我们这边使用。做这个的需求想到了好几个方案：一个是使用继承、一个是重写一个本地类将，</p>
+        <h1 id="由使用Associated-Objects不当导致app闪退总结"><a href="#由使用Associated-Objects不当导致app闪退总结" class="headerlink" title="由使用Associated Objects不当导致app闪退总结"></a>由使用Associated Objects不当导致app闪退总结</h1><p>前段时间项目新增一个需求需要接入一个第三方的sdk，我们需要使用这个第三方sdk提供的一个model类<strong><code>MMdata</code></strong>数据，具体我们的需要实现的是：<strong>在sdk进行网络请求回来的数据回调中<code>[MMdata]</code>数组通过OC中runtime获取<code>MMdata.m</code>的一些私有属性及其变量的值然后将这些数据上传到我们自己服务器审核这些数据，服务器返回<code>[MMdata]</code>数组中哪些可用哪些不可用，然后我们对些可用的数据添加时间戳及其它属性以来满足我们那业务的需求</strong>。刚做这个的需求想到了好几个方案：一是使用继承，写一个继承<code>MMdata</code>的子类并且添加自己需要的属性值；二是重写一个本地类将MateriaMeta的数据全部给重写过来，在添加自己所想添加的；三是使用对象关联技术使用分类添加需要扩展的属性。经过一段小组之间的讨论，最后决定使用第三种方案。方法一二相比，明显第二种方法解耦合了，我们新建model类不依赖于SDK第三方了，而且在赋值的时候继承对于它父类的私有属性不好处理你还是得写一次，所以方法二优于方法一。然后比较二三方法，方法三更具有优势，因为只需要在我们服务器审核成功之后对<code>MMdata</code>的分类<code>MMdata+Extension</code> 的属性赋值即可。</p>
+<p>我的写法如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">MMdata</span>+<span class="type">Extension</span>.h</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">@property (nonatomic, assign) NSTimeInterval timestamps;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">MMdata</span>+<span class="type">Extension</span>.m</span><br><span class="line">- (<span class="type">NSTimeInterval</span>)timestamps &#123;</span><br><span class="line">    <span class="keyword">return</span> [objc_getAssociatedObject(<span class="keyword">self</span>, _cmd) doubleValue];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)setTimestamps:(<span class="type">NSTimeInterval</span>)timestamps &#123;</span><br><span class="line">    objc_setAssociatedObject(<span class="keyword">self</span>, @selector(timestamps), [<span class="type">NSNumber</span> numberWithDouble:timestamps], <span class="type">OBJC_ASSOCIATION_ASSIGN</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最后奔溃就在第九行，在使用<code>timestamps</code>的时候报了野指针错误，然而这个问题在上线前测试这边都没有出现过问题，上线后大量用户反馈闪退，以及通过后台闪退数据的抓取到就是这里的问题</p>
+<p>事后分析原因，可能是在<code>setTimestamps:</code>方法中我使用的是<code>OBJC_ASSOCIATION_ASSIGN</code>修饰导致的。<br>首先，我查看了<code>runtime</code>的官方文档对对象关联的修饰符介绍。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Associative References */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Policies related to associative references.</span></span><br><span class="line"><span class="comment">* These are options to objc_setAssociatedObject()</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">typedef <span class="type">OBJC_ENUM</span>(uintptr_t, objc_AssociationPolicy) &#123;</span><br><span class="line"><span class="type">OBJC_ASSOCIATION_ASSIGN</span> = <span class="number">0</span>,           <span class="comment">/**&lt; Specifies a weak reference to the associated object. */</span></span><br><span class="line"><span class="type">OBJC_ASSOCIATION_RETAIN_NONATOMIC</span> = <span class="number">1</span>, <span class="comment">/**&lt; Specifies a strong reference to the associated object. </span></span><br><span class="line"><span class="comment">*   The association is not made atomically. */</span></span><br><span class="line"><span class="type">OBJC_ASSOCIATION_COPY_NONATOMIC</span> = <span class="number">3</span>,   <span class="comment">/**&lt; Specifies that the associated object is copied. </span></span><br><span class="line"><span class="comment">*   The association is not made atomically. */</span></span><br><span class="line"><span class="type">OBJC_ASSOCIATION_RETAIN</span> = <span class="number">01401</span>,       <span class="comment">/**&lt; Specifies a strong reference to the associated object.</span></span><br><span class="line"><span class="comment">*   The association is made atomically. */</span></span><br><span class="line"><span class="type">OBJC_ASSOCIATION_COPY</span> = <span class="number">01403</span>          <span class="comment">/**&lt; Specifies that the associated object is copied.</span></span><br><span class="line"><span class="comment">*   The association is made atomically. */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>错误信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-[CFNumber retain]: message sent to deallocated instance 0x604001620360</span><br></pre></td></tr></table></figure></p>
+<p>通过Xcode的lldb调试工具watchpoint后面找出原因是就是使用<code>OBJC_ASSOCIATION_ASSIGN</code>修饰的原因：<strong><code>timestramps</code>是一个弱引用，所以当出了这个括号<code>timestramps</code>所指向的对象(也就是[NSNumber numberWithDouble:timestamps])就被释放了，然而<code>timestramps</code>仍然有值，还是保存了原对象的地址</strong>。所以当使用<code>objc_getAssociatedObject</code>去取值的时候就会Crash。所以解决方案就是将<code>OBJC_ASSOCIATION_ASSIGN</code>改为<code>OBJC_ASSOCIATION_RETAIN_NONATOMIC</code>。</p>
+<p>通过进一步了解到，在分类使用对象关联添加的属性(property)，他不是存放在类对象的内存中，因为在运行期间对象的内存布局已经确定。它存在于一个AccociationManager对象的AssociationHashMap中；<code>AssociationHashMap</code>的<code>key</code>是关联类对象的地址，<code>value</code>是<code>ObjectAssociationMap</code>；<code>ObjectAssociationMap</code>的key是传递进来的 const void * _Nonnull key，value 是<code>ObjcAssociation</code>包括关联策略policy和关联对象value。<br><img src="https://upload-images.jianshu.io/upload_images/1603505-368ec58aa8ef8edd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h1 id="NSInteger-和-NSUInteger-进行比较"><a href="#NSInteger-和-NSUInteger-进行比较" class="headerlink" title="NSInteger 和 NSUInteger 进行比较"></a>NSInteger 和 NSUInteger 进行比较</h1><p>看下面的比较，你认为会输出多少？<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">NSInteger</span> i = -<span class="number">1</span>;</span><br><span class="line"><span class="type">NSArray</span> *arr = @[];</span><br><span class="line"><span class="keyword">if</span> (i &lt; arr.<span class="built_in">count</span>) &#123;</span><br><span class="line"><span class="type">NSLog</span>(@<span class="string">"&lt;"</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="type">NSLog</span>(@<span class="string">"&gt;"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>结果是控制台打印<code>&gt;</code>，你可能会想一看不对呀，<code>i==-1.arr.count==0</code>,不应该是输出<code>&lt;</code>么；带我细细讲来，这个问题我们小组好几个人都踩过这个坑，一般是在if条件判断数组个数的时候，或者for循环条件判断的时候。比如上面这种形式，结果走了else语句。</p>
+<p>我们知道两个不同类型的比较，会进行<strong>隐式转换，即低精度会向高精度的数字转换</strong>，然后再进行比较，那上面代码的例子来说，if比较的<code>NSInteger</code>类型与<code>NSUInteger</code>类型，就是<code>NSInteger</code>类型会转化为<code>NSUInteger</code>类型，然后再比较。<br>所以有符号整型-1与无符号整型0的比较，会先将有符号的整形-1转化为无符号的-1。那有符号整型-1在计算机中是通过二进制补码的形式进行存储的，且最前面一位是符号为0正1负，补码=原码取反加一。以64位iPhoneX为例，-1的存储图位，有符号的-1存储在机器上时64个1；所当变成无符号的时候，其值就是2的64次方=18446744073709551615。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">位数    63   62   62   ……   2    1    0</span><br><span class="line">原码    1    0    0    0    0    0    1</span><br><span class="line">反码    1    1    1    1    1    1    0</span><br><span class="line">补码    1    1    1    1    1    1    1</span><br></pre></td></tr></table></figure></p>
+<p>大家可以在Xcode断点调试验证下。这里也说明了swift的安全严谨性，他在编译阶段就能够让你察觉这个错误。</p>
 
       
     </div>
@@ -466,8 +478,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -539,6 +560,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#由使用Associated-Objects不当导致app闪退总结"><span class="nav-number">1.</span> <span class="nav-text">由使用Associated Objects不当导致app闪退总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NSInteger-和-NSUInteger-进行比较"><span class="nav-number">2.</span> <span class="nav-text">NSInteger 和 NSUInteger 进行比较</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -566,7 +603,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">42.2k</span>
+    <span title="Site words total count">43.4k</span>
   
 </div>
 

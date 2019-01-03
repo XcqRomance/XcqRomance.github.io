@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[2019-01-03]]></title>
+    <url>%2F2019%2F01%2F03%2F2019-01-03%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[iOS高效开发小技巧-常用代码块]]></title>
     <url>%2F2018%2F11%2F13%2F2018-11-13%2F</url>
     <content type="text"><![CDATA[做iOS开发已经将近四年，这里收录了一份自己一份高效开发的代码块，总共20个。在看WWDC大会上，也经常看到苹果的开发者在讲解代码的使用这个小技巧，其实我们日常开发中使用这个小技巧能够明显的提高我们的开发效率，避免写一些循环重复的代码，如果你还不清楚啥叫代码块，可以参考这篇文章Xcode Snippets或者Xcode Snippets中文版。 下载地址：Code Snippet，提取密码:65f7，更详细的内容可以在gist上面查看，如果你一些好用的代码块，欢迎大家评论补充和交流。 添加方法：1、在终端上执行命令：open ~/Library/Developer/Xcode/UserData/CodeSnippets/；2、解压上面下载的zip包，拷贝解压的CodeSnippets文件夹里面的所有.codesnippet的文件到第一步执行打开的目录；甚至大家可以将这个目录使用git仓库来管理，托管在GitHub上。 使用方法：所有的代码块的快捷键都是以my开头，比如在.m文件@implementation和@end范围内输入myimplementation,就会自动出现下面的模版代码 12345678910111213141516171819202122232425262728293031#pragma mark - life cycle- (instancetype)init &#123; if (self = [super init]) &#123; [self buildUI]; &#125; return self;&#125;- (instancetype)initWithFrame:(CGRect)frame &#123; if (self = [super initWithFrame:frame]) &#123; [self buildUI]; &#125; return self;&#125;- (void)dealloc &#123; &#125;#pragma mark - private method- (void)buildUI &#123; &#125;#pragma mark - public method#pragma mark - event response#pragma mark - setter &amp;&amp; getter 当然使用快捷键大家可以自定义设置]]></content>

@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="双系统," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="昨天公司一个做文秘的同事由于公司给配的电脑很不给力，用个office，再打开一两个其他的软件就卡的要死，最后实在是受不了，就差砸电脑了。所以只好把她12年末买的一款2012年中的MacBook Pro拿过来准备安装win7（mac电脑虽好，但是对于经常用office做编辑的人来说，mac电脑显然不能够满足工作的需要），看了她macPro的配置(处理器：2.9 GHz Intel Core i7，8">
+<meta name="keywords" content="双系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac电脑双系统的安装">
+<meta property="og:url" content="http://yoursite.com/2016/03/22/2016-03-22/index.html">
+<meta property="og:site_name" content="Romance的修行之路">
+<meta property="og:description" content="昨天公司一个做文秘的同事由于公司给配的电脑很不给力，用个office，再打开一两个其他的软件就卡的要死，最后实在是受不了，就差砸电脑了。所以只好把她12年末买的一款2012年中的MacBook Pro拿过来准备安装win7（mac电脑虽好，但是对于经常用office做编辑的人来说，mac电脑显然不能够满足工作的需要），看了她macPro的配置(处理器：2.9 GHz Intel Core i7，8">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-e396e46cfe150a0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-2c1f5fd62b7db452.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-e5678c91596aa47d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-d69a885ee6cd58d2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-3879938d7cc1c869.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-1566fd38a037cb52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-83087977b14b9536.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-815f18c341ee825a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-435a653c1c26bfcc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-b1be47f39b49069a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-31c9ab7519990a69.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-7e6f8900108bc268.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-4b5736344b9aaea0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-16bf523d0189b77d.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-b62505845a78c904.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-43be283b303b9ad2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-73feb46e9a86167a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-cf92b034f049a90d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-01-06T07:47:39.844Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mac电脑双系统的安装">
+<meta name="twitter:description" content="昨天公司一个做文秘的同事由于公司给配的电脑很不给力，用个office，再打开一两个其他的软件就卡的要死，最后实在是受不了，就差砸电脑了。所以只好把她12年末买的一款2012年中的MacBook Pro拿过来准备安装win7（mac电脑虽好，但是对于经常用office做编辑的人来说，mac电脑显然不能够满足工作的需要），看了她macPro的配置(处理器：2.9 GHz Intel Core i7，8">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1603505-e396e46cfe150a0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/03/22/2016-03-22/"/>
+
+
+
+
+
+  <title>Mac电脑双系统的安装 | Romance的修行之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Romance的修行之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">分享自己学习的点滴，和大家一起学习成长</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/22/2016-03-22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RomanceXie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/romance.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romance的修行之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Mac电脑双系统的安装</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-22T15:49:17+08:00">
+                2016-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,804
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>昨天公司一个做文秘的同事由于公司给配的电脑很不给力，用个office，再打开一两个其他的软件就卡的要死，最后实在是受不了，就差砸电脑了。所以只好把她12年末买的一款2012年中的MacBook Pro拿过来准备安装win7（mac电脑虽好，但是对于经常用office做编辑的人来说，mac电脑显然不能够满足工作的需要），看了她macPro的配置(处理器：2.9 GHz Intel Core i7，8 GB内存，硬盘容量750G)之后第一反应是真土豪啊，居然把这么好的电脑藏在家中不用，太浪费了。虽然之前也没安装双系统，但是作为一个程序猿技术男，此时正是一展身手的好机会啊，好让妹子们也崇拜下咋们，给咋们程序猿长长脸。</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本篇文章将教你一步一步在MAC电脑使用 Boot Camp 安装windows系统，尽管作为一个iOS开发者用mac笔记本确实体验很好，但是有时确实有特殊的需求需要用windows系统。(本文将以Mac机型为：MacBook Pro 13 英寸，2012 年中 的电脑安装win7 64位为例演示，切记：<strong>安装windows系统之前必须先确定你的mac电脑能否匹配windows系统版本</strong>，<a href="https://support.apple.com/zh-cn/HT205016" target="_blank" rel="noopener">点击这里查看</a>) </p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol>
+<li>一个64位的win7的ISO镜像文件，<a href="链接: https://pan.baidu.com/s/1eRLYb3G 密码: c6j2">点击这里</a>下载我在百度云盘共享一个win7镜像；(反正就是得下载一个靠谱的iso镜像，我第一次安装失败就是因为在网上随便下载的镜像是坏的，导致最后提示window未能启动)</li>
+<li>两个U盘或者移动硬盘，一个16G已上 MS-DOS (FAT) 格式的作为系统安装盘，和一个8G已上 MS-DOS (FAT) 格式的的装驱动程序的驱动盘。有移动硬盘尽量用移动硬盘，因为速度快，为你节省时间；(第一次操作过程很慢的一部分原因的就是因为U盘不给力，导致整个安装过程非常慢，后面果断换成的)</li>
+<li>互联网连接，网速越快，安装过程速度越快！(白天第一次安装失败，过程慢，等得我是非常痛苦，下班后果断回家弄，100M的网，这速度溜溜的，整个过程不到两小时就安装好了) 。</li>
+<li>首次安装 Windows 时，建议留出 30 GB 可用磁盘空间，如果您是从之前版本的 Windows 升级，则建议留出 40 GB 的可用磁盘空间</li>
+</ol>
+<h1 id="win7系统安装"><a href="#win7系统安装" class="headerlink" title="win7系统安装"></a>win7系统安装</h1><h2 id="一、系统安装盘的准备：-此步骤在需要安装双系统的mac电脑上操作"><a href="#一、系统安装盘的准备：-此步骤在需要安装双系统的mac电脑上操作" class="headerlink" title="一、系统安装盘的准备：(此步骤在需要安装双系统的mac电脑上操作)"></a>一、系统安装盘的准备：(此步骤在需要安装双系统的mac电脑上操作)</h2><ol>
+<li>插入系统盘，将之前下载好的win7的ISO镜像文件拷贝到桌面，然后删除系统盘的ISO镜像文件，是系统盘成为空白盘；</li>
+<li>用Spotlight搜索Boot Camp助理，或者打开launchpad–》其他–》Boot Camp助理 ,打开的界面如下：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-e396e46cfe150a0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="bootcamp.png" title="bootcamp"></li>
+<li>点击继续，按下图进行勾选（<strong>切记只勾选前两个，最后一个不要勾选</strong>）<br><img src="http://upload-images.jianshu.io/upload_images/1603505-2c1f5fd62b7db452.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step2.jpg" title="step2"></li>
+<li>点击继续，出现以下界面<br><img src="http://upload-images.jianshu.io/upload_images/1603505-e5678c91596aa47d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step3.jpg" title="step3"><br>点击选取，选择之前保存在mac电脑桌面的ISO镜像文件，目的磁盘就是那个系统安装盘，并且保持与你的Mac的连接，直到windows安装完成</li>
+<li>点击继续，会出现以下界面（整个过程将会持续至少半个小时，这取决于你的U盘和网速，我在这步都要疯掉了，等了一个多小时都没成功，果断换了新的U盘和100M网络）<br><img src="http://upload-images.jianshu.io/upload_images/1603505-d69a885ee6cd58d2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step4.jpg" title="step4"></li>
+<li>step4.jpg完成之后，会弹出以下界面：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-3879938d7cc1c869.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step5.jpg" title="step5"></li>
+<li>至此为止，系统安装盘已经准备好了，点击退出关闭“Boot Camp助理”窗口以退出此应用。</li>
+</ol>
+<h2 id="二、驱动盘的准备：-因为上一步骤需要部分时间，所以在进行上一步骤的同时，你可以另一台电脑上面进行此步骤的操作，节省时间"><a href="#二、驱动盘的准备：-因为上一步骤需要部分时间，所以在进行上一步骤的同时，你可以另一台电脑上面进行此步骤的操作，节省时间" class="headerlink" title="二、驱动盘的准备：(因为上一步骤需要部分时间，所以在进行上一步骤的同时，你可以另一台电脑上面进行此步骤的操作，节省时间)"></a>二、驱动盘的准备：(因为上一步骤需要部分时间，所以在进行上一步骤的同时，你可以另一台电脑上面进行此步骤的操作，节省时间)</h2><ol>
+<li>从苹果官网上<a href="https://support.apple.com/zh-cn/HT205016" target="_blank" rel="noopener">按Mac机型列出的BootCamp要求</a>来查找您所用的 Windows 版本和 Mac 所需的 Windows 支持软件（驱动程序）如下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-1566fd38a037cb52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step6.png" title="step6"></li>
+<li>点击step6.png红色箭头指向的‘5’将跳转到下载页面，如下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-83087977b14b9536.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step7.png" title="step7"></li>
+<li>点击下载，得到的是zip包，解压之后的BootCamp5文件夹（这就是需要下载的驱动程序）如下：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-815f18c341ee825a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step8.png" title="step8"> </li>
+<li>将上一步得到的BootCamp5文件保存到事先准备好的驱动盘中。</li>
+</ol>
+<h2 id="三、正式安装：（系统安装盘一直连接在电脑上，直到安装win7成功）"><a href="#三、正式安装：（系统安装盘一直连接在电脑上，直到安装win7成功）" class="headerlink" title="三、正式安装：（系统安装盘一直连接在电脑上，直到安装win7成功）"></a>三、正式安装：（系统安装盘一直连接在电脑上，直到安装win7成功）</h2><ol>
+<li>将驱动盘的BootCamp5文件拖动到系统安装盘中，在系统提示您是否要替换系统安装盘上的现有项目时，请点按“是”。</li>
+<li>再次打开“Boot Camp 助理”，然后点按“继续”。</li>
+<li>切记仅勾选第三个，即仅选择“安装 Windows7或更高版本”选项。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-435a653c1c26bfcc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step9.png" title="step9"></li>
+<li>点击继续，然后按照屏幕提示重新对您的驱动器进行分区，然后安装 Windows。</li>
+<li>完成该助理的操作后，Mac 会重新启动至 Windows 安装程序。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-b1be47f39b49069a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="安装.jpg" title="安装"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-31c9ab7519990a69.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="安装2.JPG" title="安装2"></li>
+<li>在系统询问您要在何处安装 Windows 时，请选择 BOOTCAMP 分区，然后点按“驱动器选项”，并对您的 Boot Camp 分区进行格式化。如下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-7e6f8900108bc268.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step10.jpg" title="step10"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-4b5736344b9aaea0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step11.png" title="step11"></li>
+<li>点击下一步将出现以下界面：(此步骤也需要等待一段时间)<br><img src="http://upload-images.jianshu.io/upload_images/1603505-16bf523d0189b77d.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step12.JPG" title="step12"></li>
+<li>等待一段时间后，也就大功告成了。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-b62505845a78c904.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step13.JPG" title="step13"></li>
+</ol>
+<h2 id="四、安装驱动（因为到这步为止，电脑还不能联网，有线网，无线网络都连不上，所以我怀疑没有网卡驱动）"><a href="#四、安装驱动（因为到这步为止，电脑还不能联网，有线网，无线网络都连不上，所以我怀疑没有网卡驱动）" class="headerlink" title="四、安装驱动（因为到这步为止，电脑还不能联网，有线网，无线网络都连不上，所以我怀疑没有网卡驱动）"></a>四、安装驱动（因为到这步为止，电脑还不能联网，有线网，无线网络都连不上，所以我怀疑没有网卡驱动）</h2><ul>
+<li>苹果官方给的操作步骤：<br>window安装成功后但是还没有任何驱动，是不能上网的，这时需要安装系统盘中的驱动，按照step7给的步骤操作，<br><img src="http://upload-images.jianshu.io/upload_images/1603505-43be283b303b9ad2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step13.png" title="step13"></li>
+<li>我实际的操作<br>从我的驱动盘中找到并安装无线网卡驱动然后就可以上网了，如下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-73feb46e9a86167a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="step14.png" title="step14"><br>最后交由驱动精灵来给我win7系统安装其他驱动和打系统补丁。<h2 id="到此你的mac电脑双系统也就安装成功了，可以愉快的玩耍了，"><a href="#到此你的mac电脑双系统也就安装成功了，可以愉快的玩耍了，" class="headerlink" title="到此你的mac电脑双系统也就安装成功了，可以愉快的玩耍了，"></a>到此你的mac电脑双系统也就安装成功了，可以愉快的玩耍了，</h2></li>
+</ul>
+<h1 id="安装失败的解决方法"><a href="#安装失败的解决方法" class="headerlink" title="安装失败的解决方法"></a>安装失败的解决方法</h1><ol>
+<li>我第一次安装是失败了，在安装过程中出现了下图的问题，最后只好重新安装，并且换了一个win7系统镜像文件。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-cf92b034f049a90d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="fail.jpg" title="fail"><br>第一步，此时需要先把电脑强制关机，就是按住电源键；<br>第二步，再开机，听到开机声或者白屏之后按住option按键或者一直按住option键，直到看到启动磁盘选项，选择Mac的系统盘就可以了；<br>第三步，进入 Boot Camp助理选项，前面的选项不要勾选，只勾选最后的删除win选项，<br>第四步，重新按照我说的步骤操作进行win7系统安装。</li>
+</ol>
+<blockquote>
+<p>我们终此一生，就是要摆脱他人的期待，找到真正的自己;</p>
+</blockquote>
+<p>记录学习的点滴，以此勉励不断奋斗的自己✌️✌️✌️</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/双系统/" rel="tag"># 双系统</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/08/2016-03-08/" rel="next" title="Mac电脑的PHP开发环境配置">
+                <i class="fa fa-chevron-left"></i> Mac电脑的PHP开发环境配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/29/2016-03-29/" rel="prev" title="使用oschina托管自己项目">
+                使用oschina托管自己项目 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzA1Mi85NjE0"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/romance.jpg"
+                alt="RomanceXie" />
+            
+              <p class="site-author-name" itemprop="name">RomanceXie</p>
+              <p class="site-description motion-element" itemprop="description">只要有梦，总有属于自己的江山</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/XcqRomance" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/d1414d91084a" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#win7系统安装"><span class="nav-number">3.</span> <span class="nav-text">win7系统安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、系统安装盘的准备：-此步骤在需要安装双系统的mac电脑上操作"><span class="nav-number">3.1.</span> <span class="nav-text">一、系统安装盘的准备：(此步骤在需要安装双系统的mac电脑上操作)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、驱动盘的准备：-因为上一步骤需要部分时间，所以在进行上一步骤的同时，你可以另一台电脑上面进行此步骤的操作，节省时间"><span class="nav-number">3.2.</span> <span class="nav-text">二、驱动盘的准备：(因为上一步骤需要部分时间，所以在进行上一步骤的同时，你可以另一台电脑上面进行此步骤的操作，节省时间)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、正式安装：（系统安装盘一直连接在电脑上，直到安装win7成功）"><span class="nav-number">3.3.</span> <span class="nav-text">三、正式安装：（系统安装盘一直连接在电脑上，直到安装win7成功）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、安装驱动（因为到这步为止，电脑还不能联网，有线网，无线网络都连不上，所以我怀疑没有网卡驱动）"><span class="nav-number">3.4.</span> <span class="nav-text">四、安装驱动（因为到这步为止，电脑还不能联网，有线网，无线网络都连不上，所以我怀疑没有网卡驱动）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#到此你的mac电脑双系统也就安装成功了，可以愉快的玩耍了，"><span class="nav-number">3.5.</span> <span class="nav-text">到此你的mac电脑双系统也就安装成功了，可以愉快的玩耍了，</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装失败的解决方法"><span class="nav-number">4.</span> <span class="nav-text">安装失败的解决方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RomanceXie</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">57.6k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

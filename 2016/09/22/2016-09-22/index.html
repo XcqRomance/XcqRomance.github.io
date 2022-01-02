@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="swift," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前段时间，公司项目有个需求要求实现任务倒计时，头疼死我了，折腾了我老半天，先看最终的实现效果，如下图。当时的需求有两点要求：  要求在当前任务关卡实现倒计时计算； 要求在弹出来的tips页面同时也进行倒计时。   一想到倒计时，我们可能想到的解决方案有三种；NStimer、GCD、NSOperation NSTimer实现倒计时NSTimer实现计时需要注意，他默认是在runloop中的NSDef">
+<meta name="keywords" content="swift">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS的使用Swift，NSOperation实现的倒计时">
+<meta property="og:url" content="http://yoursite.com/2016/09/22/2016-09-22/index.html">
+<meta property="og:site_name" content="Romance的修行之路">
+<meta property="og:description" content="前段时间，公司项目有个需求要求实现任务倒计时，头疼死我了，折腾了我老半天，先看最终的实现效果，如下图。当时的需求有两点要求：  要求在当前任务关卡实现倒计时计算； 要求在弹出来的tips页面同时也进行倒计时。   一想到倒计时，我们可能想到的解决方案有三种；NStimer、GCD、NSOperation NSTimer实现倒计时NSTimer实现计时需要注意，他默认是在runloop中的NSDef">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-12f3d182fe73a345.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2018-01-07T01:25:00.496Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS的使用Swift，NSOperation实现的倒计时">
+<meta name="twitter:description" content="前段时间，公司项目有个需求要求实现任务倒计时，头疼死我了，折腾了我老半天，先看最终的实现效果，如下图。当时的需求有两点要求：  要求在当前任务关卡实现倒计时计算； 要求在弹出来的tips页面同时也进行倒计时。   一想到倒计时，我们可能想到的解决方案有三种；NStimer、GCD、NSOperation NSTimer实现倒计时NSTimer实现计时需要注意，他默认是在runloop中的NSDef">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1603505-12f3d182fe73a345.gif?imageMogr2/auto-orient/strip">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/22/2016-09-22/"/>
+
+
+
+
+
+  <title>iOS的使用Swift，NSOperation实现的倒计时 | Romance的修行之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Romance的修行之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">分享自己学习的点滴，和大家一起学习成长</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/22/2016-09-22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RomanceXie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/romance.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romance的修行之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS的使用Swift，NSOperation实现的倒计时</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-22T19:52:34+08:00">
+                2016-09-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,085
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>前段时间，公司项目有个需求要求实现任务倒计时，头疼死我了，折腾了我老半天，先看最终的实现效果，如下图。当时的需求有两点要求：</p>
+<ol>
+<li>要求在当前任务关卡实现倒计时计算；</li>
+<li>要求在弹出来的tips页面同时也进行倒计时。</li>
+</ol>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-12f3d182fe73a345.gif?imageMogr2/auto-orient/strip" alt="timeCountDown.gif"></p>
+<p>一想到倒计时，我们可能想到的解决方案有三种；<strong><code>NStimer、GCD、NSOperation</code></strong></p>
+<h2 id="NSTimer实现倒计时"><a href="#NSTimer实现倒计时" class="headerlink" title="NSTimer实现倒计时"></a>NSTimer实现倒计时</h2><p>NSTimer实现计时需要注意，他默认是在runloop中的<code>NSDefaultRunLoopMode</code>计时，在这个模式下面，有滑动事件，计时将失效，此时我们需要在将timer添加到runloop中的<code>NSRunLoopCommonModes</code>,这样就不会有任何影响<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> animationTimer = <span class="type">NSTimer</span>.scheduledTimerWithTimeInterval(<span class="number">10</span>, target: <span class="keyword">self</span>, selector: #selector(<span class="type">WeeklyMissionViewController</span>.runanimation), userInfo: <span class="literal">nil</span>, repeats: <span class="literal">true</span>)</span><br><span class="line"><span class="type">NSRunLoop</span>.mainRunLoop().addTimer(animationTimer!, forMode: <span class="type">NSRunLoopCommonModes</span>)</span><br><span class="line">animationTimer!.fire()</span><br></pre></td></tr></table></figure></p>
+<h2 id="GCD实现倒计时"><a href="#GCD实现倒计时" class="headerlink" title="GCD实现倒计时"></a>GCD实现倒计时</h2><p>GCD实现计时需要注意的是<code>let _timer: dispatch_source_t</code>必须存储为全局变量<code>timer = _timer</code><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">setGCDTimer</span><span class="params">(weeklyMission: MissionList, type: Int)</span></span> &#123;</span><br><span class="line">       <span class="comment">// 计算倒计时</span></span><br><span class="line">       <span class="keyword">let</span> nowDate =  <span class="type">NSDate</span>()</span><br><span class="line">       <span class="keyword">let</span> nowUnix = nowDate.timeIntervalSince1970</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">let</span> <span class="built_in">count</span> = (weeklyMission.createdAt)! + <span class="number">24</span> * <span class="number">3600</span> - <span class="type">Int</span>(nowUnix)        </span><br><span class="line">       <span class="keyword">var</span> _timeout: <span class="type">Int</span> = <span class="built_in">count</span></span><br><span class="line">       <span class="keyword">let</span> _queue: dispatch_queue_t = dispatch_get_global_queue(<span class="type">DISPATCH_QUEUE_PRIORITY_DEFAULT</span>, <span class="number">0</span>)</span><br><span class="line">       <span class="keyword">let</span> _timer: dispatch_source_t = dispatch_source_create(<span class="type">DISPATCH_SOURCE_TYPE_TIMER</span>, <span class="number">0</span>, <span class="number">0</span>, _queue)</span><br><span class="line">       timer = _timer</span><br><span class="line">       <span class="comment">// 每秒执行</span></span><br><span class="line">       dispatch_source_set_timer(_timer, dispatch_walltime(<span class="literal">nil</span>, <span class="number">0</span>), <span class="number">1</span> * <span class="type">NSEC_PER_SEC</span>, <span class="number">0</span>)</span><br><span class="line">       </span><br><span class="line">       printLog(<span class="string">"----_timer-----"</span>)</span><br><span class="line">       dispatch_source_set_event_handler(_timer) &#123; () -&gt; <span class="type">Void</span> <span class="keyword">in</span></span><br><span class="line">           </span><br><span class="line">           <span class="keyword">if</span> _timeout &lt;= <span class="number">0</span> &#123;</span><br><span class="line">               <span class="comment">// 倒计时结束</span></span><br><span class="line">               dispatch_source_cancel(_timer)</span><br><span class="line">               dispatch_async(dispatch_get_main_queue(), &#123; [<span class="keyword">unowned</span> <span class="keyword">self</span>] () -&gt; <span class="type">Void</span> <span class="keyword">in</span></span><br><span class="line">                   <span class="comment">// 如需更新UI 代码请写在这里</span></span><br><span class="line">                   &#125;)</span><br><span class="line">           &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">               </span><br><span class="line">               <span class="built_in">print</span>(<span class="string">"cell:<span class="subst">\(weeklyMission.mission)</span>---<span class="subst">\(_timeout)</span>"</span>)</span><br><span class="line">               _timeout -= <span class="number">1</span></span><br><span class="line">               <span class="keyword">let</span> hours = _timeout / <span class="number">3600</span></span><br><span class="line">               <span class="keyword">let</span> hoursSec = hours * <span class="number">3600</span></span><br><span class="line">               <span class="keyword">let</span> minutes = (_timeout - hoursSec) / <span class="number">60</span></span><br><span class="line">               <span class="keyword">let</span> seconds = _timeout - hoursSec - minutes * <span class="number">60</span></span><br><span class="line">               </span><br><span class="line">               dispatch_async(dispatch_get_main_queue(), &#123;  [<span class="keyword">unowned</span> <span class="keyword">self</span>] <span class="keyword">in</span></span><br><span class="line">                   <span class="keyword">let</span> timeText = <span class="string">"<span class="subst">\(String(format: "%.2d",hours)</span>):<span class="subst">\(String(format: "%.2d",minutes)</span>):<span class="subst">\(String(format: "%.2d",seconds)</span>)"</span></span><br><span class="line">                   <span class="comment">// 如需更新UI 代码请写在这里</span></span><br><span class="line">                   &#125;)</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       dispatch_resume(_timer)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="NSOperation实现倒计时"><a href="#NSOperation实现倒计时" class="headerlink" title="NSOperation实现倒计时"></a>NSOperation实现倒计时</h2><p>以上两种实现的计时，有个很明显的缺点就是，不可控！他们二者开启一个计时器之后，没法方便的控制他停止，继续；但是NSOperation不同，他有cancel方法，我们可以拿到对应的operation，然后操作他，可控性好。<br>主要代码如下：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  TimeCountDownManager.swift</span></span><br><span class="line"><span class="comment">//  leapParent</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by romance on 16/9/19.</span></span><br><span class="line"><span class="comment">//  Copyright © 2016年 Firstleap. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 计时中回调</span></span><br><span class="line"><span class="keyword">typealias</span> <span class="type">TimeCountingDownTaskBlock</span> = (timeInterval: <span class="type">NSTimeInterval</span>) -&gt; <span class="type">Void</span></span><br><span class="line"><span class="comment">// 计时结束后回调</span></span><br><span class="line"><span class="keyword">typealias</span> <span class="type">TimeFinishedBlock</span> = (timeInterval: <span class="type">NSTimeInterval</span>) -&gt; <span class="type">Void</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">var</span> shareInstance = <span class="type">TimeCountDownManager</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">TimeCountDownManager</span>: <span class="title">NSObject</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 单利</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">var</span> <span class="title">sharedInstance</span> : <span class="title">TimeCountDownManager</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> shareInstance</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> pool: <span class="type">NSOperationQueue</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="keyword">init</span>() &#123;</span><br><span class="line">        pool = <span class="type">NSOperationQueue</span>()</span><br><span class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  开始倒计时，如果倒计时管理器里具有相同的key，则直接开始回调。</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     *  @param Key         任务key，用于标示唯一性</span></span><br><span class="line"><span class="comment">     *  @param timeInterval 倒计时总时间，</span></span><br><span class="line"><span class="comment">     *  @param countingDown 倒计时时，会多次回调，提供当前秒数</span></span><br><span class="line"><span class="comment">     *  @param finished     倒计时结束时调用，提供当前秒数，值恒为 0</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">scheduledCountDownWith</span><span class="params">(key: String, timeInteval: NSTimeInterval, countingDown:TimeCountingDownTaskBlock?,finished:TimeCountingDownTaskBlock?)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> task: <span class="type">TimeCountDownTask</span>?</span><br><span class="line">        <span class="keyword">if</span> coundownTaskExistWith(key, task: &amp;task) &#123;</span><br><span class="line">            task?.countingDownBlcok = countingDown</span><br><span class="line">            task?.finishedBlcok = finished</span><br><span class="line">            <span class="keyword">if</span> countingDown != <span class="literal">nil</span> &#123;</span><br><span class="line">                countingDown!(timeInterval: (task?.leftTimeInterval) ?? <span class="number">60</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            task = <span class="type">TimeCountDownTask</span>()</span><br><span class="line">            task?.leftTimeInterval = timeInteval</span><br><span class="line">            task?.countingDownBlcok = countingDown</span><br><span class="line">            task?.finishedBlcok = finished</span><br><span class="line">            task?.name = key</span><br><span class="line">            </span><br><span class="line">            pool.addOperation(task!)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  查询倒计时任务是否存在</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     *  @param akey 任务key</span></span><br><span class="line"><span class="comment">     *  @param task 任务</span></span><br><span class="line"><span class="comment">     *  @return YES - 存在， NO - 不存在</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">coundownTaskExistWith</span><span class="params">(key: String,<span class="keyword">inout</span> task: TimeCountDownTask? )</span></span> -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> taskExits = <span class="literal">false</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="number">_</span>, obj)  <span class="keyword">in</span> pool.operations.<span class="built_in">enumerate</span>() &#123;</span><br><span class="line">            <span class="keyword">let</span> temptask = obj <span class="keyword">as</span>! <span class="type">TimeCountDownTask</span></span><br><span class="line">            <span class="keyword">if</span> temptask.name == key &#123;</span><br><span class="line">                task = temptask</span><br><span class="line">                taskExits = <span class="literal">true</span></span><br><span class="line"><span class="comment">//                print("coundownTaskExistWith#####\(temptask.leftTimeInterval)")</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> taskExits</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  取消所有倒计时任务</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">func</span> <span class="title">cancelAllTask</span><span class="params">()</span></span> &#123;</span><br><span class="line">        pool.cancelAllOperations()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  挂起所有倒计时任务</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">suspendAllTask</span><span class="params">()</span></span> &#123;</span><br><span class="line">        pool.suspended = <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">TimeCountDownTask</span>: <span class="title">NSOperation</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> leftTimeInterval: <span class="type">NSTimeInterval</span> = <span class="number">0</span></span><br><span class="line">    <span class="keyword">var</span> countingDownBlcok: <span class="type">TimeCountingDownTaskBlock</span>?</span><br><span class="line">    <span class="keyword">var</span> finishedBlcok: <span class="type">TimeFinishedBlock</span>?</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">self</span>.cancelled &#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;        </span><br><span class="line">        <span class="keyword">while</span> leftTimeInterval &gt; <span class="number">0</span> &#123;</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">"leftTimeInterval----<span class="subst">\(leftTimeInterval)</span>"</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">self</span>.cancelled &#123;</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">            leftTimeInterval -= <span class="number">1</span></span><br><span class="line">            dispatch_async(dispatch_get_main_queue(), &#123;</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">self</span>.countingDownBlcok != <span class="literal">nil</span> &#123;</span><br><span class="line">                    <span class="keyword">self</span>.countingDownBlcok!(timeInterval: <span class="keyword">self</span>.leftTimeInterval)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="type">NSThread</span>.sleepForTimeInterval(<span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        dispatch_async(dispatch_get_main_queue()) &#123;</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">self</span>.cancelled &#123;</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">self</span>.finishedBlcok != <span class="literal">nil</span> &#123;</span><br><span class="line">                <span class="keyword">self</span>.finishedBlcok!(timeInterval: <span class="number">0</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>稍微解析下以上代码，<code>TimeCountDownManager</code>是定时器管理类，是个单利，可以管理app中所有需要倒计时的task，<code>TimeCountDownTask</code>是具体的用来处理倒计时的NSOperation子类，大家还可以在我的基础上进行完善，比如cancel具体taskIdentifier的task，suspended具体的task，等等！</p>
+<p>整个demo代码的<a href="https://github.com/XcqRomance/TImeCountingDown" target="_blank" rel="noopener">GitHub地址</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/swift/" rel="tag"># swift</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/30/2016-08-30/" rel="next" title="swift实现的单词高亮">
+                <i class="fa fa-chevron-left"></i> swift实现的单词高亮
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/17/2016-10-17/" rel="prev" title="iOS自动打包上传实践-企业账号APP上传到自己服务器">
+                iOS自动打包上传实践-企业账号APP上传到自己服务器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzA1Mi85NjE0"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/romance.jpg"
+                alt="RomanceXie" />
+            
+              <p class="site-author-name" itemprop="name">RomanceXie</p>
+              <p class="site-description motion-element" itemprop="description">只要有梦，总有属于自己的江山</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/XcqRomance" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/d1414d91084a" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#NSTimer实现倒计时"><span class="nav-number">1.</span> <span class="nav-text">NSTimer实现倒计时</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GCD实现倒计时"><span class="nav-number">2.</span> <span class="nav-text">GCD实现倒计时</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NSOperation实现倒计时"><span class="nav-number">3.</span> <span class="nav-text">NSOperation实现倒计时</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RomanceXie</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">57.6k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

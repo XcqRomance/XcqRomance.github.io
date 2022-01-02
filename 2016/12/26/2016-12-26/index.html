@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="swift framework," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前段时间公司app中有个BookRoom模块，也就是绘本阅读的模块需要重新做，并且封装成framework的形式进行（fcs项目已经很大，很冗余，每次Xcode编译项目都需要大量的时间，至少有5分钟），所以使用swift构建的framework遇到的问题坑我基本上都遇到过。于是想把整个过程记录下来，肯定有人和我一样遇到类似的问题，以便下次遇到可以快速解决； 新建Framework项目 新建项目选择">
+<meta name="keywords" content="swift framework">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift构建通用版本Framework以及Framework的使用及其注意事项">
+<meta property="og:url" content="http://yoursite.com/2016/12/26/2016-12-26/index.html">
+<meta property="og:site_name" content="Romance的修行之路">
+<meta property="og:description" content="前段时间公司app中有个BookRoom模块，也就是绘本阅读的模块需要重新做，并且封装成framework的形式进行（fcs项目已经很大，很冗余，每次Xcode编译项目都需要大量的时间，至少有5分钟），所以使用swift构建的framework遇到的问题坑我基本上都遇到过。于是想把整个过程记录下来，肯定有人和我一样遇到类似的问题，以便下次遇到可以快速解决； 新建Framework项目 新建项目选择">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-e00709b029a7aec2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-2cde9f5a96997b8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-70d4fcfb9476cee1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-a854bd7613079151.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-e60a672397353687.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-1adc3207436250ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-851ae6c7e6b0c478.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-f1576bd482518455.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-2950532664ca15dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-d0ccea26db53f000.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-c1609f72f53c413c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-c8f8ef1373eacd9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-f901a4d5a6cbfa21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-f81ca6d6978badd3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-6ffe762e24acf985.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-d268d5982c5d154f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-0aea5ef61b9d348e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-85efb12dff6b6dd3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-532306570e8ea860.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-23c2f48c55e34383.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-bd2bbc8a83285c4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-58aa9d9e42e7c913.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-11118bca4cc6a42a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-6652b290dbd5ec79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-e80b15518798e508.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1603505-7a399fdbccc9ecf4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-01-08T02:49:56.786Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift构建通用版本Framework以及Framework的使用及其注意事项">
+<meta name="twitter:description" content="前段时间公司app中有个BookRoom模块，也就是绘本阅读的模块需要重新做，并且封装成framework的形式进行（fcs项目已经很大，很冗余，每次Xcode编译项目都需要大量的时间，至少有5分钟），所以使用swift构建的framework遇到的问题坑我基本上都遇到过。于是想把整个过程记录下来，肯定有人和我一样遇到类似的问题，以便下次遇到可以快速解决； 新建Framework项目 新建项目选择">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1603505-e00709b029a7aec2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/26/2016-12-26/"/>
+
+
+
+
+
+  <title>Swift构建通用版本Framework以及Framework的使用及其注意事项 | Romance的修行之路</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Romance的修行之路</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">分享自己学习的点滴，和大家一起学习成长</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/26/2016-12-26/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RomanceXie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/romance.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Romance的修行之路">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Swift构建通用版本Framework以及Framework的使用及其注意事项</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-26T18:49:41+08:00">
+                2016-12-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,417
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>前段时间公司app中有个BookRoom模块，也就是绘本阅读的模块需要重新做，并且封装成framework的形式进行（fcs项目已经很大，很冗余，每次Xcode编译项目都需要大量的时间，至少有5分钟），所以使用swift构建的framework遇到的问题坑我基本上都遇到过。于是想把整个过程记录下来，肯定有人和我一样遇到类似的问题，以便下次遇到可以快速解决；</p>
+<h1 id="新建Framework项目"><a href="#新建Framework项目" class="headerlink" title="新建Framework项目"></a>新建Framework项目</h1><ol>
+<li><p>新建项目选择Cocoa Touch Framework项目，取名为BookRoomKit，选择Swift语言<br><img src="http://upload-images.jianshu.io/upload_images/1603505-e00709b029a7aec2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="新建framework"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-2cde9f5a96997b8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="bookroomkit"></p>
+</li>
+<li><p>然后新建一个BookRoomManager单例类用来传值设置，并且需要申明为public，这样我们才能够在其他项目上使用我们提供的framwork的代码；</p>
+</li>
+<li><p>编译framework；我这里以<strong>真机发布版本framework</strong>的为例。<br>首先使用Product-&gt;Scheme-&gt;Edit Scheme 打开如下界面，设置为Release环境，<br><img src="http://upload-images.jianshu.io/upload_images/1603505-70d4fcfb9476cee1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="设置编译环境为release"><br>然后按照下图选择，第1步代表真机运行，第2步运行，第3步代表编译成功的BookRoomKit.framework；<br><img src="http://upload-images.jianshu.io/upload_images/1603505-a854bd7613079151.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="编译framework"><br>选中BookRoomKit.framework，右击Show inFinder，会显示编译好的framework在finder中的位置，如下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-e60a672397353687.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="show in finder"></p>
+</li>
+<li><p>接下来我们新建一个壳工程，也就是测试工程，用来使用BookRoomKit.framework；并且命名为BookRoomDemo，如下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-1adc3207436250ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="BookRoomDemo App"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-851ae6c7e6b0c478.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="BookRoomDemo"><br>将BookRoomKit.framework拖入项目中，勾选下面三项，然后点击Finish<br><img src="http://upload-images.jianshu.io/upload_images/1603505-f1576bd482518455.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="勾选的三项"><br>编写代码前，记得将壳工程切换为release环境，然后真机运行，因为编译的framework必须与壳工程运行的环境一致才能够运行成功。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-2950532664ca15dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="编写测试代码"><br><strong>运行之后你会发现，程序运行不起来，奔溃的错误信息是：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dyld: Library not loaded: @rpath/BookRoomKit.framework/BookRoomKit</span><br><span class="line">  Referenced from: /var/containers/Bundle/Application/C3208286-60C0-456D-B512-C26FB1E6A254/BookRoomDemo.app/BookRoomDemo</span><br><span class="line">  Reason: image not found</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="http://upload-images.jianshu.io/upload_images/1603505-d0ccea26db53f000.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="奔溃信息日志"><br>这里就涉及一个问题，那就是我之前的一步操作是直接从Finder中将framework拖拽进壳工程项目的，这样操作默认会将framework放置在Linked Frameworks and Libraries下面，如下图；<br><img src="http://upload-images.jianshu.io/upload_images/1603505-c1609f72f53c413c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br><strong>第一：Embedded Binaries和Linked Frameworks and Libraries是有区别，具体区别看这篇文章<a href="http://stackoverflow.com/questions/32375687/what-is-the-difference-between-embedded-binaries-and-linked-frameworks" target="_blank" rel="noopener">What is the difference between Embedded Binaries and Linked Frameworks</a>；第三：从ios8开始，苹果官方支持我们构建的dynamic framework，我们构建的BookRoomKit.framework就是dynamic frameworks，这种类型的framework它需要签名code-signed以及嵌入到我们的app，否则我们真机运行时就会奔溃<a href="http://stackoverflow.com/questions/29965032/embedded-binaries-with-ios-framework" target="_blank" rel="noopener">Embedded Binaries with iOS Framework</a></strong>，还有一个问题就是，我们构建的BooRoomKit.framework往往需要使用第三方的网络请求框架，JSON解析框架等等，这些都因为代码签名的问题都得在壳工程中添加<br>说了这么多，<strong>解决方案就是：选中Linked Frameworks and Libraries下面的BookRoomKit.framework点击删除，然后将左侧导航栏的framewotk拖拽到Embedded Binaries下面，这时Linked Frameworks and Libraries默认也会有</strong>，如下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-c8f8ef1373eacd9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="正确的方法"><br>再次运行，你会发现运行成功，而且打印了<code>hello bookroom</code><br><img src="http://upload-images.jianshu.io/upload_images/1603505-f901a4d5a6cbfa21.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="hello bookroom"></p>
+<h1 id="Framework合并"><a href="#Framework合并" class="headerlink" title="Framework合并"></a>Framework合并</h1><ol>
+<li>使用<code>lipo -info</code>查看framework支持的cpu架构，分别对应真机版本和模拟器版本的framework信息<br><img src="http://upload-images.jianshu.io/upload_images/1603505-f81ca6d6978badd3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="lipo -info"></li>
+<li>使用<code>lipo -create</code>指令将模拟器和真机的framework合并成通用版本<br><img src="http://upload-images.jianshu.io/upload_images/1603505-6ffe762e24acf985.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="真机与模拟器的framework"><br>具体操作如下：<strong>首先</strong>，切换到/BookRoomKit/Build/Products；<strong>然后执行</strong><code>lipo -create -output [name] [path1] [path2]</code>这条命令；执行完成后在Products目录下生成一个BookRoomKit文件。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-d268d5982c5d154f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="lipo -create1"><br><img src="http://upload-images.jianshu.io/upload_images/1603505-0aea5ef61b9d348e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="lipo -create2"><br><strong>然后将</strong>上图红圈的文件复制到Release-iphoneos中去覆盖原来的版本，<strong>最后将</strong>Release-iphonesimulator中的框架文件里的/Modules/BookRoomKit.swiftmodule里的文件复制到Release-iphoneos对应的文件夹下。这样我们就得到了一个通用的的框架。<br><img src="http://upload-images.jianshu.io/upload_images/1603505-85efb12dff6b6dd3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="通用的framework"><br>最后用这个framework替换掉测试工程的framewotk就可以在真机和模拟器运行了</li>
+</ol>
+<h1 id="测试framework专用"><a href="#测试framework专用" class="headerlink" title="测试framework专用"></a>测试framework专用</h1><p>为了便于测试工程使用framework，我这里教大家把两个项目放到一个Xcode里面打开，也不用Xcode打开两个项目，这样便于测试使用，也不用来回在framework工程和壳工程之间切换。<strong>操作如下：</strong>关闭BookRoomKit项目，打开BookRoomDemo项目，将之前的操作取消回退，删除集成进来的Book Room.framework。然后将BookRoomKit.xcodeproj拖拽进BookRoomDemo项目中，编译BookRoomKit，如下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-532306570e8ea860.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="使用一个项目打开"><br>然后将编译好的framework拖拽进BookRoomDemo中的Embedded Binaries，如下图<br><img src="http://upload-images.jianshu.io/upload_images/1603505-23c2f48c55e34383.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3F6F9E91-A8CB-4ACE-B0B4-D21ABD9C5BA8.png"><br>通过上面的操作你就可以方便的测试framework编写的代码，不用每次都编译构建framework，当你运行BookRoomDemo的时候你就能够使用framework暴露出来的方法调用。</p>
+<h1 id="Framework中使用image，xib，storyboard，font等资源文件"><a href="#Framework中使用image，xib，storyboard，font等资源文件" class="headerlink" title="Framework中使用image，xib，storyboard，font等资源文件"></a>Framework中使用image，xib，storyboard，font等资源文件</h1><ol>
+<li><strong>image, xib,storyboard都是需要传递相应的bundle。</strong>而我看到网上一些旧的教程都很繁琐，还要建立什么resources.bundle之类的。经过我的实践，我这种方法更为简单。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let bundle = Bundle(identifier: &quot;xcqromance.BookRoomKit&quot;) // framework的bundle ID</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>storyboard的加载，xib类似<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let sb = UIStoryboard(name: &quot;BookHome&quot;, bundle: bundle)</span><br><span class="line">let vc = sb.instantiateViewController(withIdentifier: &quot;BookViewController&quot;) as! BookViewController</span><br><span class="line">viewController.navigationController?.pushViewController(vc, animated: true)</span><br></pre></td></tr></table></figure></p>
+<p>image的加载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let image = UIImage(named: &quot;bookroom_down_bg_blue&quot;, in: bundle, compatibleWith: nil)</span><br><span class="line">let imageView = UIImageView(image: image)</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>font的加载则是比较麻烦，得先注册，才能使用！所以我写了个OC的NSObject分类</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">+ (UIFont *) loadMyCustomFont:(NSString *)name size: (CGFloat)size type: (NSString *)type &#123;</span><br><span class="line">  NSString *fontPath = [[NSBundle bundleWithIdentifier:@&quot;xcqromance.BookRoomKit&quot;] pathForResource:name ofType:type];</span><br><span class="line">  NSData *inData = [NSData dataWithContentsOfFile:fontPath];</span><br><span class="line">  CFErrorRef error;</span><br><span class="line">  CGDataProviderRef provider = CGDataProviderCreateWithCFData((__bridge CFDataRef)inData);</span><br><span class="line">  CGFontRef font = CGFontCreateWithDataProvider(provider);</span><br><span class="line">  if (! CTFontManagerRegisterGraphicsFont(font, &amp;error)) &#123;</span><br><span class="line">    CFStringRef errorDescription = CFErrorCopyDescription(error);</span><br><span class="line">    NSLog(@&quot;Failed to load font: %@,%@&quot;, errorDescription,name);</span><br><span class="line">    CFRelease(errorDescription);</span><br><span class="line">  &#125;</span><br><span class="line">  CFRelease(font);</span><br><span class="line">  CFRelease(provider);</span><br><span class="line">  NSString *fontName = (__bridge NSString *)CGFontCopyPostScriptName(font);</span><br><span class="line">  UIFont* uifont = [UIFont fontWithName:fontName size:size];</span><br><span class="line">  return uifont;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在单例模初始化的时候进行注册。使用这个字体的方法和平时的一样，将fontName传递下就可以了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let label = UILabel()</span><br><span class="line">label.text = &quot;hello word&quot;</span><br><span class="line">label.sizeToFit()</span><br><span class="line">label.center = view.center</span><br><span class="line">label.font = UIFont(name: &quot;Kreon-Bold&quot;, size: 17)</span><br></pre></td></tr></table></figure>
+<p>Github上面下载<a href="https://github.com/XcqRomance/SwiftFrameworkDemo" target="_blank" rel="noopener">BookRoomDemo</a></p>
+<p>———————2017.04.10更新———————<br>每次使用终端<code>lipo -create</code>创建通用版本很繁琐、低效，于是想到了将这个过程脚本化；</p>
+<h1 id="使用脚本一键构建通用版本的framework-真机、模拟器通吃的版本"><a href="#使用脚本一键构建通用版本的framework-真机、模拟器通吃的版本" class="headerlink" title="使用脚本一键构建通用版本的framework(真机、模拟器通吃的版本)"></a>使用脚本一键构建通用版本的framework(真机、模拟器通吃的版本)</h1><p>步骤如下：</p>
+<ol>
+<li><strong><code>build active architecture only</code></strong>设置为No<br><img src="http://upload-images.jianshu.io/upload_images/1603505-bd2bbc8a83285c4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="build active architecture only -&gt; No"></li>
+<li>新建一个target，用来构建通用版本framework<br><img src="http://upload-images.jianshu.io/upload_images/1603505-58aa9d9e42e7c913.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="new target"><br>选择Cross-platform-&gt;other-&gt;Aggregate-&gt;Next<br><img src="http://upload-images.jianshu.io/upload_images/1603505-11118bca4cc6a42a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Aggregate"><br>命名为univeralBuilder，新建一个New Run Script Phase<br><img src="http://upload-images.jianshu.io/upload_images/1603505-6652b290dbd5ec79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="D124D6A4-B28B-4632-95F2-568278624B06.png"><br>在shell里面添加以下内容，注意将第九行的FRAMEWORK_NAME改为自己framework的名字。 </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"># Merge Script</span><br><span class="line"></span><br><span class="line"># 1</span><br><span class="line"># Set bash script to exit immediately if any commands fail.</span><br><span class="line">set -e</span><br><span class="line"></span><br><span class="line"># 2</span><br><span class="line"># Setup some constants for use later on.</span><br><span class="line">FRAMEWORK_NAME=&quot;Your framework name&quot; </span><br><span class="line"></span><br><span class="line"># 3</span><br><span class="line"># If remnants from a previous build exist, delete them.</span><br><span class="line">if [ -d &quot;$&#123;SRCROOT&#125;/build&quot; ]; then</span><br><span class="line">rm -rf &quot;$&#123;SRCROOT&#125;/build&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># 4</span><br><span class="line"># Build the framework for device and for simulator (using</span><br><span class="line"># all needed architectures).</span><br><span class="line">xcodebuild -target &quot;$&#123;FRAMEWORK_NAME&#125;&quot; -configuration Release -arch arm64 -arch armv7 -arch armv7s only_active_arch=no defines_module=yes -sdk &quot;iphoneos&quot;</span><br><span class="line">xcodebuild -target &quot;$&#123;FRAMEWORK_NAME&#125;&quot; -configuration Release -arch x86_64 -arch i386 only_active_arch=no defines_module=yes -sdk &quot;iphonesimulator&quot;</span><br><span class="line"></span><br><span class="line"># 5</span><br><span class="line"># Remove .framework file if exists on Desktop from previous run.</span><br><span class="line">if [ -d &quot;$&#123;HOME&#125;/Desktop/$&#123;FRAMEWORK_NAME&#125;.framework&quot; ]; then</span><br><span class="line">rm -rf &quot;$&#123;HOME&#125;/Desktop/$&#123;FRAMEWORK_NAME&#125;.framework&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># 6</span><br><span class="line"># Copy the device version of framework to Desktop.</span><br><span class="line">cp -r &quot;$&#123;SRCROOT&#125;/build/Release-iphoneos/$&#123;FRAMEWORK_NAME&#125;.framework&quot; &quot;$&#123;HOME&#125;/Desktop/$&#123;FRAMEWORK_NAME&#125;.framework&quot;</span><br><span class="line"></span><br><span class="line"># 7</span><br><span class="line"># Replace the framework executable within the framework with</span><br><span class="line"># a new version created by merging the device and simulator</span><br><span class="line"># frameworks&apos; executables with lipo.</span><br><span class="line">lipo -create -output &quot;$&#123;HOME&#125;/Desktop/$&#123;FRAMEWORK_NAME&#125;.framework/$&#123;FRAMEWORK_NAME&#125;&quot; &quot;$&#123;SRCROOT&#125;/build/Release-iphoneos/$&#123;FRAMEWORK_NAME&#125;.framework/$&#123;FRAMEWORK_NAME&#125;&quot; &quot;$&#123;SRCROOT&#125;/build/Release-iphonesimulator/$&#123;FRAMEWORK_NAME&#125;.framework/$&#123;FRAMEWORK_NAME&#125;&quot;</span><br><span class="line"></span><br><span class="line"># 8</span><br><span class="line"># Copy the Swift module mappings for the simulator into the</span><br><span class="line"># framework.  The device mappings already exist from step 6.</span><br><span class="line">cp -r &quot;$&#123;SRCROOT&#125;/build/Release-iphonesimulator/$&#123;FRAMEWORK_NAME&#125;.framework/Modules/$&#123;FRAMEWORK_NAME&#125;.swiftmodule/&quot; &quot;$&#123;HOME&#125;/Desktop/$&#123;FRAMEWORK_NAME&#125;.framework/Modules/$&#123;FRAMEWORK_NAME&#125;.swiftmodule&quot;</span><br><span class="line"></span><br><span class="line"># 9</span><br><span class="line"># Delete the most recent build.</span><br><span class="line">if [ -d &quot;$&#123;SRCROOT&#125;/build&quot; ]; then</span><br><span class="line">rm -rf &quot;$&#123;SRCROOT&#125;/build&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<p>3.最后一步：选择Aggregate target和Simulator然后build，你会看到桌面由构建好通用版本的framework。<br>参考资料：<a href="http://arsenkin.com/ios-universal-framework.html" target="_blank" rel="noopener">http://arsenkin.com/ios-universal-framework.html</a></p>
+<p>2017.11.07添加</p>
+<h1 id="Framework依赖第三方库"><a href="#Framework依赖第三方库" class="headerlink" title="Framework依赖第三方库"></a>Framework依赖第三方库</h1><p>有人在下面提问，如果我新建的framework还依赖第三方库怎么解决？而这也是一个很正常的需求。比如我的BookRoomKit.framework有一个绘本zip包解压的功能，此时我有两种解决方案，第一将ZipArchive的代码拖入到我的framework中，还有一种是ZipArchive.framework引入到我的framework中。明显我们会选择第二种方式，一旦有更新直接替换新的的framework就行。而第二种方式又有两种方法引入：第一：在壳工程中使用pods、carhtage第三方库管理工具来添加；第二：直接将依赖的framework拖入壳工程。其实这两种方式的本质都是一样的，都有一个很关键的点就是<strong>Framework 的Build Settings中设置好依赖的第三方库的Framework Search Paths，同时在Build Phases的Link Binary With Binaries添加依赖的第三方库</strong>，下面我就以第二种方法直接将依赖的第三方库拖入壳工程进行配置为例。</p>
+<ol>
+<li>将下载好的<code>ZipArchive.framework</code>拖入壳工程，记得勾选<code>Copy items if needed</code>,此时你在壳工程就已经能够使用这个库了，这是因为你拖入第三库ZipArchive时Xcode已经给你配置好<code>Framework Search Paths</code>，你可以在壳工程的builds settings搜索到。如下图：<br><img src="http://upload-images.jianshu.io/upload_images/1603505-e80b15518798e508.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>但是你此时在壳工程中使用<code>ZipArchive.framework</code>，运行起来是会crash的，奔溃信息和前文一张名为<code>奔溃信息日志</code>的图片是一样的，<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dyld: Library not loaded: @rpath/ZipArchive.framework/ZipArchive</span><br><span class="line">  Referenced from: /var/containers/Bundle/Application/74F5D1D3-D6B5-4C68-9629-9CAF6C16F133/BookRoomDemo.app/BookRoomDemo</span><br><span class="line">  Reason: image not found</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>所以解决方案也就是一样的，在EmbeddedBinaies中添加<code>ZipArchive.framework</code>。</p>
+<ol>
+<li><strong>设置BookRoomKit.xcodeproj的framework Search Paths</strong><br>路径务必填写正确，我写的相对路径：<code>$(PROJECT_DIR)/../BookRoomDemo/BookRoomDemo</code><br><img src="http://upload-images.jianshu.io/upload_images/1603505-7a399fdbccc9ecf4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+<li><strong>BookRoomKit.xcodeproj的Link Binary With Binaries添加<code>ZipArchive.framework</code></strong>，选在Add Other，添加进来即可。<br>接下来你就可以在BookroomKit使用ZipArchive了，具体代码你可以在<a href="https://github.com/XcqRomance/SwiftFrameworkDemo" target="_blank" rel="noopener">BookRoomDemo</a>下载。</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/swift-framework/" rel="tag"># swift framework</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/17/2016-12-17/" rel="next" title="我的2016年个人总结">
+                <i class="fa fa-chevron-left"></i> 我的2016年个人总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/29/2017-05-29/" rel="prev" title="深入理解iOS设计模式">
+                深入理解iOS设计模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzA1Mi85NjE0"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/romance.jpg"
+                alt="RomanceXie" />
+            
+              <p class="site-author-name" itemprop="name">RomanceXie</p>
+              <p class="site-description motion-element" itemprop="description">只要有梦，总有属于自己的江山</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/XcqRomance" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/d1414d91084a" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#新建Framework项目"><span class="nav-number">1.</span> <span class="nav-text">新建Framework项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Framework合并"><span class="nav-number">2.</span> <span class="nav-text">Framework合并</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试framework专用"><span class="nav-number">3.</span> <span class="nav-text">测试framework专用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Framework中使用image，xib，storyboard，font等资源文件"><span class="nav-number">4.</span> <span class="nav-text">Framework中使用image，xib，storyboard，font等资源文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用脚本一键构建通用版本的framework-真机、模拟器通吃的版本"><span class="nav-number">5.</span> <span class="nav-text">使用脚本一键构建通用版本的framework(真机、模拟器通吃的版本)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Framework依赖第三方库"><span class="nav-number">6.</span> <span class="nav-text">Framework依赖第三方库</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RomanceXie</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">57.6k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

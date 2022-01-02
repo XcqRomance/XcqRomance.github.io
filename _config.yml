@@ -84,5 +84,5 @@ search:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/XcqRomance/XcqRomance.github.io.git
+  repo: git@github.com:XcqRomance/XcqRomance.github.io.git
   branch: master
